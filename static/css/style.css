@@ -28,4 +28,14 @@ html{
 	color: white;
 	padding:10px 10px 10px 10px;
 	font-size: large;
+	display:inline;
 }
+
+/* On screens that are 560px or less, minimize the icon size to avoid wrapping */
+@media screen and (max-width: 560px) {
+	.icon{
+		padding:10px 5px 10px 5px;
+		font-size: small;
+	}
+}
+
