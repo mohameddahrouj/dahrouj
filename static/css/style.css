@@ -1,11 +1,19 @@
-html{
-	height:100%;
-	background: white url(../images/background1.jpg);
-	no-repeat: center center center;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+body {
+  background: white url(../images/background2.jpg);
+  margin: 0rem;
+  min-height: 100vh;
+  font-family: Futura, sans-serif;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#canvas {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .centered {
