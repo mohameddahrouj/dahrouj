@@ -216,6 +216,7 @@ html.js .top.open .nav {
 .attrib { display: block; margin-top: 0.35rem; font-size: 0.75rem; }
 
 /* Market */
+#mk-summary { font-size: 1.05rem; line-height: 1.6; max-width: 44rem; }
 .market-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 3rem; align-items: start; padding-bottom: 2rem; }
 @media (max-width: 860px) { .market-grid { grid-template-columns: 1fr; } }
 .table-wrap { overflow-x: auto; }

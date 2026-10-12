@@ -263,11 +263,22 @@ function summarize(m) {
   if (m.daysOnMarket.value > m.daysOnMarket.lastYear) parts.push("and they’re taking longer to sell");
   else if (m.daysOnMarket.value < m.daysOnMarket.lastYear) parts.push("and they’re selling faster");
   let s = parts.join(" ") + ". ";
+  const sold = m.sales.yoy;
+  s += Math.abs(sold) < 1
+    ? `Sales were about the same as a year ago, at ${count(m.sales.value)} homes. `
+    : `Sales were ${sold > 0 ? "up" : "down"} ${Math.abs(sold).toFixed(1)}% from a year ago, at ${count(m.sales.value)} homes. `;
   const p = m.benchmarkPrice.yoy;
   s += Math.abs(p) < 1
-    ? "Benchmark prices are close to where they were last year."
-    : `Benchmark prices are ${p > 0 ? "up" : "down"} ${Math.abs(p).toFixed(1)}% from last year.`;
-  return s;
+    ? "Benchmark prices are close to where they were last year, "
+    : `Benchmark prices are ${p > 0 ? "up" : "down"} ${Math.abs(p).toFixed(1)}% from last year, `;
+  s += `and homes sold for ${m.saleToListRatio.value.toFixed(1)}% of their asking price on average. `;
+  const moi = m.monthsOfInventory, d = moi.value - moi.lastYear;
+  if (Math.abs(d) >= 0.2) {
+    s += d > 0
+      ? `With ${moi.value.toFixed(1)} months of inventory, up from ${moi.lastYear.toFixed(1)}, buyers have more choice and more room to negotiate.`
+      : `With ${moi.value.toFixed(1)} months of inventory, down from ${moi.lastYear.toFixed(1)}, well-priced homes are moving quickly.`;
+  }
+  return s.trim();
 }
 
 function initSnapshot(st) {
