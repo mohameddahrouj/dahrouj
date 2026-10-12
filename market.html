@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ottawa Real Estate Market: Monthly Stats & Neighbourhoods</title>
+  <meta name="description" content="Monthly Ottawa real estate numbers from the Ottawa Real Estate Board, plus guides to Kanata, Stittsville, Barrhaven, Findlay Creek, Riverside South, Orléans, Manotick, Westboro and the Glebe.">
+  <link rel="canonical" href="https://www.dahrouj.com/market.html">
+  <meta property="og:url" content="https://www.dahrouj.com/market.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ottawa Real Estate Market: Monthly Stats & Neighbourhoods">
+  <meta property="og:description" content="Monthly Ottawa real estate numbers from the Ottawa Real Estate Board, plus guides to Kanata, Stittsville, Barrhaven, Findlay Creek, Riverside South, Orléans, Manotick, Westboro and the Glebe.">
+  <meta property="og:image" content="https://www.dahrouj.com/assets/img/hero-canal-1400.webp">
+  <link rel="icon" href="assets/img/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<!--SITE-BODY-START-->
+<a class="skip" href="#main">Skip to content</a>
+<header class="top" id="top">
+  <div class="wrap top-row">
+    <a class="brand" href="./" aria-label="dahrouj.com, home">
+      <span class="brand-mark" aria-hidden="true"></span><span class="brand-text" aria-hidden="true">ahrouj.com</span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+        <a href="home-value.html">What’s my home worth?</a>
+        <a href="market.html" aria-current="page">Ottawa Market</a>
+        <a href="calculators.html">Calculators</a>
+        <a href="fairfee.html"><span class="ff-word">Fair<b>Fee</b></span><sup>™</sup></a>
+        <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="page-head">
+    <h1>Ottawa market, <span id="mk-month">September 2026</span></h1>
+    <p id="mk-summary" class="lede">Monthly numbers from the Ottawa Real Estate Board.</p>
+  </section>
+  <section class="section market-grid">
+    <div class="table-wrap">
+      <table class="stats">
+        <thead>
+          <tr><th scope="col">Citywide</th><th scope="col" id="mk-col-now">This month</th><th scope="col">vs a year ago</th></tr>
+        </thead>
+        <tbody id="mk-rows"></tbody>
+      </table>
+      <details class="more-stats">
+        <summary>More stats</summary>
+        <table class="stats"><tbody id="mk-more"></tbody></table>
+      </details>
+    </div>
+    <div class="types">
+      <h2 class="h3">Benchmark price by home type</h2>
+      <ul id="mk-types" class="bars"></ul>
+      <p class="fine">The benchmark (MLS® Home Price Index) tracks a typical home, so it moves less than the average price when the mix of sales changes.</p>
+    </div>
+  </section>
+  <p class="source" id="mk-source"></p>
+  <section class="section neighbourhoods" id="neighbourhoods" aria-labelledby="nb-h">
+    <h2 id="nb-h">Neighbourhoods</h2>
+    <p class="fine">Areas we work in across Ottawa. Tap one to learn more, or ask about one that isn’t listed.</p>
+    <div class="areas">
+      <details class="area" id="kanata">
+        <summary><span class="area-name">Kanata</span><span class="area-region">West end</span></summary>
+        <p>A large west-end suburb built around the Kanata North tech park, with established neighbourhoods like Kanata Lakes, Beaverbrook, Bridlewood and Morgan’s Grant.</p>
+        <p class="area-homes">Detached family homes and townhomes, close to the Canadian Tire Centre, Kanata Centrum and the Queensway.</p>
+      </details>
+      <details class="area" id="stittsville">
+        <summary><span class="area-name">Stittsville</span><span class="area-region">West end</span></summary>
+        <p>Just southwest of Kanata, with a village-style main street and newer subdivisions growing around it.</p>
+        <p class="area-homes">Mostly newer detached homes and townhomes, with the Trans Canada Trail running through town.</p>
+      </details>
+      <details class="area" id="barrhaven">
+        <summary><span class="area-name">Barrhaven</span><span class="area-region">South end</span></summary>
+        <p>One of Ottawa’s biggest family suburbs, including Stonebridge and Half Moon Bay, with its own shopping, schools and recreation centres.</p>
+        <p class="area-homes">Detached homes and townhomes, many built in the last twenty years.</p>
+      </details>
+      <details class="area" id="findlay-creek">
+        <summary><span class="area-name">Findlay Creek</span><span class="area-region">South end</span></summary>
+        <p>A newer community off Bank Street and Leitrim Road near the airport, with parks, trails and new schools.</p>
+        <p class="area-homes">Mostly newer townhomes and detached homes, popular with first-time buyers moving up.</p>
+      </details>
+      <details class="area" id="riverside-south">
+        <summary><span class="area-name">Riverside South</span><span class="area-region">South end</span></summary>
+        <p>A growing community along the Rideau River, across from Barrhaven and connected to the O-Train’s Trillium Line.</p>
+        <p class="area-homes">Newer detached homes and townhomes, with more construction under way.</p>
+      </details>
+      <details class="area" id="orleans">
+        <summary><span class="area-name">Orléans</span><span class="area-region">East end</span></summary>
+        <p>A large, bilingual east-end community along the Ottawa River, with established and newer neighbourhoods side by side.</p>
+        <p class="area-homes">A wide mix, from older bungalows and split-levels to new townhomes.</p>
+      </details>
+      <details class="area" id="manotick">
+        <summary><span class="area-name">Manotick</span><span class="area-region">Rural south</span></summary>
+        <p>A historic village on the Rideau River, known for Watson’s Mill and its quiet, small-town feel.</p>
+        <p class="area-homes">Larger lots, estate homes and waterfront properties within reach of the city.</p>
+      </details>
+      <details class="area" id="westboro">
+        <summary><span class="area-name">Westboro</span><span class="area-region">Inner west</span></summary>
+        <p>A walkable inner-city neighbourhood centred on Richmond Road shops and restaurants, close to the Ottawa River pathways.</p>
+        <p class="area-homes">Older homes, modern infill and condos.</p>
+      </details>
+      <details class="area" id="glebe">
+        <summary><span class="area-name">The Glebe</span><span class="area-region">Central</span></summary>
+        <p>Our home base. A central neighbourhood between Bank Street, Lansdowne Park and the Rideau Canal.</p>
+        <p class="area-homes">Older brick homes, semis and low-rise condos in walking distance of downtown.</p>
+      </details>
+    </div>
+  </section>
+  <section class="section closing market-close">
+    <h2>Want the numbers for your street?</h2>
+    <p>We’ll pull recent sales near you, or compare two neighbourhoods side by side.</p>
+    <div class="actions"><a class="btn" href="contact.html">Book a consultation</a><a class="btn btn-quiet" href="home-value.html">What’s my home worth?</a></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <div class="brokerage">
+      <picture>
+        <source srcset="assets/img/rahr-logo-white.svg" media="(prefers-color-scheme: dark)">
+        <img class="rahr-logo" src="assets/img/rahr-logo.svg" alt="Right at Home Realty, Brokerage" width="85" height="77">
+      </picture>
+      <span class="brokerage-name"><span class="agent-name">Mohamed Dahrouj, Sales Representative</span><span>Right at Home Realty, Brokerage</span></span>
+    </div>
+    <nav class="foot-meta" aria-label="Footer">
+      <a class="foot-link" href="privacy.html">Privacy</a>
+      <button class="foot-link legal-btn" type="button" aria-expanded="false" aria-controls="legal-text">Legal</button>
+      <a class="social" href="https://www.instagram.com/dahroujrealestate" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="dot"/></svg></a>
+    </nav>
+    <div class="legal-text" id="legal-text">
+      <p>Right at Home Realty, Brokerage, independently owned and operated, 14 Chamberlain Ave, Suite 101, Ottawa, ON K1S 1V9. Office 613-369-5199. Not intended to solicit buyers or sellers currently under contract with a brokerage.</p>
+      <p>MLS®, Multiple Listing Service® and REALTOR® are trademarks controlled by the Canadian Real Estate Association. FairFee™ is a trademark of its owner.</p>
+    </div>
+    <p class="foot-copy">© <span class="year">2026</span> Mohamed Dahrouj. All rights reserved.</p>
+  </div>
+</footer>
+<nav class="callbar" aria-label="Call or text">
+  <a href="tel:+16138695923"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h3.5l1.5 5-2 1.5a12 12 0 0 0 6.5 6.5L16 14l5 1.5V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Call</a>
+  <a href="sms:+16138695923"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Text</a>
+</nav>
+<!--SITE-BODY-END-->
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

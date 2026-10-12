@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Home Buying Calculators | Ottawa Real Estate</title>
+  <meta name="description" content="Ontario land transfer tax, mortgage payment (with CMHC insurance) and affordability calculators for Ottawa home buyers.">
+  <link rel="canonical" href="https://www.dahrouj.com/calculators.html">
+  <meta property="og:url" content="https://www.dahrouj.com/calculators.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Home Buying Calculators | Ottawa Real Estate">
+  <meta property="og:description" content="Ontario land transfer tax, mortgage payment (with CMHC insurance) and affordability calculators for Ottawa home buyers.">
+  <meta property="og:image" content="https://www.dahrouj.com/assets/img/hero-canal-1400.webp">
+  <link rel="icon" href="assets/img/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<!--SITE-BODY-START-->
+<a class="skip" href="#main">Skip to content</a>
+<header class="top" id="top">
+  <div class="wrap top-row">
+    <a class="brand" href="./" aria-label="dahrouj.com, home">
+      <span class="brand-mark" aria-hidden="true"></span><span class="brand-text" aria-hidden="true">ahrouj.com</span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+        <a href="home-value.html">What’s my home worth?</a>
+        <a href="market.html">Ottawa Market</a>
+        <a href="calculators.html" aria-current="page">Calculators</a>
+        <a href="fairfee.html"><span class="ff-word">Fair<b>Fee</b></span><sup>™</sup></a>
+        <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="page-head">
+    <h1>Calculators</h1>
+    <p class="lede">Quick estimates for buying in Ottawa. Your lender and lawyer will confirm the exact numbers.</p>
+    <div class="tabs calc-tabs" role="tablist" aria-label="Choose a calculator" data-tabs>
+      <button role="tab" id="t-ltt" aria-controls="ltt" aria-selected="true"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-2-1.3-2 1.3-2-1.3-2 1.3-2-1.3L6 21z"/><path d="M9 8h6M9 12h6M9 16h3"/></svg><span>Land transfer</span></button>
+      <button role="tab" id="t-payment" aria-controls="payment" aria-selected="false" tabindex="-1"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 17.5l4-5"/><circle cx="10" cy="13" r="0.9"/><circle cx="14" cy="17" r="0.9"/></svg><span>Mortgage</span></button>
+      <button role="tab" id="t-afford" aria-controls="afford" aria-selected="false" tabindex="-1"><svg class="tab-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7.5h15a1 1 0 0 1 1 1V19a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="M4 7.5 15 4v3.5"/><path d="M15.5 13.75h4.5"/></svg><span>Affordability</span></button>
+    </div>
+  </section>
+
+  <section class="calc-block" id="ltt" role="tabpanel" aria-labelledby="t-ltt">
+    <div class="calc-intro">
+      <h2 id="ltt-h">Land transfer tax</h2>
+      <p>Ontario’s tax on buying a home, paid on closing. Ottawa has no separate city land transfer tax.</p>
+    </div>
+    <form class="calc-form" data-calc="ltt" novalidate>
+      <div class="field"><label for="ltt-price">Purchase price</label><div class="affixed"><span class="affix">$</span><input id="ltt-price" type="number" inputmode="decimal" min="0" step="1000" value="650000"></div></div>
+      <label class="check"><input id="ltt-ftb" type="checkbox"> First-time home buyer</label>
+      <dl class="results">
+        <div><dt>Ontario land transfer tax</dt><dd id="ltt-tax"></dd></div>
+        <div><dt>First-time buyer refund</dt><dd id="ltt-refund"></dd></div>
+        <div class="total"><dt>You pay on closing</dt><dd id="ltt-total"></dd></div>
+      </dl>
+      <p class="fine">Rates for a home with one or two single-family residences: 0.5% up to $55,000, 1% to $250,000, 1.5% to $400,000, 2% to $2 million and 2.5% above. First-time buyers can get up to $4,000 back.</p>
+    </form>
+  </section>
+
+  <section class="calc-block" id="payment" role="tabpanel" aria-labelledby="t-payment" hidden>
+    <div class="calc-intro">
+      <h2 id="pay-h">Mortgage payment</h2>
+      <p>Your regular payment, including CMHC insurance when you put down less than 20%.</p>
+    </div>
+    <form class="calc-form" data-calc="payment" novalidate>
+      <div class="field-row">
+        <div class="field"><label for="pay-price">Purchase price</label><div class="affixed"><span class="affix">$</span><input id="pay-price" type="number" inputmode="decimal" min="0" step="1000" value="650000"></div></div>
+        <div class="field"><label for="pay-down">Down payment</label><div class="affixed"><span class="affix">$</span><input id="pay-down" type="number" inputmode="decimal" min="0" step="1000" value="65000"></div></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="pay-rate">Interest rate</label><div class="affixed"><input id="pay-rate" type="number" inputmode="decimal" min="0" step="0.01" value="4.29"><span class="affix">%</span></div></div>
+        <div class="field"><label for="pay-amort">Amortization</label><select id="pay-amort"><option value="25" selected>25 years</option><option value="30">30 years</option><option value="20">20 years</option><option value="15">15 years</option></select></div>
+        <div class="field"><label for="pay-freq">Payments</label><select id="pay-freq"><option value="monthly" selected>Monthly</option><option value="biweekly">Every two weeks</option><option value="accel">Accelerated every two weeks</option><option value="weekly">Weekly</option></select></div>
+      </div>
+      <dl class="results">
+        <div><dt>Mortgage amount</dt><dd id="pay-loan"></dd></div>
+        <div><dt>CMHC insurance added</dt><dd id="pay-prem"></dd></div>
+        <div class="total"><dt id="pay-label">Monthly payment</dt><dd id="pay-amount"></dd></div>
+      </dl>
+      <p class="fine" id="pay-msg">Uses semi-annual compounding, as Canadian fixed-rate mortgages do.</p>
+      <p class="fine">With less than 20% down, CMHC insurance (2.80% to 4.00% of the mortgage) is added for you.</p>
+    </form>
+  </section>
+
+  <section class="calc-block" id="afford" role="tabpanel" aria-labelledby="t-afford" hidden>
+    <div class="calc-intro">
+      <h2 id="aff-h">Affordability</h2>
+      <p>The highest price you’re likely to qualify for, using the federal stress test and standard debt limits.</p>
+    </div>
+    <form class="calc-form" data-calc="afford" novalidate>
+      <div class="field-row">
+        <div class="field"><label for="aff-income">Household income (yearly, before tax)</label><div class="affixed"><span class="affix">$</span><input id="aff-income" type="number" inputmode="decimal" min="0" step="1000" value="140000"></div></div>
+        <div class="field"><label for="aff-down">Down payment saved</label><div class="affixed"><span class="affix">$</span><input id="aff-down" type="number" inputmode="decimal" min="0" step="1000" value="80000"></div></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="aff-debts">Other debt payments (monthly)</label><div class="affixed"><span class="affix">$</span><input id="aff-debts" type="number" inputmode="decimal" min="0" step="50" value="400"></div></div>
+        <div class="field"><label for="aff-rate">Interest rate</label><div class="affixed"><input id="aff-rate" type="number" inputmode="decimal" min="0" step="0.01" value="4.29"><span class="affix">%</span></div></div>
+      </div>
+      <details class="more-opts">
+        <summary>More options <span class="opt">(property tax, heating, condo fees)</span></summary>
+        <div class="field-row">
+          <div class="field"><label for="aff-tax">Property tax (monthly)</label><div class="affixed"><span class="affix">$</span><input id="aff-tax" type="number" inputmode="decimal" min="0" step="25" value="450"></div></div>
+          <div class="field"><label for="aff-heat">Heating (monthly)</label><div class="affixed"><span class="affix">$</span><input id="aff-heat" type="number" inputmode="decimal" min="0" step="10" value="120"></div></div>
+          <div class="field"><label for="aff-condo">Condo fees (monthly)</label><div class="affixed"><span class="affix">$</span><input id="aff-condo" type="number" inputmode="decimal" min="0" step="25" value="0"></div></div>
+        </div>
+      </details>
+      <dl class="results">
+        <div><dt>Qualifying rate</dt><dd id="aff-qrate"></dd></div>
+        <div><dt>Largest mortgage</dt><dd id="aff-loan"></dd></div>
+        <div class="total"><dt>Price you could afford</dt><dd id="aff-price"></dd></div>
+      </dl>
+      <p class="fine" id="aff-msg">Lenders qualify you at the higher of your rate plus 2% or 5.25%, with housing costs under 39% of income and all debts under 44%. Assumes a 25-year amortization, $450 a month in property tax and $120 in heating unless you change them.</p>
+    </form>
+  </section>
+
+  <section class="section closing calc-close">
+    <h2>Selling too?</h2>
+    <p>Find out what your home could sell for before you buy.</p>
+    <div class="actions"><a class="btn" href="contact.html">Book a consultation</a><a class="btn btn-quiet" href="home-value.html">What’s my home worth?</a></div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <div class="brokerage">
+      <picture>
+        <source srcset="assets/img/rahr-logo-white.svg" media="(prefers-color-scheme: dark)">
+        <img class="rahr-logo" src="assets/img/rahr-logo.svg" alt="Right at Home Realty, Brokerage" width="85" height="77">
+      </picture>
+      <span class="brokerage-name"><span class="agent-name">Mohamed Dahrouj, Sales Representative</span><span>Right at Home Realty, Brokerage</span></span>
+    </div>
+    <nav class="foot-meta" aria-label="Footer">
+      <a class="foot-link" href="privacy.html">Privacy</a>
+      <button class="foot-link legal-btn" type="button" aria-expanded="false" aria-controls="legal-text">Legal</button>
+      <a class="social" href="https://www.instagram.com/dahroujrealestate" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="dot"/></svg></a>
+    </nav>
+    <div class="legal-text" id="legal-text">
+      <p>Right at Home Realty, Brokerage, independently owned and operated, 14 Chamberlain Ave, Suite 101, Ottawa, ON K1S 1V9. Office 613-369-5199. Not intended to solicit buyers or sellers currently under contract with a brokerage.</p>
+      <p>MLS®, Multiple Listing Service® and REALTOR® are trademarks controlled by the Canadian Real Estate Association. FairFee™ is a trademark of its owner.</p>
+    </div>
+    <p class="foot-copy">© <span class="year">2026</span> Mohamed Dahrouj. All rights reserved.</p>
+  </div>
+</footer>
+<nav class="callbar" aria-label="Call or text">
+  <a href="tel:+16138695923"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h3.5l1.5 5-2 1.5a12 12 0 0 0 6.5 6.5L16 14l5 1.5V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Call</a>
+  <a href="sms:+16138695923"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Text</a>
+</nav>
+<!--SITE-BODY-END-->
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

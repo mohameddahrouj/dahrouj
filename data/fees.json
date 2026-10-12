@@ -1,0 +1,15 @@
+{
+  "_readme": "FairFee terms used by the calculator on fairfee.html. Buyer cash back is prorated: rebatePer dollars per rebateStep of purchase price ($1,000 per $400,000, so $750 on $300,000).",
+  "hstRate": 0.13,
+  "selling": {
+    "listingRate": 1.5,
+    "buyerAgentRate": 2.0,
+    "note": "The buyer’s brokerage rate is what’s offered to the agent who brings the buyer. You choose it with us before listing."
+  },
+  "buying": {
+    "assumedBuyerAgentRate": 2.0,
+    "rebatePer": 1000,
+    "rebateStep": 400000,
+    "note": "Cash back is paid by Right at Home Realty after closing. Your lender must be told about it. Conditions are set out in the buyer representation agreement."
+  }
+}
