@@ -1,0 +1,17 @@
+HTTP/2 403 
+date: Mon, 12 Oct 2026 20:07:19 GMT
+content-type: application/json
+content-length: 158
+cache-control: private, max-age=0, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+expires: Thu, 01 Jan 1970 00:00:01 GMT
+referrer-policy: same-origin
+x-frame-options: SAMEORIGIN
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=hd6YaT5L2r8Qxhm%2FKd5LC6hNIfyC2egvljVXFo4LftCASObv2QBvEwq3w4l%2B4qeNq9biHthbuUNZsXzF2fM4BqMzlK7q%2BNHJS3Tq2dn1AaHfBaghRRWz7PXTk72ic%2FZCdmgA"}]}
+nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+server: cloudflare
+cf-ray: a498baed6b1a1bf1-CDG
+
+{
+  "success": false,
+  "message": "This method is not allowed. Use our API in client side or contact support with server IP address (Pro plan is required)"
+}

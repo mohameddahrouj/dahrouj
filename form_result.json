@@ -1,0 +1,9 @@
+{
+ "status": "That didn\u2019t go through. Check your connection and try again, or email mohamed@dahrouj.com.",
+ "log": [
+  "REQ POST https://api.web3forms.com/submit application/json",
+  "CONSOLE error: Access to fetch at 'https://api.web3forms.com/submit' from origin 'https://www.dahrouj.com' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.",
+  "FAILED POST https://api.web3forms.com/submit net::ERR_FAILED",
+  "CONSOLE error: Failed to load resource: net::ERR_FAILED"
+ ]
+}
