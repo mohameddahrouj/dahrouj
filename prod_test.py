@@ -50,7 +50,7 @@ with sync_playwright() as pw:
           st = status(url)
           ok = st[0] == 200
           if ok and frag:
-              html = urllib.request.urlopen(url, timeout=20).read().decode()
+              html = urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 site-check"}), timeout=20).read().decode()
               ok = f'id="{frag}"' in html
           R["links"][l] = "ok" if ok else f"BROKEN {st}"
 
