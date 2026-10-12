@@ -29,11 +29,9 @@ function initFees(fees) {
   const b = fees.buying;
   const hst = fees.hstRate;
 
-  $("#buy-draft").hidden = !fees.buying.draft;
   $("#sell-rate").textContent = rate(s.listingRate);
   $("#coop-rate").textContent = rate(s.buyerAgentRate);
   $("#buy-rate").textContent = rate(b.assumedBuyerAgentRate);
-  $("#buy-share").textContent = `${b.rebateShare}%`;
   $("#sell-note").textContent = s.note;
   $("#buy-note").textContent = b.note;
 
@@ -59,7 +57,7 @@ function initFees(fees) {
     bump($("#sell-keep"), money(p - total));
 
     const comm = p * b.assumedBuyerAgentRate / 100;
-    const rebate = p >= b.minimumPrice ? comm * b.rebateShare / 100 : 0;
+    const rebate = Math.floor(p / b.rebateStep) * b.rebatePer;
     $("#buy-comm").textContent = money(comm);
     bump($("#buy-rebate"), money(rebate));
   }

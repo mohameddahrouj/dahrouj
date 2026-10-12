@@ -1,5 +1,5 @@
 {
-  "_readme": "FairFee terms shown on fairfee.html. listingRate and buyerAgentRate are confirmed; set buying.draft to false once the rebate share is final.",
+  "_readme": "FairFee terms used by the calculator on fairfee.html. Buyer cash back: rebatePer dollars for every full rebateStep of purchase price.",
   "hstRate": 0.13,
   "selling": {
     "listingRate": 1.5,
@@ -7,10 +7,9 @@
     "note": "The buyer’s brokerage rate is what’s offered to the agent who brings the buyer. You choose it with us before listing."
   },
   "buying": {
-    "rebateShare": 50,
     "assumedBuyerAgentRate": 2.0,
-    "minimumPrice": 300000,
-    "note": "Rebate is a share of the commission our brokerage receives on your purchase, paid by Right at Home Realty after closing. Your lender must be told about the rebate. Conditions are set out in the buyer representation agreement.",
-    "draft": true
+    "rebatePer": 1000,
+    "rebateStep": 400000,
+    "note": "Cash back is paid by Right at Home Realty after closing. Your lender must be told about it. Conditions are set out in the buyer representation agreement."
   }
 }
