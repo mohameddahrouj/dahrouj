@@ -376,10 +376,14 @@ const addressProviders = {
       const data = await (await fetch(url)).json();
       return (data.results || [])
         .filter((r) => r.housenumber || r.result_type === "building" || r.result_type === "street")
-        .map((r) => ({
-          text: r.formatted.replace(/, Canada$/, ""),
-          async pick() { return { label: r.formatted.replace(/, Canada$/, ""), postal: r.postcode || "", coords: `${r.lat},${r.lon}` }; },
-        }));
+        .map((r) => {
+          // Build the label from address parts so business names (e.g. a shop at that address) are left out
+          const street = r.housenumber && r.street ? `${r.housenumber} ${r.street}` : r.street;
+          const place = [r.city || r.town || r.village || r.county, [r.state_code, r.postcode].filter(Boolean).join(" ")].filter(Boolean).join(", ");
+          const label = street ? [street, place].filter(Boolean).join(", ") : r.formatted.replace(/, Canada$/, "");
+          return { text: label, async pick() { return { label, postal: r.postcode || "", coords: `${r.lat},${r.lon}` }; } };
+        })
+        .filter((it, i, all) => all.findIndex((o) => o.text === it.text) === i);
     },
   },
   google: {
@@ -511,14 +515,28 @@ function initForm(form) {
     valuation: "Thanks! We’ll get back to you soon with your home’s value.",
   }[kind] || "Request sent. We’ll be in touch to find a time.";
 
+  const valid = (el) => {
+    const v = el.value.trim();
+    let ok = v !== "" && el.checkValidity();
+    if (ok && el.name === "contact") ok = /@.+\./.test(v) || v.replace(/\D/g, "").length >= 10;
+    return ok;
+  };
+  // Clear an error as soon as the field is fixed, whether typed, pasted or filled in by the browser's autofill
+  const recheck = (e) => {
+    const el = e.target;
+    if (el.getAttribute("aria-invalid") !== "true" || !valid(el)) return;
+    el.setAttribute("aria-invalid", "false");
+    if (!form.querySelector('[aria-invalid="true"]') && !status.classList.contains("ok")) status.textContent = "";
+  };
+  form.addEventListener("input", recheck);
+  form.addEventListener("change", recheck);
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     status.className = "form-status";
     let bad = null;
     form.querySelectorAll("[required]").forEach((el) => {
-      const v = el.value.trim();
-      let ok = v !== "" && el.checkValidity();
-      if (ok && el.name === "contact") ok = /@.+\./.test(v) || v.replace(/\D/g, "").length >= 10;
+      if (el.name === "contact" || el.type === "email") el.value = el.value.trim();
+      const ok = valid(el);
       el.setAttribute("aria-invalid", ok ? "false" : "true");
       if (!ok && !bad) bad = el;
     });
