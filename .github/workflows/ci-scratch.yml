@@ -33,16 +33,19 @@ jobs:
             way["leisure"="stadium"]({bbox});
           );
           out geom;"""
-          for ep in ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"]:
-              try:
-                  b = get(ep, urllib.parse.urlencode({"data": q}).encode())
-                  open("/tmp/out/overpass.json", "wb").write(b); print("ok", ep, len(b)); break
-              except Exception as e:
-                  print("fail", ep, e)
+          import traceback
+          for attempt in range(3):
+              for ep in ["https://overpass-api.de/api/interpreter", "https://overpass.private.coffee/api/interpreter", "https://maps.mail.ru/osm/tools/overpass/api/interpreter"]:
+                  try:
+                      b = get(ep + "?" + urllib.parse.urlencode({"data": q}))
+                      open("/tmp/out/overpass.json", "wb").write(b); print("ok", ep, len(b)); break
+                  except Exception as e:
+                      print("fail", ep, repr(e)); open("/tmp/out/overpass-errors.txt", "a").write(f"{ep} {e!r}\n")
+              else:
+                  time.sleep(20); continue
+              break
           places = {}
-          for name in ["Kanata, Ottawa", "Stittsville, Ottawa", "Barrhaven, Ottawa", "Findlay Creek, Ottawa",
-                       "Riverside South, Ottawa", "Orléans, Ottawa", "Manotick, Ottawa", "Westboro, Ottawa",
-                       "The Glebe, Ottawa", "Parliament Hill, Ottawa"]:
+          for name in ["Kanata, Ontario, Canada", "Kanata Centrum Shopping Centre, Ottawa"]:
               try:
                   r = json.loads(get("https://nominatim.openstreetmap.org/search?" + urllib.parse.urlencode({"q": name, "format": "json", "limit": 3})))
                   places[name] = [{"lat": x["lat"], "lon": x["lon"], "type": x.get("type"), "class": x.get("class"), "name": x["display_name"][:120]} for x in r]
