@@ -293,6 +293,12 @@ function initSnapshot(st) {
   set("moiChange", `${m.monthsOfInventory.lastYear.toFixed(1)} a year ago`);
 }
 
+const TYPE_ICONS = {
+  "Single family": '<svg class="type-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-5h4v5"/></svg>',
+  "Townhouse": '<svg class="type-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 11l3.5-3.5L9 11l3-3 3 3 3.5-3.5L22 11"/><path d="M3 10v10h18V10"/><path d="M9 11v9M15 11v9"/></svg>',
+  "Apartment": '<svg class="type-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V3h14v18"/><path d="M3 21h18"/><path d="M8.5 7h2M13.5 7h2M8.5 11h2M13.5 11h2M8.5 15h2M13.5 15h2"/></svg>',
+};
+
 function initStats(st) {
   const m = st.market;
   const short = (label) => label.replace(/^(\w{3})\w*/, "$1.");
@@ -327,7 +333,8 @@ function initStats(st) {
       <div class="bar-track" aria-hidden="true"><div class="bar-fill"></div></div>
       <span class="bar-change"></span>`;
     const [name, val] = li.querySelectorAll(".bar-head span");
-    name.textContent = t.type;
+    name.innerHTML = (TYPE_ICONS[t.type] || "") + `<span class="type-name"></span>`;
+    name.querySelector(".type-name").textContent = t.type;
     val.textContent = money(t.value);
     li.querySelector(".bar-fill").style.width = `${(t.value / max) * 100}%`;
     li.querySelector(".bar-change").textContent = `${pct(t.yoy)} vs a year ago`;

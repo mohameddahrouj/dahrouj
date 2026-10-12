@@ -271,7 +271,9 @@ html.js .top.open .nav {
 .bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.1rem; }
 .bars li { display: grid; gap: 0.3rem; }
 .bar-head { display: flex; justify-content: space-between; gap: 1rem; font-variant-numeric: tabular-nums; }
-.bar-head span:last-child { font-weight: 700; }
+.bar-head > span:last-child { font-weight: 700; }
+.bar-head > span:first-child { display: inline-flex; align-items: center; gap: 0.5rem; }
+.type-ico { width: 20px; height: 20px; flex: none; fill: none; stroke: var(--brand); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .bar-track { height: 8px; background: var(--brand-soft); border-radius: 99px; overflow: hidden; }
 .bar-fill { height: 100%; background: var(--brand); border-radius: 99px; }
 .bar-change { font-size: var(--step--1); color: var(--muted); font-variant-numeric: tabular-nums; }
