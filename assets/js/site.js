@@ -36,7 +36,6 @@ function initFees(fees) {
   $("#buy-share").textContent = `${b.rebateShare}%`;
   $("#sell-note").textContent = s.note;
   $("#buy-note").textContent = b.note;
-  $("#sell-includes").replaceChildren(...s.includes.map((t) => Object.assign(document.createElement("li"), { textContent: t })));
 
   function bump(el, text) {
     if (el.textContent === text) return;
@@ -102,13 +101,24 @@ function summarize(m) {
   return s;
 }
 
+function initSnapshot(st) {
+  const m = st.market;
+  const set = (k, v) => document.querySelectorAll(`[data-stat="${k}"]`).forEach((el) => { el.textContent = v; });
+  set("label", st.label);
+  set("averagePrice", money(m.averagePrice.value));
+  set("averagePriceChange", `${pct(m.averagePrice.yoy)} from a year ago`);
+  set("sales", count(m.sales.value));
+  set("salesChange", `${pct(m.sales.yoy)} from a year ago`);
+  set("moi", m.monthsOfInventory.value.toFixed(1));
+  set("moiChange", `${m.monthsOfInventory.lastYear.toFixed(1)} a year ago`);
+}
+
 function initStats(st) {
   const m = st.market;
   const short = (label) => label.replace(/^(\w{3})\w*/, "$1.");
   $("#mk-month").textContent = st.label;
   $("#mk-summary").textContent = summarize(m);
   $("#mk-col-now").textContent = short(st.label);
-  $("#mk-col-then").textContent = "vs a year ago";
 
   const rows = [
     ["Homes sold", count(m.sales.value), pct(m.sales.yoy)],
@@ -160,8 +170,8 @@ function initForm(form) {
   const button = form.querySelector("button[type=submit]");
   const kind = form.dataset.form;
   const done = kind === "waitlist"
-    ? "You’re on the list. I’ll email you when Fairfee opens in your area."
-    : "Message sent. I’ll get back to you soon.";
+    ? "You’re on the list. We’ll email you when Fairfee opens in your area."
+    : "Request sent. We’ll be in touch to find a time.";
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -214,10 +224,16 @@ function initForm(form) {
 }
 
 /* ---------- Boot ---------- */
-$("#year").textContent = new Date().getFullYear();
-loadJSON("fees").then(initFees).catch((e) => console.error(e));
-loadJSON("stats").then(initStats).catch((e) => {
-  console.error(e);
-  $("#mk-summary").textContent = "Market numbers couldn’t load right now. The full monthly reports are on the Ottawa Real Estate Board website.";
-});
+document.querySelectorAll(".year").forEach((el) => { el.textContent = new Date().getFullYear(); });
+if ($("#calc")) loadJSON("fees").then(initFees).catch((e) => console.error(e));
+if ($("#mk-rows") || $("[data-stat]")) {
+  loadJSON("stats").then((st) => {
+    if ($("[data-stat]")) initSnapshot(st);
+    if ($("#mk-rows")) initStats(st);
+  }).catch((e) => {
+    console.error(e);
+    const el = $("#mk-summary");
+    if (el) el.textContent = "Market numbers couldn’t load right now. The full monthly reports are on the Ottawa Real Estate Board website.";
+  });
+}
 document.querySelectorAll("form[data-form]").forEach(initForm);

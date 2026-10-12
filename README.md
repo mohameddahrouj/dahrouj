@@ -1,10 +1,11 @@
 # dahrouj.com
 
-Single-page site for Mohamed Dahrouj, Sales Representative, Right at Home Realty, Brokerage. Hosted on GitHub Pages from `master`.
+Team website (Right at Home Realty, Brokerage), hosted on GitHub Pages from `master`. The team name "Capital Home Group" is a placeholder: search-and-replace it across the four HTML pages once a name is chosen.
 
 ## Files
 
-- `index.html`, `assets/css/site.css`, `assets/js/site.js` — the page. No build step, no dependencies.
+- `index.html` (home), `market.html` (market report), `contact.html` (consultation form), `fairfee.html` (Fairfee soft launch and fee calculator)
+- `assets/css/site.css`, `assets/js/site.js` — shared styles and script. No build step, no dependencies.
 - `data/fees.json` — the listing fee, buyer rebate and wording shown in the fee calculator. Set `"draft": false` once the terms are final.
 - `data/stats.json` — Ottawa market numbers. Updated by the monthly workflow below.
 
