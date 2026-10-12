@@ -2,7 +2,7 @@
 
 // Web3Forms access key: get one free at https://web3forms.com (enter mohamed@dahrouj.com).
 // It's safe to publish; it only lets this site send mail to that inbox.
-const WEB3FORMS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
+const WEB3FORMS_KEY = "64bab466-4d07-4e12-bad6-cacfa73f4a39";
 
 const $ = (sel) => document.querySelector(sel);
 const money = (n) => n.toLocaleString("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 });

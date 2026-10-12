@@ -25,7 +25,7 @@ Every page has its own title, description and canonical link. The home page carr
 
 ## Contact and home value forms
 
-The forms send through [Web3Forms](https://web3forms.com), which works on static hosts like GitHub Pages. Get a free access key for mohamed@dahrouj.com and paste it into `WEB3FORMS_KEY` at the top of `assets/js/site.js`. Until then the forms tell visitors to call or email instead. If you change form or address providers, update `privacy.html` (generated from the `PRIVACY` text in the page script) to name them.
+The forms send through [Web3Forms](https://web3forms.com), which works on static hosts like GitHub Pages. The access key (for mohamed@dahrouj.com) is set in `WEB3FORMS_KEY` at the top of `assets/js/site.js`. Web3Forms keys are meant to sit in public page code; one key covers every form, and each message's subject line says which form it came from. To change where messages go, create a new key at web3forms.com and replace it there. If you change form or address providers, update `privacy.html` (generated from the `PRIVACY` text in the page script) to name them.
 
 ## Address suggestions (home-value.html)
 
