@@ -439,19 +439,20 @@ form button { justify-self: start; }
 
 /* Footer */
 .foot { border-top: 1px solid var(--line); background: var(--paper-2); }
-.foot-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 2rem; padding-block: 3rem calc(3rem + env(safe-area-inset-bottom, 0px)); }
-.brokerage { display: flex; gap: 1.25rem; align-items: center; font-size: var(--step--1); }
-.rahr-logo { width: 72px; height: auto; flex: none; }
-.legal { display: grid; gap: 0.6rem; font-size: var(--step--1); color: var(--muted); }
+.foot-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 1.25rem 2.5rem; align-items: center; padding-block: 1.75rem calc(1.75rem + env(safe-area-inset-bottom, 0px)); }
+.brokerage { display: flex; gap: 1rem; align-items: center; font-size: 0.85rem; line-height: 1.45; }
+.rahr-logo { width: 54px; height: auto; flex: none; }
+.legal { display: grid; gap: 0.4rem; font-size: 0.78rem; line-height: 1.5; color: var(--muted); }
 .foot-line { display: flex; align-items: center; gap: 0.35rem; }
-.social { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 50%; color: var(--muted); margin-left: -8px; }
+.social { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 50%; color: var(--muted); margin-left: -8px; }
 .social:hover { color: var(--brand); background: var(--brand-soft); }
-.social svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.social svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; }
 .social svg .dot { fill: currentColor; stroke: none; }
 @media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr; } }
 
 /* Icons added Oct 2026 */
-.topic-ico { width: 30px; height: 30px; padding: 8px; box-sizing: content-box; border-radius: 13px; background: var(--brand-soft); fill: none; stroke: var(--brand); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.topic-head { display: flex; align-items: center; gap: 0.9rem; }
+.topic-ico { flex: none; width: 26px; height: 26px; padding: 8px; box-sizing: content-box; border-radius: 13px; background: var(--brand-soft); fill: none; stroke: var(--brand); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .li-ico { position: absolute; left: 0; top: -0.2em; width: 20px; height: 20px; padding: 6px; box-sizing: content-box; border-radius: 10px; background: var(--brand-soft); fill: none; stroke: var(--brand); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .icon-checks { gap: 1.1rem; }
 .icon-checks li { padding-left: 2.9rem; min-height: 32px; }
