@@ -1,6 +1,6 @@
 # dahrouj.com
 
-Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages from `master`. There is no header bar (the menu lists Market Guide, Calculators, FairFee™ and Contact; Moving to Ottawa and Cottages are linked from the home page): each page opens with the Dahrouj house logo standing in for the “D” of “dahrouj.com” (`assets/img/dahrouj-logo.png`, drawn in the site colour) and a Menu button. The brokerage logo is in the footer.
+Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages from `master`. There is no header bar (the menu lists What’s my home worth?, Market Guide, Calculators, Our fees and Contact; Moving to Ottawa and Cottages are linked from the home page): each page opens with the Dahrouj house logo standing in for the “D” of “dahrouj.com” (`assets/img/dahrouj-logo.png`, drawn in the site colour) and a Menu button. The brokerage logo is in the footer.
 
 ## Files
 

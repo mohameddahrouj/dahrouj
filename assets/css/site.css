@@ -112,6 +112,7 @@ html.js .top.open .nav {
 }
 .top.open .nav a { padding-block: 0.9rem; border-bottom: 1px solid var(--line); font-size: var(--step-1); }
 @media (min-width: 700px) { html.js .top.open .nav { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1000px) { html.js .top.open .nav { grid-template-columns: repeat(5, auto); justify-content: space-between; } .top.open .nav a { border-bottom: 0; } }
 @media (prefers-reduced-motion: reduce) { .menu-icon, .menu-icon::before, .menu-icon::after { transition: none; } }
 [id] { scroll-margin-top: 1rem; }
 
