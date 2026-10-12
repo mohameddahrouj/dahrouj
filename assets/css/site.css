@@ -359,12 +359,18 @@ details.area .area-homes { color: var(--ink); font-size: var(--step--1); padding
 /* Call or text bar (phones) */
 .callbar { display: none; }
 @media (max-width: 760px) {
-  .callbar { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
-    padding: 0.5rem 16px calc(0.5rem + env(safe-area-inset-bottom, 0px)); background: color-mix(in srgb, var(--paper) 94%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
-  .callbar a { display: flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 46px; border-radius: 999px; background: var(--brand); color: var(--brand-ink); font-weight: 600; text-decoration: none; }
-  .callbar a + a { background: var(--field); color: var(--brand); border: 1px solid var(--brand); }
-  .callbar svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
-  .foot { padding-bottom: calc(63px + env(safe-area-inset-bottom, 0px)); }
+  /* Compact floating Call / Text buttons; hidden at the top of the page and while typing */
+  .callbar { display: flex; gap: 0.4rem; position: fixed; left: 50%; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 20; transform: translateX(-50%);
+    padding: 0.3rem; border-radius: 999px; background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--line); box-shadow: 0 6px 20px color-mix(in srgb, var(--ink) 14%, transparent); transition: transform 0.25s ease, opacity 0.25s ease; }
+  html.js .callbar.is-hidden { transform: translate(-50%, calc(100% + 24px)); opacity: 0; pointer-events: none; }
+  .callbar a { display: flex; align-items: center; justify-content: center; gap: 0.4rem; min-height: 40px; padding: 0 1.15rem; border-radius: 999px; border: 1px solid var(--brand); color: var(--brand); background: transparent; font-weight: 600; font-size: 0.95rem; text-decoration: none; }
+  .callbar a:first-child { background: var(--brand-soft); }
+  .callbar svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
+  body:has(.callbar) .foot { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (max-width: 760px) and (prefers-reduced-motion: reduce) {
+  .callbar { transition: none; }
 }
 #mk-summary { font-size: 1.05rem; line-height: 1.6; max-width: 44rem; }
 .market-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 3rem; align-items: start; padding-bottom: 2rem; }
