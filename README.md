@@ -4,12 +4,16 @@ Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages fr
 
 ## Files
 
-- `index.html` (home), `market.html` (Market Guide: monthly report and neighbourhoods), `calculators.html` (home value request form, land transfer tax, mortgage payment, affordability, CMHC), `contact.html` (consultation form and a simplified office map drawn from OpenStreetMap data, `assets/img/office-map.svg`), `fairfee.html` (FairFee™ waitlist and fee calculator)
+- `index.html` (home), `market.html` (Market Guide: monthly report and neighbourhoods), `calculators.html` (home value request form, land transfer tax, mortgage payment, affordability, CMHC), `moving-to-ottawa.html` (relocation, newcomers to Canada, military postings), `cottages.html` (buying a cottage near Ottawa), `contact.html` (consultation form and a simplified office map drawn from OpenStreetMap data, `assets/img/office-map.svg`), `fairfee.html` (FairFee™ waitlist and fee calculator)
 - `assets/css/site.css`, `assets/js/site.js` — shared styles and script. No build step, no dependencies.
 - `data/fees.json` — FairFee terms: 1.5% listing brokerage, 2% buyer's brokerage, and buyer cash back prorated at $1,000 per $400,000 of purchase price (shown only in the calculator).
 - Calculator rules (Ontario land transfer tax brackets, CMHC premiums, the 5.25% stress-test floor, 39%/44% debt limits) live in `assets/js/site.js`; check them when governments change the rules.
 - `data/stats.json` — Ottawa market numbers. Updated by the monthly workflow below.
 - `data/neighbourhoods.json` — average sale price per neighbourhood, filled in by hand each month from OREB member statistics. A neighbourhood's badge stays hidden until its price is filled in.
+
+## Search engines and AI assistants
+
+Every page has its own title, description and canonical link. The home page carries `RealEstateAgent` structured data (services, areas served, topics), and the Moving to Ottawa and Cottages pages carry `FAQPage` data. `sitemap.xml` and `robots.txt` are generated with the pages, and `llms.txt` gives AI assistants a plain summary of the business. Keep the name, address and phone identical here, on Google Business Profile and on the brokerage roster.
 
 ## Contact form and Fairfee waitlist
 
