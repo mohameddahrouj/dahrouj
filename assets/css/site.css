@@ -145,6 +145,17 @@ html.js .top.open .nav {
 .page-head { padding-block: clamp(3rem, 6vw, 5rem) 0; display: grid; gap: 1.25rem; }
 .page-head h1 { font-size: var(--step-3); }
 
+/* Icon tiles (home) */
+.tiles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+.tiles-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 860px) { .tiles, .tiles-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tile { display: grid; gap: 0.35rem; align-content: start; padding: 1.25rem; border-radius: var(--radius); background: var(--field); border: 1px solid var(--line); text-decoration: none; color: inherit; }
+.tile .ico { width: 34px; height: 34px; padding: 7px; box-sizing: content-box; margin-bottom: 0.4rem; border-radius: 12px; background: var(--brand-soft); fill: none; stroke: var(--brand); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.tile h3, .tile .h3 { font-size: 1.05rem; }
+.tile p, .tile span:not(.h3) { color: var(--muted); font-size: var(--step--1); }
+.tile-link:hover { border-color: var(--brand); }
+@media (max-width: 480px) { .tile { padding: 1rem; } .tile .ico { width: 28px; height: 28px; padding: 6px; } }
+
 /* Topic pages (moving, cottages) */
 .topic { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 1.5rem 4rem; align-items: start; }
 .topic-intro { display: grid; gap: 0.9rem; }
@@ -164,7 +175,7 @@ html.js .top.open .nav {
 .faq-item summary::after { content: "+"; color: var(--brand); font-weight: 700; }
 .faq-item[open] summary::after { content: "−"; }
 .faq-item p { color: var(--muted); padding-bottom: 0.8rem; max-width: 42rem; }
-.help-more { display: grid; gap: 2rem; }
+.help-more { display: block; }
 .help-more .next-links { border-top: 0; padding: 0; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
 @media (min-width: 980px) { .help-more .next-links { grid-template-columns: repeat(4, 1fr); } }
 
