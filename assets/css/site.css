@@ -348,7 +348,7 @@ details.area .area-homes { color: var(--ink); font-size: var(--step--1); padding
   .callbar a { display: flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 46px; border-radius: 999px; background: var(--brand); color: var(--brand-ink); font-weight: 600; text-decoration: none; }
   .callbar a + a { background: var(--field); color: var(--brand); border: 1px solid var(--brand); }
   .callbar svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
-  .foot { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
+  .foot { padding-bottom: calc(63px + env(safe-area-inset-bottom, 0px)); }
 }
 #mk-summary { font-size: 1.05rem; line-height: 1.6; max-width: 44rem; }
 .market-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 3rem; align-items: start; padding-bottom: 2rem; }
@@ -450,6 +450,12 @@ form button { justify-self: start; }
 .legal[open] summary::after { transform: rotate(-135deg) translateY(-1px); }
 .legal summary:hover { color: var(--brand); }
 .legal[open] { flex-basis: 100%; order: 3; display: grid; gap: 0.5rem; line-height: 1.5; font-size: 0.78rem; }
+@media (max-width: 760px) {
+  .foot-row { flex-direction: column; justify-content: center; gap: 0.5rem; padding-block: 1.25rem 1rem; text-align: center; }
+  .brokerage { margin-right: 0; }
+  .legal[open] { text-align: left; }
+  .legal[open] summary { justify-self: center; }
+}
 .social { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 50%; color: var(--muted); margin-left: -8px; }
 .social:hover { color: var(--brand); background: var(--brand-soft); }
 .social svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; }
