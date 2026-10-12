@@ -23,14 +23,20 @@ jobs:
                  "1tyWjPwKr3c","U-fJl3lTWJ4","6sJMJUwU1LI","iVeICmo_N1o","Gf3bWrqiIGQ","c3S6411v_Pc","L6wSaDnlXeY",
                  "ReUoz0CwfGo","YQNKKNLlybs","2TnAs_WgcgI","xofvJ26aBFo"]
           info = {}
+          import re
           for i in ids:
               try:
-                  req = urllib.request.Request(f"https://unsplash.com/photos/{i}/download?force=true", headers={"User-Agent": "Mozilla/5.0"})
-                  with urllib.request.urlopen(req, timeout=90) as r:
-                      data = r.read(); final = r.geturl()
-                  im = Image.open(io.BytesIO(data)); info[i] = {"w": im.width, "h": im.height, "bytes": len(data), "url": final.split("?")[0]}
-                  im.convert("RGB").thumbnail((900, 900)); 
-                  t = im.convert("RGB"); t.thumbnail((900, 900)); t.save(f"/tmp/out/{i}.jpg", quality=80)
+                  req = urllib.request.Request(f"https://unsplash.com/photos/{i}", headers={"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Chrome/124 Safari/537.36", "Accept-Language": "en"})
+                  html = urllib.request.urlopen(req, timeout=60).read().decode("utf8", "ignore")
+                  og = re.search(r'property="og:image" content="([^"]+)"', html) or re.search(r'content="([^"]+)" property="og:image"', html)
+                  base = og.group(1).split("?")[0] if og else None
+                  dims = re.findall(r'"width":(\d{3,5}),"height":(\d{3,5})', html)
+                  title = re.search(r"<title>([^<]+)</title>", html)
+                  plus = "Unsplash+" in html[:200000] and "premium" in html
+                  info[i] = {"base": base, "dims": dims[:3], "title": title.group(1) if title else "", "plus_hint": plus}
+                  if base:
+                      data = urllib.request.urlopen(urllib.request.Request(base + "?w=900&q=75&fm=jpg", headers={"User-Agent": "Mozilla/5.0"}), timeout=60).read()
+                      open(f"/tmp/out/{i}.jpg", "wb").write(data)
               except Exception as e:
                   info[i] = str(e)
           open("/tmp/out/info.json", "w").write(json.dumps(info, indent=2))
