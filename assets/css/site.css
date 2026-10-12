@@ -46,8 +46,13 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; background: var(--paper-2); }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font); font-size: var(--step-0); line-height: 1.6; }
+/* Keep the footer at the bottom of the window on short pages */
+body { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; }
+div.home { display: flex; flex-direction: column; flex: 1 0 auto; }
+body > main, div.home > main { flex: 1 0 auto; width: 100%; }
+body > main.wrap, div.home > main.wrap { width: auto; }
 img { max-width: 100%; height: auto; display: block; }
 h1, h2, h3 { margin: 0; line-height: 1.1; text-wrap: balance; letter-spacing: -0.02em; font-weight: 700; }
 h1 { font-size: var(--step-4); letter-spacing: -0.035em; line-height: 1.03; }
