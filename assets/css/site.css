@@ -1,3 +1,11 @@
+/* Fonts (self-hosted, SIL Open Font License; see assets/fonts) */
+@font-face { font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 400; font-display: swap; src: url(../fonts/schibsted-grotesk-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 500; font-display: swap; src: url(../fonts/schibsted-grotesk-latin-500-normal.woff2) format("woff2"); }
+@font-face { font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 600; font-display: swap; src: url(../fonts/schibsted-grotesk-latin-600-normal.woff2) format("woff2"); }
+@font-face { font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 700; font-display: swap; src: url(../fonts/schibsted-grotesk-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: "Schibsted Grotesk"; font-style: normal; font-weight: 800; font-display: swap; src: url(../fonts/schibsted-grotesk-latin-800-normal.woff2) format("woff2"); }
+@font-face { font-family: "Poppins"; font-style: normal; font-weight: 700; font-display: swap; src: url(../fonts/poppins-latin-700-normal.woff2) format("woff2"); }
+
 /* Layout: quiet, left-aligned pages on a 72rem column with generous space between sections.
    Brokerage purple is the only accent, FairFee included. */
 :root {
@@ -479,3 +487,13 @@ form button { justify-self: start; }
 .tab-ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .tabs.calc-tabs button { display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; }
 @media (max-width: 520px) { .tabs.calc-tabs button { flex-direction: column; gap: 0.25rem; padding-block: 0.55rem; font-size: var(--step--1); border-radius: 18px; } .tabs.calc-tabs { border-radius: 22px; } }
+.foot-link { color: inherit; font-weight: 600; text-decoration: none; margin-left: 0.9rem; }
+.foot-link:hover { color: var(--brand); }
+.form-privacy { margin: 0; font-size: var(--step--1); color: var(--muted); }
+.form-privacy a { color: inherit; }
+.prose { max-width: 44rem; display: grid; gap: 0.9rem; padding-bottom: 4rem; }
+.section.prose { padding-top: 1.5rem; }
+.prose h2 { font-size: var(--step-1); margin-top: 1.25rem; }
+.prose p, .prose ul { margin: 0; color: var(--muted); }
+.prose ul { padding-left: 1.2rem; display: grid; gap: 0.4rem; }
+.prose strong { color: var(--ink); }

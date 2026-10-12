@@ -4,8 +4,9 @@ Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages fr
 
 ## Files
 
-- `index.html` (home), `market.html` (Ottawa Market: monthly report and neighbourhoods), `home-value.html` (free home value request: just the address), `calculators.html` (land transfer tax, mortgage payment with CMHC insurance, affordability, shown one at a time in tabs), `moving-to-ottawa.html` (relocation, newcomers to Canada, military postings), `cottages.html` (buying a cottage near Ottawa), `contact.html` (consultation form; `contact.html#search` and `#cottage` open it as a custom search request and a simplified office map drawn from OpenStreetMap data, `assets/img/office-map.svg`), `fairfee.html` (our FairFee™ fee and calculator)
+- `index.html` (home), `market.html` (Ottawa Market: monthly report and neighbourhoods), `home-value.html` (free home value request: just the address), `calculators.html` (land transfer tax, mortgage payment with CMHC insurance, affordability, shown one at a time in tabs), `moving-to-ottawa.html` (relocation, newcomers to Canada, military postings), `cottages.html` (buying a cottage near Ottawa), `contact.html` (consultation form; `contact.html#search` and `#cottage` open it as a custom search request and a simplified office map drawn from OpenStreetMap data, `assets/img/office-map.svg`), `fairfee.html` (our FairFee™ fee and calculator), `privacy.html` (privacy policy, linked from the footer and under each form)
 - `assets/css/site.css`, `assets/js/site.js` — shared styles and script. No build step, no dependencies.
+- `assets/fonts/` — Schibsted Grotesk and Poppins, self-hosted (SIL Open Font License, licence files included) so no visitor data goes to Google Fonts.
 - `data/fees.json` — FairFee terms: 1.5% listing brokerage, 2% buyer's brokerage, and buyer cash back prorated at $1,000 per $400,000 of purchase price (shown only in the calculator).
 - Calculator rules (Ontario land transfer tax brackets, CMHC premiums, the 5.25% stress-test floor, 39%/44% debt limits) live in `assets/js/site.js`; check them when governments change the rules.
 - `data/stats.json` — Ottawa market numbers. Updated by the monthly workflow below.
@@ -24,7 +25,7 @@ Every page has its own title, description and canonical link. The home page carr
 
 ## Contact and home value forms
 
-The forms send through [Web3Forms](https://web3forms.com), which works on static hosts like GitHub Pages. Get a free access key for mohamed@dahrouj.com and paste it into `WEB3FORMS_KEY` at the top of `assets/js/site.js`. Until then the forms tell visitors to call or email instead.
+The forms send through [Web3Forms](https://web3forms.com), which works on static hosts like GitHub Pages. Get a free access key for mohamed@dahrouj.com and paste it into `WEB3FORMS_KEY` at the top of `assets/js/site.js`. Until then the forms tell visitors to call or email instead. If you change form or address providers, update `privacy.html` (generated from the `PRIVACY` text in the page script) to name them.
 
 ## Address suggestions (home-value.html)
 
