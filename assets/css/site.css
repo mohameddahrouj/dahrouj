@@ -175,7 +175,7 @@ html.js .top.open .nav {
 .faq-item summary::after { content: "+"; color: var(--brand); font-weight: 700; }
 .faq-item[open] summary::after { content: "−"; }
 .faq-item p { color: var(--muted); padding-bottom: 0.8rem; max-width: 42rem; }
-.help-more { display: block; }
+.help-more { display: grid; gap: 2rem; }
 .help-more .next-links { border-top: 0; padding: 0; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
 @media (min-width: 980px) { .help-more .next-links { grid-template-columns: repeat(4, 1fr); } }
 
