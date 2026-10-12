@@ -265,8 +265,8 @@ function summarize(m) {
   let s = parts.join(" ") + ". ";
   const sold = m.sales.yoy;
   s += Math.abs(sold) < 1
-    ? `Sales were about the same as a year ago, at ${count(m.sales.value)} homes. `
-    : `Sales were ${sold > 0 ? "up" : "down"} ${Math.abs(sold).toFixed(1)}% from a year ago, at ${count(m.sales.value)} homes. `;
+    ? "Sales were about the same as a year ago. "
+    : `Sales were ${sold > 0 ? "up" : "down"} ${Math.abs(sold).toFixed(1)}% from a year ago. `;
   const p = m.benchmarkPrice.yoy;
   s += Math.abs(p) < 1
     ? "Benchmark prices are close to where they were last year, "
