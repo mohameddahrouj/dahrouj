@@ -1,6 +1,6 @@
 # dahrouj.com
 
-Team website (Right at Home Realty, Brokerage), hosted on GitHub Pages from `master`. The team name "Capital Home Group" is a placeholder: search-and-replace it across the HTML pages once a name is chosen.
+Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages from `master`. There is no header bar: each page opens with the brokerage logo and a Menu button.
 
 ## Files
 
