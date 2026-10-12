@@ -161,7 +161,7 @@ html.js .top.open .nav {
 }
 @media (max-width: 600px) {
   .actions .btn { flex: 1 1 100%; }
-  .hero { min-height: calc(100svh - 63px - env(safe-area-inset-bottom, 0px)); padding: 6rem 16px 2rem; }
+  .hero { min-height: 100vh; min-height: 100svh; padding: 6rem 16px calc(2rem + env(safe-area-inset-bottom, 0px)); }
 }
 
 .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 3rem; margin-top: 3rem; }
