@@ -1,0 +1,25 @@
+# Temporary: fetches the hero photo original. Delete before merging.
+name: ci-scratch
+on:
+  push:
+    branches: [redesign]
+    paths: [".github/workflows/ci-scratch.yml"]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download original
+        run: |
+          mkdir -p /tmp/out && cd /tmp/out
+          curl -sSL -A "Mozilla/5.0" -o canal-from-laurier.jpg "https://images.unsplash.com/photo-1645590666364-40f132d7e600"
+          ls -la
+      - name: Save to ci-scratch branch
+        run: |
+          cd /tmp/out
+          git init -q -b ci-scratch
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A && git commit -qm "scratch ${{ github.sha }}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-scratch
