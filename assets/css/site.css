@@ -314,4 +314,9 @@ form button { justify-self: start; }
 .brokerage { display: flex; gap: 1.25rem; align-items: center; font-size: var(--step--1); }
 .rahr-logo { width: 72px; height: auto; flex: none; }
 .legal { display: grid; gap: 0.6rem; font-size: var(--step--1); color: var(--muted); }
+.foot-line { display: flex; align-items: center; gap: 0.35rem; }
+.social { display: inline-flex; width: 36px; height: 36px; align-items: center; justify-content: center; border-radius: 50%; color: var(--muted); margin-left: -8px; }
+.social:hover { color: var(--brand); background: var(--brand-soft); }
+.social svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.social svg .dot { fill: currentColor; stroke: none; }
 @media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr; } }
