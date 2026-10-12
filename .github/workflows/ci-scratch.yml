@@ -1,0 +1,42 @@
+# Temporary: fetches lake outlines from OpenStreetMap. Delete before merging.
+name: ci-scratch
+on:
+  push:
+    branches: [redesign]
+    paths: [".github/workflows/ci-scratch.yml"]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Query Overpass
+        shell: python
+        run: |
+          import json, os, time, urllib.parse, urllib.request
+          os.makedirs("/tmp/out", exist_ok=True)
+          q = """[out:json][timeout:120];
+          (
+            nwr["natural"="water"]["name"~"^(Big Rideau Lake|Calabogie Lake|Mississippi Lake|White Lake|Lower Rideau Lake|Upper Rideau Lake|Christie Lake|Dalhousie Lake|Golden Lake|Black Donald Lake)$"](44.4,-77.6,45.8,-75.6);
+          );
+          out geom;"""
+          for attempt in range(4):
+              for ep in ["https://overpass-api.de/api/interpreter", "https://overpass.private.coffee/api/interpreter", "https://maps.mail.ru/osm/tools/overpass/api/interpreter"]:
+                  try:
+                      req = urllib.request.Request(ep + "?" + urllib.parse.urlencode({"data": q}), headers={"User-Agent": "dahrouj.com site build"})
+                      b = urllib.request.urlopen(req, timeout=180).read()
+                      open("/tmp/out/lakes.json", "wb").write(b); print("ok", ep, len(b)); raise SystemExit
+                  except SystemExit:
+                      raise
+                  except Exception as e:
+                      print("fail", ep, e)
+              time.sleep(20)
+      - name: Save to ci-scratch branch
+        if: always()
+        run: |
+          cd /tmp/out
+          git init -q -b ci-scratch
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A && git commit -qm "scratch ${{ github.sha }}" --allow-empty
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-scratch
