@@ -71,12 +71,13 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px
 /* Top: no header bar, just the brokerage logo and a menu button that opens the page list */
 .top { position: relative; z-index: 5; }
 .top-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1rem 0; flex-wrap: wrap; }
-.brand { display: block; line-height: 0; }
+.brand { display: inline-flex; align-items: flex-end; text-decoration: none; color: var(--brand); line-height: 1; }
 .brand-mark {
-  display: block; width: 46px; aspect-ratio: 226 / 240; background: var(--brand);
+  display: block; width: 30px; aspect-ratio: 226 / 240; background: currentColor; flex: none;
   -webkit-mask: url("../img/dahrouj-logo.png") center / contain no-repeat;
   mask: url("../img/dahrouj-logo.png") center / contain no-repeat;
 }
+.brand-text { font-weight: 700; font-size: 1.5rem; letter-spacing: -0.03em; margin-left: 0.04em; margin-bottom: -0.17em; }
 .menu-btn {
   display: inline-flex; align-items: center; gap: 0.55rem; min-height: 44px; padding: 0.5rem 1rem;
   border: 1px solid var(--line); border-radius: 999px; background: var(--field); color: var(--ink);
