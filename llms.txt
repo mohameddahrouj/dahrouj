@@ -13,6 +13,7 @@
 - [Market Guide](https://www.dahrouj.com/market.html): monthly Ottawa Real Estate Board statistics and neighbourhood guides
 - [Moving to Ottawa](https://www.dahrouj.com/moving-to-ottawa.html): relocation, newcomers to Canada and military postings
 - [Cottages](https://www.dahrouj.com/cottages.html): buying a cottage near Ottawa
-- [Calculators](https://www.dahrouj.com/calculators.html): free home value request, land transfer tax, mortgage, affordability and CMHC calculators
+- [What's my home worth?](https://www.dahrouj.com/home-value.html): free home valuation, just send the address
+- [Calculators](https://www.dahrouj.com/calculators.html): land transfer tax, mortgage payment (with CMHC insurance) and affordability
 - [FairFee™ fees](https://www.dahrouj.com/fairfee.html): commission terms in writing
 - [Contact](https://www.dahrouj.com/contact.html): book a consultation

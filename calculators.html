@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Home Value & Calculators | Ottawa Real Estate</title>
-  <meta name="description" content="Request a free home value for your Ottawa property, plus Ontario land transfer tax, mortgage payment, affordability and CMHC insurance calculators.">
+  <title>Home Buying Calculators | Ottawa Real Estate</title>
+  <meta name="description" content="Ontario land transfer tax, mortgage payment (with CMHC insurance) and affordability calculators for Ottawa home buyers.">
   <link rel="canonical" href="https://www.dahrouj.com/calculators.html">
   <meta property="og:url" content="https://www.dahrouj.com/calculators.html">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Home Value & Calculators | Ottawa Real Estate">
-  <meta property="og:description" content="Request a free home value for your Ottawa property, plus Ontario land transfer tax, mortgage payment, affordability and CMHC insurance calculators.">
+  <meta property="og:title" content="Home Buying Calculators | Ottawa Real Estate">
+  <meta property="og:description" content="Ontario land transfer tax, mortgage payment (with CMHC insurance) and affordability calculators for Ottawa home buyers.">
   <meta property="og:image" content="https://www.dahrouj.com/assets/img/ottawa-hero.webp">
   <link rel="icon" href="assets/img/favicon-32x32.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -44,51 +44,15 @@
 <main id="main" class="wrap">
   <section class="page-head">
     <h1>Calculators</h1>
-    <p class="lede">Find out what your home is worth, and get quick estimates for buying in Ottawa. Your lender and lawyer will confirm the exact numbers.</p>
-    <nav class="jump" aria-label="Calculators on this page">
-      <a href="#value">Home value</a><a href="#ltt">Land transfer tax</a><a href="#payment">Mortgage payment</a><a href="#afford">Affordability</a><a href="#cmhc">CMHC insurance</a>
-    </nav>
-  </section>
-
-  <section class="calc-block" id="value" aria-labelledby="val-h">
-    <div class="calc-intro">
-      <h2 id="val-h">What’s my home worth?</h2>
-      <p>Online estimates miss what makes your home different. Send us your address and we’ll get back to you with a free, no-obligation value based on recent sales nearby.</p>
+    <p class="lede">Quick estimates for buying in Ottawa. Your lender and lawyer will confirm the exact numbers.</p>
+    <div class="tabs calc-tabs" role="tablist" aria-label="Choose a calculator" data-tabs>
+      <button role="tab" id="t-ltt" aria-controls="ltt" aria-selected="true">Land transfer</button>
+      <button role="tab" id="t-payment" aria-controls="payment" aria-selected="false" tabindex="-1">Mortgage</button>
+      <button role="tab" id="t-afford" aria-controls="afford" aria-selected="false" tabindex="-1">Affordability</button>
     </div>
-    <form class="calc-form" id="value-form" data-form="valuation" novalidate autocomplete="off">
-      <div class="field addr">
-        <label for="v-address">Property address</label>
-        <input id="v-address" name="address" type="text" required placeholder="Start typing, e.g. 123 Main St" role="combobox" aria-describedby="v-address-hint" aria-autocomplete="list" aria-expanded="false" aria-controls="v-address-list" autocomplete="off">
-        <ul class="addr-list" id="v-address-list" role="listbox" hidden></ul>
-        <p class="hint" id="v-address-hint">Just the address. Leave the rest to us.</p>
-        <input type="hidden" name="postal_code" id="v-postal">
-        <input type="hidden" name="coordinates" id="v-coords">
-      </div>
-      <div class="field">
-        <label for="v-when">Thinking of selling</label>
-        <select id="v-when" name="timeline"><option>Just curious</option><option>Within 3 months</option><option>In 3 to 12 months</option><option>In a year or more</option></select>
-      </div>
-      <div class="field-row">
-        <div class="field">
-          <label for="v-name">Name</label>
-          <input id="v-name" name="name" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="v-email">Email</label>
-          <input id="v-email" name="email" type="email" autocomplete="email" required>
-        </div>
-      </div>
-      <div class="field">
-        <label for="v-notes">Anything we should know? <span class="opt">(optional)</span></label>
-        <textarea id="v-notes" name="notes" rows="3" placeholder="Renovations, finished basement, garage, lot size"></textarea>
-      </div>
-      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="btn" type="submit">Get my home value</button>
-      <p class="form-status" role="status" aria-live="polite"></p>
-    </form>
   </section>
 
-  <section class="calc-block" id="ltt" aria-labelledby="ltt-h">
+  <section class="calc-block" id="ltt" role="tabpanel" aria-labelledby="t-ltt">
     <div class="calc-intro">
       <h2 id="ltt-h">Land transfer tax</h2>
       <p>Ontario’s tax on buying a home, paid on closing. Ottawa has no separate city land transfer tax.</p>
@@ -105,7 +69,7 @@
     </form>
   </section>
 
-  <section class="calc-block" id="payment" aria-labelledby="pay-h">
+  <section class="calc-block" id="payment" role="tabpanel" aria-labelledby="t-payment" hidden>
     <div class="calc-intro">
       <h2 id="pay-h">Mortgage payment</h2>
       <p>Your regular payment, including CMHC insurance when you put down less than 20%.</p>
@@ -126,10 +90,11 @@
         <div class="total"><dt id="pay-label">Monthly payment</dt><dd id="pay-amount"></dd></div>
       </dl>
       <p class="fine" id="pay-msg">Uses semi-annual compounding, as Canadian fixed-rate mortgages do.</p>
+      <p class="fine">With less than 20% down, CMHC insurance (2.80% to 4.00% of the mortgage) is added for you.</p>
     </form>
   </section>
 
-  <section class="calc-block" id="afford" aria-labelledby="aff-h">
+  <section class="calc-block" id="afford" role="tabpanel" aria-labelledby="t-afford" hidden>
     <div class="calc-intro">
       <h2 id="aff-h">Affordability</h2>
       <p>The highest price you’re likely to qualify for, using the federal stress test and standard debt limits.</p>
@@ -157,25 +122,10 @@
     </form>
   </section>
 
-  <section class="calc-block" id="cmhc" aria-labelledby="cmhc-h">
-    <div class="calc-intro">
-      <h2 id="cmhc-h">CMHC insurance</h2>
-      <p>Mortgage default insurance is required when you put down less than 20%. The premium is added to your mortgage.</p>
-    </div>
-    <form class="calc-form" data-calc="cmhc" novalidate>
-      <div class="field-row">
-        <div class="field"><label for="cmhc-price">Purchase price</label><div class="affixed"><span class="affix">$</span><input id="cmhc-price" type="number" inputmode="decimal" min="0" step="1000" value="650000"></div></div>
-        <div class="field"><label for="cmhc-down">Down payment</label><div class="affixed"><span class="affix">$</span><input id="cmhc-down" type="number" inputmode="decimal" min="0" step="1000" value="65000"></div></div>
-      </div>
-      <label class="check"><input id="cmhc-30" type="checkbox"> 30-year amortization (first-time buyers and new builds)</label>
-      <dl class="results">
-        <div><dt>Down payment</dt><dd id="cmhc-pct"></dd></div>
-        <div><dt>Premium rate</dt><dd id="cmhc-rate"></dd></div>
-        <div><dt>Ontario sales tax, due on closing (8%)</dt><dd id="cmhc-pst"></dd></div>
-        <div class="total"><dt>Premium added to mortgage</dt><dd id="cmhc-prem"></dd></div>
-      </dl>
-      <p class="fine" id="cmhc-msg">Premiums: 2.80% with 15–19.99% down, 3.10% with 10–14.99% down, 4.00% with 5–9.99% down, plus 0.20% for a 30-year amortization. Homes priced at $1.5 million or more can’t be insured.</p>
-    </form>
+  <section class="section closing calc-close">
+    <h2>Selling too?</h2>
+    <p>Find out what your home could sell for before you buy.</p>
+    <div class="actions"><a class="btn" href="contact.html">Book a consultation</a><a class="btn btn-quiet" href="home-value.html">What’s my home worth?</a></div>
   </section>
 </main>
 
@@ -195,6 +145,10 @@
     </div>
   </div>
 </footer>
+<nav class="callbar" aria-label="Call or text">
+  <a href="tel:+16138695923"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h3.5l1.5 5-2 1.5a12 12 0 0 0 6.5 6.5L16 14l5 1.5V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Call</a>
+  <a href="sms:+16138695923"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Text</a>
+</nav>
 <!--SITE-BODY-END-->
 <script src="assets/js/site.js" defer></script>
 </body>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>What’s My Home Worth? Free Ottawa Home Valuation</title>
+  <meta name="description" content="Get a free, no-obligation value for your Ottawa home based on recent sales nearby. Just send your address.">
+  <link rel="canonical" href="https://www.dahrouj.com/home-value.html">
+  <meta property="og:url" content="https://www.dahrouj.com/home-value.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="What’s My Home Worth? Free Ottawa Home Valuation">
+  <meta property="og:description" content="Get a free, no-obligation value for your Ottawa home based on recent sales nearby. Just send your address.">
+  <meta property="og:image" content="https://www.dahrouj.com/assets/img/ottawa-hero.webp">
+  <link rel="icon" href="assets/img/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<!--SITE-BODY-START-->
+<a class="skip" href="#main">Skip to content</a>
+<header class="top" id="top">
+  <div class="wrap top-row">
+    <a class="brand" href="./" aria-label="dahrouj.com, home">
+      <span class="brand-mark" aria-hidden="true"></span><span class="brand-text" aria-hidden="true">ahrouj.com</span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="market.html">Market Guide</a>
+        <a href="moving-to-ottawa.html">Moving to Ottawa</a>
+        <a href="cottages.html">Cottages</a>
+        <a href="calculators.html">Calculators</a>
+        <a href="fairfee.html">FairFee™</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="page-head">
+    <h1>What’s my home worth?</h1>
+    <p class="lede">Online estimates miss what makes your home different. Send us your address and we’ll get back to you with a free, no-obligation value based on recent sales nearby.</p>
+  </section>
+  <section class="calc-block value-block" id="value" aria-labelledby="val-h">
+    <div class="calc-intro">
+      <h2 id="val-h">How it works</h2>
+      <ol class="steps">
+        <li><strong>Send your address.</strong> That’s all we need to start.</li>
+        <li><strong>We study recent sales nearby,</strong> on your street and in homes like yours.</li>
+        <li><strong>You get your value,</strong> with the sales behind it, from a real person.</li>
+      </ol>
+    </div>
+    <form class="calc-form" id="value-form" data-form="valuation" novalidate autocomplete="off">
+      <div class="field addr">
+        <label for="v-address">Property address</label>
+        <input id="v-address" name="address" type="text" required placeholder="Start typing, e.g. 123 Main St" role="combobox" aria-describedby="v-address-hint" aria-autocomplete="list" aria-expanded="false" aria-controls="v-address-list" autocomplete="off">
+        <ul class="addr-list" id="v-address-list" role="listbox" hidden></ul>
+        <p class="hint" id="v-address-hint">Just the address. Leave the rest to us.</p>
+        <input type="hidden" name="postal_code" id="v-postal">
+        <input type="hidden" name="coordinates" id="v-coords">
+      </div>
+      <div class="field">
+        <label for="v-when">Thinking of selling</label>
+        <select id="v-when" name="timeline"><option>Just curious</option><option>Within 3 months</option><option>In 3 to 12 months</option><option>In a year or more</option></select>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="v-name">Name</label>
+          <input id="v-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="v-contact">Phone or email</label>
+          <input id="v-contact" name="contact" autocomplete="email" inputmode="email" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="v-notes">Anything we should know? <span class="opt">(optional)</span></label>
+        <textarea id="v-notes" name="notes" rows="3" placeholder="Renovations, finished basement, garage, lot size"></textarea>
+      </div>
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn" type="submit">Get my home value</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="brokerage">
+      <picture>
+        <source srcset="assets/img/rahr-logo-white.svg" media="(prefers-color-scheme: dark)">
+        <img class="rahr-logo" src="assets/img/rahr-logo.svg" alt="Right at Home Realty, Brokerage" width="85" height="77">
+      </picture>
+      <p><strong>Right at Home Realty, Brokerage</strong><br>14 Chamberlain Ave, Suite 101<br>Ottawa, ON K1S 1V9<br>Office 613-369-5199</p>
+    </div>
+    <div class="legal">
+      <p>Mohamed Dahrouj, Sales Representative, Right at Home Realty, Brokerage, independently owned and operated. Not intended to solicit buyers or sellers currently under contract with a brokerage.</p>
+      <p>MLS®, Multiple Listing Service® and REALTOR® are trademarks controlled by the Canadian Real Estate Association. FairFee™ is a trademark of its owner.</p>
+      <p class="foot-line"><a class="social" href="https://www.instagram.com/dahroujrealestate" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="dot"/></svg></a><span>© <span class="year">2026</span> www.dahrouj.com</span></p>
+    </div>
+  </div>
+</footer>
+<nav class="callbar" aria-label="Call or text">
+  <a href="tel:+16138695923"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3h3.5l1.5 5-2 1.5a12 12 0 0 0 6.5 6.5L16 14l5 1.5V19a2 2 0 0 1-2 2A17 17 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>Call</a>
+  <a href="sms:+16138695923"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Text</a>
+</nav>
+<!--SITE-BODY-END-->
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

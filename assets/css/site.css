@@ -115,13 +115,18 @@ html.js .top.open .nav {
 @media (prefers-reduced-motion: reduce) { .menu-icon, .menu-icon::before, .menu-icon::after { transition: none; } }
 [id] { scroll-margin-top: 1rem; }
 
-/* Home */
-.hero { padding-block: clamp(3rem, 7vw, 6rem) 2.5rem; display: grid; gap: 1.5rem; }
-.hero h1 { max-width: 14ch; }
+/* Home: hero with the Parliament photo behind the headline */
+.hero-wrap { padding-block: 1.25rem 0; }
+.hero { position: relative; overflow: hidden; border-radius: calc(var(--radius) * 1.4); padding: clamp(2.5rem, 7vw, 5.5rem) clamp(1.25rem, 5vw, 4rem); min-height: clamp(24rem, 52vw, 34rem); display: flex; align-items: flex-end; color: #FFFFFF; background: #2B2440; }
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20, 14, 38, 0.2) 0%, rgba(20, 14, 38, 0.55) 40%, rgba(20, 14, 38, 0.88) 100%); }
+.hero-text { position: relative; z-index: 1; display: grid; gap: 1.1rem; max-width: 40rem; }
+.hero h1 { max-width: 14ch; color: #FFFFFF; text-shadow: 0 1px 24px rgba(0,0,0,0.25); }
+.hero .lede { color: rgba(255,255,255,0.88); }
 .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.5rem; }
-.hero-photo { margin-block: 0; }
-.hero-photo img { width: 100%; aspect-ratio: 21 / 9; object-fit: cover; border-radius: var(--radius); }
-@media (max-width: 600px) { .hero-photo img { aspect-ratio: 4 / 3; object-position: 35% 50%; } .actions .btn { flex: 1 1 100%; } }
+.btn-light { background: #FFFFFF; border-color: #FFFFFF; color: #260E58; }
+.btn-ghost-light { background: transparent; border-color: rgba(255,255,255,0.8); color: #FFFFFF; }
+@media (max-width: 600px) { .hero { min-height: 30rem; } .actions .btn { flex: 1 1 100%; } }
 
 .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 3rem; margin-top: 3rem; }
 .services article { display: grid; gap: 0.9rem; align-content: start; padding-top: 1.25rem; border-top: 2px solid var(--ink); }
@@ -180,11 +185,21 @@ html.js .top.open .nav {
 @media (min-width: 980px) { .help-more .next-links { grid-template-columns: repeat(4, 1fr); } }
 
 /* Neighbourhoods (on the market page) */
+details.area { border-top: 1px solid var(--line); padding: 0; }
+details.area:last-child { border-bottom: 1px solid var(--line); }
+details.area summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; padding-block: 0.95rem; cursor: pointer; list-style: none; }
+details.area summary::-webkit-details-marker { display: none; }
+details.area summary::after { content: "+"; margin-left: auto; color: var(--brand); font-weight: 700; }
+details.area[open] summary::after { content: "−"; }
+.area-name { font-weight: 700; font-size: var(--step-1); }
+details.area p { color: var(--muted); padding-bottom: 0.6rem; max-width: 40rem; }
+details.area .area-homes { color: var(--ink); font-size: var(--step--1); padding-bottom: 1rem; }
 .neighbourhoods { display: grid; gap: 1rem; border-top: 1px solid var(--line); }
 .chips { list-style: none; margin: 2rem 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .chips a { display: inline-flex; align-items: center; min-height: 44px; padding: 0.5rem 1.1rem; border-radius: 999px; border: 1px solid var(--line); background: var(--field); text-decoration: none; font-weight: 600; }
 .chips a:hover { border-color: var(--brand); color: var(--brand); }
-.areas { display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: 2.5rem 3rem; padding-top: 2rem; }
+.areas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 3rem; padding-top: 1rem; align-items: start; }
+@media (max-width: 760px) { .areas { grid-template-columns: 1fr; } }
 .area { display: grid; gap: 0.6rem; align-content: start; padding-top: 1.1rem; border-top: 2px solid var(--ink); }
 .area-region { font-size: var(--step--1); color: var(--brand); font-weight: 600; }
 .area-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1rem; }
@@ -257,6 +272,28 @@ html.js .top.open .nav {
 .attrib { display: block; margin-top: 0.35rem; font-size: 0.75rem; }
 
 /* Market */
+.more-stats { margin-top: 0.75rem; }
+.more-stats summary { cursor: pointer; font-weight: 600; color: var(--brand); padding-block: 0.5rem; }
+.market-close, .calc-close { border-top: 1px solid var(--line); }
+/* Home value */
+.steps { margin: 0.5rem 0 0; padding-left: 1.25rem; display: grid; gap: 0.9rem; color: var(--muted); }
+.steps strong { color: var(--ink); }
+.calc-tabs { margin-top: 0.75rem; display: grid; grid-template-columns: repeat(3, auto); justify-content: start; }
+.tabs.calc-tabs button { padding-inline: 1rem; }
+.tabs.calc-tabs button { white-space: nowrap; min-width: 0; }
+.page-head > * { min-width: 0; }
+@media (max-width: 480px) { .calc-tabs { grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; } .tabs.calc-tabs button { padding-inline: 0.25rem; font-size: 0.82rem; } }
+@media (max-width: 380px) { .tabs.calc-tabs button { padding-inline: 0.1rem; font-size: 0.76rem; } }
+/* Call or text bar (phones) */
+.callbar { display: none; }
+@media (max-width: 760px) {
+  .callbar { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+    padding: 0.5rem 16px calc(0.5rem + env(safe-area-inset-bottom, 0px)); background: color-mix(in srgb, var(--paper) 94%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-top: 1px solid var(--line); }
+  .callbar a { display: flex; align-items: center; justify-content: center; gap: 0.5rem; min-height: 46px; border-radius: 999px; background: var(--brand); color: var(--brand-ink); font-weight: 600; text-decoration: none; }
+  .callbar a + a { background: var(--field); color: var(--brand); border: 1px solid var(--brand); }
+  .callbar svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; }
+  .foot { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
+}
 #mk-summary { font-size: 1.05rem; line-height: 1.6; max-width: 44rem; }
 .market-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: 3rem; align-items: start; padding-bottom: 2rem; }
 @media (max-width: 860px) { .market-grid { grid-template-columns: 1fr; } }

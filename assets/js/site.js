@@ -317,14 +317,14 @@ function initStats(st) {
     ["Median days on market", String(m.daysOnMarket.value), `${m.daysOnMarket.lastYear} last year`],
     ["Sale-to-list price", `${m.saleToListRatio.value.toFixed(1)}%`, `${m.saleToListRatio.lastYear.toFixed(1)}% last year`],
   ];
-  $("#mk-rows").replaceChildren(...rows.map(([label, now, then]) => {
+  const makeRow = ([label, now, then]) => {
     const tr = document.createElement("tr");
-    const th = Object.assign(document.createElement("td"), { textContent: label });
-    const a = Object.assign(document.createElement("td"), { textContent: now });
-    const c = Object.assign(document.createElement("td"), { textContent: then });
-    tr.append(th, a, c);
+    [label, now, then].forEach((t) => tr.append(Object.assign(document.createElement("td"), { textContent: t })));
     return tr;
-  }));
+  };
+  const MAIN = ["Homes sold", "Average price", "Benchmark price (MLS® HPI)", "Homes for sale", "Months of inventory"];
+  $("#mk-rows").replaceChildren(...rows.filter((r) => MAIN.includes(r[0])).map(makeRow));
+  if ($("#mk-more")) $("#mk-more").replaceChildren(...rows.filter((r) => !MAIN.includes(r[0])).map(makeRow));
 
   const max = Math.max(...st.benchmarkByType.map((t) => t.value));
   $("#mk-types").replaceChildren(...st.benchmarkByType.map((t) => {
@@ -501,13 +501,17 @@ function initForm(form) {
     status.className = "form-status";
     let bad = null;
     form.querySelectorAll("[required]").forEach((el) => {
-      const ok = el.value.trim() !== "" && el.checkValidity();
+      const v = el.value.trim();
+      let ok = v !== "" && el.checkValidity();
+      if (ok && el.name === "contact") ok = /@.+\./.test(v) || v.replace(/\D/g, "").length >= 10;
       el.setAttribute("aria-invalid", ok ? "false" : "true");
       if (!ok && !bad) bad = el;
     });
     if (bad) {
       const name = form.querySelector(`label[for="${bad.id}"]`).firstChild.textContent.trim().toLowerCase();
-      status.textContent = bad.type === "email" && bad.value ? "Enter a full email address, like name@example.com." : `Add your ${name} to send this.`;
+      status.textContent = bad.name === "contact" && bad.value
+        ? "Enter a phone number with area code, or a full email address."
+        : bad.type === "email" && bad.value ? "Enter a full email address, like name@example.com." : `Add your ${name} to send this.`;
       bad.focus();
       return;
     }
@@ -525,7 +529,7 @@ function initForm(form) {
         valuation: `Home value request: ${data.address}`,
       }[kind] || `dahrouj.com: ${data.topic} (${data.name})`,
       from_name: kind === "waitlist" ? "FairFee waitlist" : "dahrouj.com",
-      replyto: data.email,
+      replyto: data.email || (data.contact && data.contact.includes("@") ? data.contact : undefined),
       ...data,
     };
     button.disabled = true;
@@ -549,7 +553,30 @@ function initForm(form) {
   });
 }
 
+/* ---------- Calculator tabs ---------- */
+function initTabs(list) {
+  const tabs = [...list.querySelectorAll('[role="tab"]')];
+  const select = (tab, focus) => {
+    tabs.forEach((t) => {
+      const on = t === tab;
+      t.setAttribute("aria-selected", on); t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+    if (focus) tab.focus();
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => select(t));
+    t.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") select(tabs[(i + 1) % tabs.length], true);
+      if (e.key === "ArrowLeft") select(tabs[(i - 1 + tabs.length) % tabs.length], true);
+    });
+  });
+  const fromHash = tabs.find((t) => "#" + t.getAttribute("aria-controls") === location.hash);
+  if (fromHash) select(fromHash);
+}
+
 /* ---------- Boot ---------- */
+document.querySelectorAll("[data-tabs]").forEach(initTabs);
 initMenu();
 initCalculators();
 document.querySelectorAll(".year").forEach((el) => { el.textContent = new Date().getFullYear(); });
