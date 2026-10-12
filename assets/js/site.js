@@ -85,6 +85,17 @@ function initFees(fees) {
 }
 
 
+/* ---------- Footer legal text ---------- */
+function initLegal() {
+  const btn = $(".legal-btn"), box = $("#legal-text");
+  if (!btn || !box) return;
+  btn.addEventListener("click", () => {
+    const open = btn.getAttribute("aria-expanded") !== "true";
+    btn.setAttribute("aria-expanded", open);
+    box.classList.toggle("open", open);
+  });
+}
+
 /* ---------- Menu ---------- */
 function initMenu() {
   const btn = $(".menu-btn");
@@ -589,6 +600,7 @@ function initContactPreset() {
 initContactPreset();
 document.querySelectorAll("[data-tabs]").forEach(initTabs);
 initMenu();
+initLegal();
 initCalculators();
 document.querySelectorAll(".year").forEach((el) => { el.textContent = new Date().getFullYear(); });
 if ($("#calc")) loadJSON("fees").then(initFees).catch((e) => console.error(e));

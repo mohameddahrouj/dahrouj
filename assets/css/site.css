@@ -459,17 +459,18 @@ form button { justify-self: start; }
 .agent-name { color: var(--ink); }
 .rahr-logo { width: 40px; height: auto; flex: none; }
 .foot-meta { display: flex; align-items: center; gap: 0.35rem; }
-.legal summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 0.3rem; min-height: 32px; font-weight: 600; }
-.legal summary::-webkit-details-marker { display: none; }
-.legal summary::after { content: ""; width: 0.4rem; height: 0.4rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform 0.2s; }
-.legal[open] summary::after { transform: rotate(-135deg) translateY(-1px); }
-.legal summary:hover { color: var(--brand); }
-.legal[open] { flex-basis: 100%; order: 3; display: grid; gap: 0.5rem; line-height: 1.5; font-size: 0.78rem; }
+.legal-btn { border: 0; background: none; padding: 0; font: inherit; font-weight: 600; cursor: pointer; display: none; align-items: center; gap: 0.3rem; min-height: 32px; }
+html.js .legal-btn { display: inline-flex; }
+.legal-btn::after { content: ""; width: 0.38rem; height: 0.38rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform 0.2s; }
+.legal-btn[aria-expanded="true"]::after { transform: rotate(-135deg) translateY(-1px); }
+.legal-text { flex-basis: 100%; order: 3; display: grid; gap: 0.5rem; line-height: 1.5; font-size: 0.78rem; }
+.legal-text p { margin: 0; }
+html.js .legal-text:not(.open) { display: none; }
 @media (max-width: 760px) {
   .foot-row { flex-direction: column; justify-content: center; gap: 0.5rem; padding-block: 1.25rem 1rem; text-align: center; }
   .brokerage { margin-right: 0; }
-  .legal[open] { text-align: left; }
-  .legal[open] summary { justify-self: center; }
+  .legal-text { text-align: left; }
+  .foot-row { gap: 0.35rem; }
 }
 .social { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 50%; color: var(--muted); margin-left: -8px; }
 .social:hover { color: var(--brand); background: var(--brand-soft); }
@@ -489,7 +490,7 @@ form button { justify-self: start; }
 .tab-ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .tabs.calc-tabs button { display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; }
 @media (max-width: 520px) { .tabs.calc-tabs button { flex-direction: column; gap: 0.25rem; padding-block: 0.55rem; font-size: var(--step--1); border-radius: 18px; } .tabs.calc-tabs { border-radius: 22px; } }
-.foot-link { color: inherit; font-weight: 600; text-decoration: none; margin-left: 0.9rem; }
+.foot-link { color: inherit; font-weight: 600; text-decoration: none; margin-left: 0.75rem; }
 .foot-link:hover { color: var(--brand); }
 .form-privacy { margin: 0; font-size: var(--step--1); color: var(--muted); }
 .form-privacy a { color: inherit; }
