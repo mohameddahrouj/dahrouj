@@ -236,6 +236,25 @@ function initCalculators() {
   });
 }
 
+
+/* ---------- Neighbourhood prices ---------- */
+function initNeighbourhoods(nb) {
+  let shown = 0;
+  document.querySelectorAll("[data-area]").forEach((el) => {
+    const a = nb.areas && nb.areas[el.dataset.area];
+    if (!a || !a.averagePrice) return;
+    el.textContent = `Avg. sale price ${money(a.averagePrice)}`;
+    el.title = `${nb.label}${a.sales ? `, ${a.sales} sales` : ""}`;
+    el.hidden = false;
+    shown++;
+  });
+  const src = $("#nb-source");
+  if (shown && src) {
+    src.textContent = `Average sale prices for ${nb.label}. Source: ${nb.source}.`;
+    src.hidden = false;
+  }
+}
+
 /* ---------- Market stats ---------- */
 function summarize(m) {
   const parts = [];
@@ -388,4 +407,5 @@ if ($("#mk-rows") || $("[data-stat]")) {
     if (el) el.textContent = "Market numbers couldn’t load right now. The full monthly reports are on the Ottawa Real Estate Board website.";
   });
 }
+if ($("[data-area]")) loadJSON("neighbourhoods").then(initNeighbourhoods).catch((e) => console.error(e));
 document.querySelectorAll("form[data-form]").forEach(initForm);

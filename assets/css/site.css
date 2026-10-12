@@ -195,12 +195,14 @@ html.js .top.open .nav {
 .m-park { fill: var(--map-park); }
 .m-water { fill: var(--map-water); }
 .m-canal { fill: none; stroke: var(--map-water); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
-.m-sec { fill: none; stroke: var(--map-road); stroke-width: 1.2; opacity: 0.9; }
+.m-sec { fill: none; stroke: var(--map-road); stroke-width: 1.6; stroke-linecap: round; opacity: 0.85; }
 .m-pri { fill: none; stroke: var(--map-road); stroke-width: 2.6; stroke-linecap: round; }
 .m-hwy-case { fill: none; stroke: var(--map-case); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
 .m-hwy { fill: none; stroke: var(--map-road); stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
 .office-map-svg text { font-family: var(--font); paint-order: stroke; stroke: var(--map-land); stroke-width: 4px; stroke-linejoin: round; }
 .lbl-place { font-size: 21px; font-weight: 700; fill: var(--ink); letter-spacing: 0.01em; }
+.lbl-place-sm { font-size: 16px; font-weight: 700; fill: var(--map-label); }
+.m-lm { fill: var(--map-label); stroke: var(--map-land); stroke-width: 2; }
 .lbl-water { font-size: 16px; font-style: italic; fill: var(--map-water-label); }
 .lbl-poi, .lbl-road { font-size: 15px; font-weight: 600; fill: var(--map-label); }
 .m-pin path { fill: var(--brand); stroke: var(--paper); stroke-width: 1.5; }

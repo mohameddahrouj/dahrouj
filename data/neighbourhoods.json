@@ -1,0 +1,44 @@
+{
+  "_readme": "Average sale price per neighbourhood for one month, from OREB MLS\u00ae member statistics. Fill averagePrice (and optionally sales) for each area; leave null to hide that area's badge.",
+  "month": null,
+  "label": null,
+  "source": "Ottawa Real Estate Board MLS\u00ae statistics",
+  "areas": {
+    "kanata": {
+      "averagePrice": null,
+      "sales": null
+    },
+    "stittsville": {
+      "averagePrice": null,
+      "sales": null
+    },
+    "barrhaven": {
+      "averagePrice": null,
+      "sales": null
+    },
+    "findlay-creek": {
+      "averagePrice": null,
+      "sales": null
+    },
+    "riverside-south": {
+      "averagePrice": null,
+      "sales": null
+    },
+    "orleans": {
+      "averagePrice": null,
+      "sales": null
+    },
+    "manotick": {
+      "averagePrice": null,
+      "sales": null
+    },
+    "westboro": {
+      "averagePrice": null,
+      "sales": null
+    },
+    "glebe": {
+      "averagePrice": null,
+      "sales": null
+    }
+  }
+}
