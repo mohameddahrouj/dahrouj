@@ -96,6 +96,26 @@ function initLegal() {
   });
 }
 
+/* ---------- Call / Text buttons (phones) ---------- */
+function initCallbar() {
+  const bar = $(".callbar");
+  if (!bar) return;
+  const top = $(".hero") || $(".ff-hero") || $(".page-head");
+  let typing = false, ticking = false;
+  const update = () => {
+    ticking = false;
+    const pastTop = top ? top.getBoundingClientRect().bottom < 80 : scrollY > 300;
+    bar.classList.toggle("is-hidden", !pastTop || typing);
+  };
+  const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+  bar.classList.add("is-hidden");
+  addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", onScroll, { passive: true });
+  document.addEventListener("focusin", (e) => { if (e.target.matches("input, textarea, select")) { typing = true; update(); } });
+  document.addEventListener("focusout", () => { typing = false; setTimeout(update, 100); });
+  update();
+}
+
 /* ---------- Menu ---------- */
 function initMenu() {
   const btn = $(".menu-btn");
@@ -626,6 +646,7 @@ initContactPreset();
 document.querySelectorAll("[data-tabs]").forEach(initTabs);
 initMenu();
 initLegal();
+initCallbar();
 initCalculators();
 document.querySelectorAll(".year").forEach((el) => { el.textContent = new Date().getFullYear(); });
 if ($("#calc")) loadJSON("fees").then(initFees).catch((e) => console.error(e));
