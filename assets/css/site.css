@@ -453,12 +453,13 @@ form button { justify-self: start; }
 /* Footer */
 .foot { border-top: 1px solid var(--line); background: var(--paper-2); }
 .foot-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; padding-block: 1.25rem calc(1.25rem + env(safe-area-inset-bottom, 0px)); font-size: 0.82rem; color: var(--muted); }
-.brokerage { display: flex; gap: 0.75rem; align-items: center; margin-right: auto; }
+.brokerage { display: flex; gap: 0.9rem; align-items: center; margin-right: auto; }
+.foot-id { display: grid; gap: 0.15rem; text-align: left; }
 .brokerage-name { display: grid; gap: 0.1rem; color: var(--ink); line-height: 1.35; }
 .brokerage-name > span { font-weight: 600; }
 .agent-name { color: var(--ink); }
-.rahr-logo { width: 40px; height: auto; flex: none; }
-.foot-meta { display: flex; align-items: center; gap: 0.35rem; }
+.rahr-logo { width: 62px; height: auto; flex: none; }
+.foot-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0 0.35rem; }
 .legal-btn { border: 0; background: none; padding: 0; font: inherit; font-weight: 600; cursor: pointer; display: none; align-items: center; gap: 0.3rem; min-height: 32px; }
 html.js .legal-btn { display: inline-flex; }
 .legal-btn::after { content: ""; width: 0.38rem; height: 0.38rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform 0.2s; }
@@ -471,6 +472,12 @@ html.js .legal-text:not(.open) { display: none; }
   .brokerage { margin-right: 0; }
   .legal-text { text-align: left; }
   .foot-row { gap: 0.35rem; }
+  .foot-row { font-size: 0.76rem; }
+  .brokerage { gap: 0.7rem; }
+  .rahr-logo { width: 52px; }
+  .foot-meta { flex-wrap: nowrap; white-space: nowrap; gap: 0 0.25rem; }
+  .foot-link { margin-left: 0.45rem; }
+  .social { width: 28px; height: 28px; margin-left: -6px; }
 }
 .social { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 50%; color: var(--muted); margin-left: -8px; }
 .social:hover { color: var(--brand); background: var(--brand-soft); }
@@ -490,7 +497,7 @@ html.js .legal-text:not(.open) { display: none; }
 .tab-ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .tabs.calc-tabs button { display: inline-flex; align-items: center; justify-content: center; gap: 0.45rem; }
 @media (max-width: 520px) { .tabs.calc-tabs button { flex-direction: column; gap: 0.25rem; padding-block: 0.55rem; font-size: var(--step--1); border-radius: 18px; } .tabs.calc-tabs { border-radius: 22px; } }
-.foot-link { color: inherit; font-weight: 600; text-decoration: none; margin-left: 0.75rem; }
+.foot-link { color: inherit; font-weight: 600; text-decoration: none; margin-left: 0.6rem; }
 .foot-link:hover { color: var(--brand); }
 .form-privacy { margin: 0; font-size: var(--step--1); color: var(--muted); }
 .form-privacy a { color: inherit; }
