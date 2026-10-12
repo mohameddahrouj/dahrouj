@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Home Buying Calculators | Ottawa Real Estate</title>
-  <meta name="description" content="Ontario land transfer tax, mortgage payment, affordability and CMHC insurance calculators for Ottawa home buyers.">
+  <title>Home Value & Calculators | Ottawa Real Estate</title>
+  <meta name="description" content="Request a free home value for your Ottawa property, plus Ontario land transfer tax, mortgage payment, affordability and CMHC insurance calculators.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Home Buying Calculators | Ottawa Real Estate">
-  <meta property="og:description" content="Ontario land transfer tax, mortgage payment, affordability and CMHC insurance calculators for Ottawa home buyers.">
+  <meta property="og:title" content="Home Value & Calculators | Ottawa Real Estate">
+  <meta property="og:description" content="Request a free home value for your Ottawa property, plus Ontario land transfer tax, mortgage payment, affordability and CMHC insurance calculators.">
   <meta property="og:image" content="https://www.dahrouj.com/assets/img/ottawa-hero.webp">
   <link rel="icon" href="assets/img/favicon-32x32.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -40,10 +40,74 @@
 <main id="main" class="wrap">
   <section class="page-head">
     <h1>Calculators</h1>
-    <p class="lede">Quick estimates for buying in Ottawa. Your lender and lawyer will confirm the exact numbers.</p>
+    <p class="lede">Find out what your home is worth, and get quick estimates for buying in Ottawa. Your lender and lawyer will confirm the exact numbers.</p>
     <nav class="jump" aria-label="Calculators on this page">
-      <a href="#ltt">Land transfer tax</a><a href="#payment">Mortgage payment</a><a href="#afford">Affordability</a><a href="#cmhc">CMHC insurance</a>
+      <a href="#value">Home value</a><a href="#ltt">Land transfer tax</a><a href="#payment">Mortgage payment</a><a href="#afford">Affordability</a><a href="#cmhc">CMHC insurance</a>
     </nav>
+  </section>
+
+  <section class="calc-block" id="value" aria-labelledby="val-h">
+    <div class="calc-intro">
+      <h2 id="val-h">What’s my home worth?</h2>
+      <p>Online estimates miss what makes your home different. Tell us about it and we’ll send you a free, no-obligation value based on recent sales nearby.</p>
+    </div>
+    <form class="calc-form" id="value-form" data-form="valuation" novalidate autocomplete="off">
+      <div class="field addr">
+        <label for="v-address">Property address</label>
+        <input id="v-address" name="address" type="text" required placeholder="Start typing, e.g. 123 Main St" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="v-address-list" autocomplete="off">
+        <ul class="addr-list" id="v-address-list" role="listbox" hidden></ul>
+        <input type="hidden" name="postal_code" id="v-postal">
+        <input type="hidden" name="coordinates" id="v-coords">
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="v-unit">Unit <span class="opt">(optional)</span></label>
+          <input id="v-unit" name="unit" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="v-type">Home type</label>
+          <select id="v-type" name="home_type">
+            <option>Detached</option>
+            <option>Semi-detached</option>
+            <option>Townhouse</option>
+            <option>Condo apartment</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="v-beds">Bedrooms</label>
+          <select id="v-beds" name="bedrooms"><option>1</option><option>2</option><option selected>3</option><option>4</option><option>5+</option></select>
+        </div>
+        <div class="field">
+          <label for="v-baths">Bathrooms</label>
+          <select id="v-baths" name="bathrooms"><option>1</option><option>1.5</option><option selected>2</option><option>2.5</option><option>3+</option></select>
+        </div>
+        <div class="field">
+          <label for="v-when">Thinking of selling</label>
+          <select id="v-when" name="timeline"><option>Just curious</option><option>Within 3 months</option><option>In 3 to 12 months</option><option>In a year or more</option></select>
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="v-name">Name</label>
+          <input id="v-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="v-email">Email</label>
+          <input id="v-email" name="email" type="email" autocomplete="email" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="v-notes">Anything we should know? <span class="opt">(optional)</span></label>
+        <textarea id="v-notes" name="notes" rows="3" placeholder="Renovations, finished basement, garage, lot size"></textarea>
+      </div>
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="btn" type="submit">Get my home value</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+      <p class="fine">Address suggestions © OpenStreetMap contributors.</p>
+    </form>
   </section>
 
   <section class="calc-block" id="ltt" aria-labelledby="ltt-h">

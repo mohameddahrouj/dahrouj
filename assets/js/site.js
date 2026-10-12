@@ -344,14 +344,79 @@ function initStats(st) {
   src.append(a);
 }
 
+
+/* ---------- Address suggestions (Photon, OpenStreetMap data; no key needed) ---------- */
+function initAddress(input) {
+  const list = document.getElementById(input.getAttribute("aria-controls"));
+  const postal = $("#v-postal"), coords = $("#v-coords");
+  let items = [], active = -1, timer = null, ctrl = null;
+  const label = (p) => {
+    const street = [p.housenumber, p.street || p.name].filter(Boolean).join(" ");
+    return [street, p.city || p.district || p.county, p.postcode].filter(Boolean).join(", ");
+  };
+  const close = () => { list.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; };
+  const choose = (i) => {
+    const f = items[i]; if (!f) return;
+    input.value = label(f.properties);
+    postal.value = f.properties.postcode || "";
+    coords.value = f.geometry ? f.geometry.coordinates.slice().reverse().join(",") : "";
+    close();
+  };
+  const highlight = (i) => {
+    active = i;
+    [...list.children].forEach((li, j) => li.setAttribute("aria-selected", j === i));
+    if (i >= 0) input.setAttribute("aria-activedescendant", `addr-opt-${i}`);
+  };
+  async function search(q) {
+    if (ctrl) ctrl.abort();
+    ctrl = new AbortController();
+    const url = "https://photon.komoot.io/api/?" + new URLSearchParams({
+      q, limit: "6", lang: "en", lat: "45.35", lon: "-75.75", bbox: "-76.36,44.96,-75.24,45.54", layer: "house",
+    });
+    try {
+      const r = await fetch(url, { signal: ctrl.signal });
+      const data = await r.json();
+      items = (data.features || []).filter((f) => f.properties.countrycode === "CA" && (f.properties.housenumber || f.properties.street));
+    } catch (e) {
+      if (e.name !== "AbortError") items = [];
+      if (e.name === "AbortError") return;
+    }
+    list.replaceChildren(...items.map((f, i) => {
+      const li = document.createElement("li");
+      li.id = `addr-opt-${i}`; li.role = "option"; li.textContent = label(f.properties);
+      li.addEventListener("mousedown", (ev) => { ev.preventDefault(); choose(i); });
+      return li;
+    }));
+    const open = items.length > 0 && document.activeElement === input;
+    list.hidden = !open; input.setAttribute("aria-expanded", open);
+    highlight(-1);
+  }
+  input.addEventListener("input", () => {
+    postal.value = ""; coords.value = "";
+    clearTimeout(timer);
+    const q = input.value.trim();
+    if (q.length < 4) return close();
+    timer = setTimeout(() => search(q), 250);
+  });
+  input.addEventListener("keydown", (e) => {
+    if (list.hidden) return;
+    if (e.key === "ArrowDown") { e.preventDefault(); highlight(Math.min(active + 1, items.length - 1)); }
+    else if (e.key === "ArrowUp") { e.preventDefault(); highlight(Math.max(active - 1, 0)); }
+    else if (e.key === "Enter" && active >= 0) { e.preventDefault(); choose(active); }
+    else if (e.key === "Escape") close();
+  });
+  input.addEventListener("blur", () => setTimeout(close, 100));
+}
+
 /* ---------- Forms ---------- */
 function initForm(form) {
   const status = form.querySelector(".form-status");
   const button = form.querySelector("button[type=submit]");
   const kind = form.dataset.form;
-  const done = kind === "waitlist"
-    ? "You’re on the list. We’ll email you when Fairfee opens in your area."
-    : "Request sent. We’ll be in touch to find a time.";
+  const done = {
+    waitlist: "You’re on the list. We’ll email you when FairFee™ opens in your area.",
+    valuation: "Thanks! We’ll get back to you soon with your home’s value.",
+  }[kind] || "Request sent. We’ll be in touch to find a time.";
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -377,8 +442,11 @@ function initForm(form) {
     delete data.botcheck;
     const payload = {
       access_key: WEB3FORMS_KEY,
-      subject: kind === "waitlist" ? `Fairfee waitlist: ${data.role}, ${data.area}` : `dahrouj.com: ${data.topic} (${data.name})`,
-      from_name: kind === "waitlist" ? "Fairfee waitlist" : "dahrouj.com",
+      subject: {
+        waitlist: `FairFee waitlist: ${data.role}, ${data.area}`,
+        valuation: `Home value request: ${data.unit ? data.unit + "-" : ""}${data.address}`,
+      }[kind] || `dahrouj.com: ${data.topic} (${data.name})`,
+      from_name: kind === "waitlist" ? "FairFee waitlist" : "dahrouj.com",
       replyto: data.email,
       ...data,
     };
@@ -419,4 +487,5 @@ if ($("#mk-rows") || $("[data-stat]")) {
   });
 }
 if ($("[data-area]")) loadJSON("neighbourhoods").then(initNeighbourhoods).catch((e) => console.error(e));
+if ($("#v-address")) initAddress($("#v-address"));
 document.querySelectorAll("form[data-form]").forEach(initForm);
