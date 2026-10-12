@@ -180,6 +180,19 @@ html.js .top.open .nav {
 .tile-link:hover { border-color: var(--brand); }
 @media (max-width: 480px) { .tile { padding: 1rem; } .tile .ico { width: 28px; height: 28px; padding: 6px; } }
 
+/* Lake outlines (cottages) */
+.lakes { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; margin-top: 0.5rem; }
+@media (max-width: 960px) { .lakes { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 520px) { .lakes { grid-template-columns: 1fr; } }
+.lake-card { display: grid; gap: 0.9rem; align-content: start; padding: 1.25rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--field); }
+.lake { width: 100%; height: 120px; }
+.lake path { fill: color-mix(in srgb, var(--brand) 12%, transparent); stroke: var(--brand); stroke-width: 1.5; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.lake-card h3 { font-size: 1.1rem; }
+.lakes-note { grid-column: 1 / -1; }
+.lake-card .lake-name { font-size: 0.8rem; color: var(--brand); font-weight: 600; margin: 0.15rem 0 0.5rem; }
+.lake-card p:last-child { color: var(--muted); font-size: var(--step--1); }
+@media (max-width: 520px) { .lake-card { grid-template-columns: 96px minmax(0, 1fr); align-items: center; } .lake { height: 96px; } }
+
 /* Topic pages (moving, cottages) */
 .topic { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 1.5rem 4rem; align-items: start; }
 .topic-intro { display: grid; gap: 0.9rem; }

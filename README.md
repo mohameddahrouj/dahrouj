@@ -1,6 +1,6 @@
 # dahrouj.com
 
-Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages from `master`. There is no header bar: each page opens with the Dahrouj house logo standing in for the “D” of “dahrouj.com” (`assets/img/dahrouj-logo.png`, drawn in the site colour) and a Menu button. The brokerage logo is in the footer.
+Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages from `master`. There is no header bar (the menu lists Market Guide, Calculators, FairFee™ and Contact; Moving to Ottawa and Cottages are linked from the home page): each page opens with the Dahrouj house logo standing in for the “D” of “dahrouj.com” (`assets/img/dahrouj-logo.png`, drawn in the site colour) and a Menu button. The brokerage logo is in the footer.
 
 ## Files
 
@@ -14,6 +14,10 @@ Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages fr
 ## Home page photo
 
 `assets/img/hero-canal*.webp`: the Rideau Canal from Laurier Avenue by Dylan Phair, from Unsplash (free under the Unsplash License; no credit required). `hero-canal.webp` and `hero-canal-1400.webp` are wide crops for computers, and `hero-canal-tall.webp` is a portrait crop for phones.
+
+## Lake outlines
+
+The Cottages page draws Big Rideau Lake, Mississippi Lake, Calabogie Lake and White Lake from OpenStreetMap shorelines (`assets/img/lakes.json`, simplified SVG paths; © OpenStreetMap contributors).
 
 ## Search engines and AI assistants
 
