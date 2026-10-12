@@ -1,0 +1,28 @@
+{
+  "month": "2026-09",
+  "label": "September 2026",
+  "compareLabel": "September 2025",
+  "released": "2026-10-05",
+  "source": "Ottawa Real Estate Board (OREB)",
+  "sourceUrl": "https://www.oreb.ca/wp-content/uploads/2026/10/OREB_MarketUpdate_HLP_September26.pdf",
+  "market": {
+    "sales": { "value": 1010, "yoy": -6.6 },
+    "averagePrice": { "value": 685640, "yoy": -1.0 },
+    "medianPrice": { "value": 625000, "yoy": -0.8 },
+    "benchmarkPrice": { "value": 623500, "yoy": -0.3 },
+    "newListings": { "value": 2927, "yoy": 3.0 },
+    "activeListings": { "value": 4813, "yoy": 7.9 },
+    "monthsOfInventory": { "value": 4.8, "lastYear": 4.1 },
+    "daysOnMarket": { "value": 27, "lastYear": 22 },
+    "saleToListRatio": { "value": 97.5, "lastYear": 98.1 }
+  },
+  "benchmarkByType": [
+    { "type": "Single family", "value": 705100, "yoy": -0.1 },
+    { "type": "Townhouse", "value": 546500, "yoy": -2.2 },
+    { "type": "Apartment", "value": 380800, "yoy": -6.1 }
+  ],
+  "yearToDate": {
+    "sales": { "value": 10288, "yoy": -6.9 },
+    "averagePrice": { "value": 697384, "yoy": -0.4 }
+  }
+}
