@@ -4,12 +4,11 @@ Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages fr
 
 ## Files
 
-- `index.html` (home), `market.html` (Market Guide: monthly report and neighbourhoods), `home-value.html` (free home value request: just the address), `calculators.html` (land transfer tax, mortgage payment with CMHC insurance, affordability, shown one at a time in tabs), `moving-to-ottawa.html` (relocation, newcomers to Canada, military postings), `cottages.html` (buying a cottage near Ottawa), `contact.html` (consultation form and a simplified office map drawn from OpenStreetMap data, `assets/img/office-map.svg`), `fairfee.html` (FairFee™ waitlist and fee calculator)
+- `index.html` (home), `market.html` (Market Guide: monthly report and neighbourhoods), `home-value.html` (free home value request: just the address), `calculators.html` (land transfer tax, mortgage payment with CMHC insurance, affordability, shown one at a time in tabs), `moving-to-ottawa.html` (relocation, newcomers to Canada, military postings), `cottages.html` (buying a cottage near Ottawa), `contact.html` (consultation form; `contact.html#search` and `#cottage` open it as a custom search request and a simplified office map drawn from OpenStreetMap data, `assets/img/office-map.svg`), `fairfee.html` (FairFee™ waitlist and fee calculator)
 - `assets/css/site.css`, `assets/js/site.js` — shared styles and script. No build step, no dependencies.
 - `data/fees.json` — FairFee terms: 1.5% listing brokerage, 2% buyer's brokerage, and buyer cash back prorated at $1,000 per $400,000 of purchase price (shown only in the calculator).
 - Calculator rules (Ontario land transfer tax brackets, CMHC premiums, the 5.25% stress-test floor, 39%/44% debt limits) live in `assets/js/site.js`; check them when governments change the rules.
 - `data/stats.json` — Ottawa market numbers. Updated by the monthly workflow below.
-- `data/neighbourhoods.json` — average sale price per neighbourhood, filled in by hand each month from OREB member statistics. A neighbourhood's badge stays hidden until its price is filled in.
 
 ## Home page photo
 

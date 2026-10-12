@@ -237,24 +237,6 @@ function initCalculators() {
 }
 
 
-/* ---------- Neighbourhood prices ---------- */
-function initNeighbourhoods(nb) {
-  let shown = 0;
-  document.querySelectorAll("[data-area]").forEach((el) => {
-    const a = nb.areas && nb.areas[el.dataset.area];
-    if (!a || !a.averagePrice) return;
-    el.textContent = `Avg. sale price ${money(a.averagePrice)}`;
-    el.title = `${nb.label}${a.sales ? `, ${a.sales} sales` : ""}`;
-    el.hidden = false;
-    shown++;
-  });
-  const src = $("#nb-source");
-  if (shown && src) {
-    src.textContent = `Average sale prices for ${nb.label}. Source: ${nb.source}.`;
-    src.hidden = false;
-  }
-}
-
 /* ---------- Market stats ---------- */
 function summarize(m) {
   const parts = [];
@@ -575,7 +557,21 @@ function initTabs(list) {
   if (fromHash) select(fromHash);
 }
 
+/* ---------- Contact presets (contact.html#search, #cottage) ---------- */
+function initContactPreset() {
+  const presets = {
+    search: { topic: "Starting a custom home search", title: "Start your custom search", lede: "Tell us your budget, timing and must-haves. We’ll build a custom search and send you homes as they list." },
+    cottage: { topic: "Buying a cottage", title: "Start your cottage search", lede: "Tell us your budget, drive time and the kind of water you want. We’ll send you cottages as they list." },
+  };
+  const p = presets[location.hash.slice(1)];
+  if (!p || !$("#c-topic")) return;
+  $("#c-topic").value = p.topic;
+  $("#c-title").textContent = p.title;
+  $("#c-lede").textContent = p.lede;
+}
+
 /* ---------- Boot ---------- */
+initContactPreset();
 document.querySelectorAll("[data-tabs]").forEach(initTabs);
 initMenu();
 initCalculators();
@@ -591,6 +587,5 @@ if ($("#mk-rows") || $("[data-stat]")) {
     if (el) el.textContent = "Market numbers couldn’t load right now. The full monthly reports are on the Ottawa Real Estate Board website.";
   });
 }
-if ($("[data-area]")) loadJSON("neighbourhoods").then(initNeighbourhoods).catch((e) => console.error(e));
 if ($("#v-address")) initAddress($("#v-address"));
 document.querySelectorAll("form[data-form]").forEach(initForm);

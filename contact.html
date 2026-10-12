@@ -39,9 +39,45 @@
 </header>
 
 <main id="main" class="wrap contact">
+  <section class="contact-head">
+    <h1 id="c-title">Book a consultation</h1>
+    <p class="lede" id="c-lede">Tell us a little about your plans and we’ll be in touch to find a time.</p>
+  </section>
+  <form class="contact-form" id="contact-form" data-form="contact" novalidate>
+    <div class="field-row">
+      <div class="field">
+        <label for="c-name">Name</label>
+        <input id="c-name" name="name" autocomplete="name" required>
+      </div>
+      <div class="field">
+        <label for="c-contact">Phone or email</label>
+        <input id="c-contact" name="contact" autocomplete="email" inputmode="email" required>
+      </div>
+    </div>
+    <div class="field">
+      <label for="c-topic">How can we help?</label>
+      <select id="c-topic" name="topic">
+        <option>Selling a home</option>
+        <option>Buying a home</option>
+        <option>Starting a custom home search</option>
+        <option>Buying and selling</option>
+        <option>Renting or leasing</option>
+        <option>Relocating to Ottawa</option>
+        <option>A military posting</option>
+        <option>Buying a cottage</option>
+        <option>Something else</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="c-message">Message <span class="opt">(optional)</span></label>
+      <textarea id="c-message" name="message" rows="4" placeholder="Budget, timing, neighbourhoods, must-haves"></textarea>
+    </div>
+    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="btn" type="submit">Send request</button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+    <p class="fine">Selling? <a class="link" href="home-value.html">Get your home’s value</a> with just your address.</p>
+  </form>
   <section class="contact-info">
-    <h1>Book a consultation</h1>
-    <p class="lede">Tell us a little about your plans and we’ll be in touch to find a time.</p>
     <dl class="reach">
       <div><dt>Mobile</dt><dd><a href="tel:+16138695923">613-869-5923</a></dd></div>
       <div><dt>Office</dt><dd><a href="tel:+16133695199">613-369-5199</a></dd></div>
@@ -67,39 +103,6 @@
       <figcaption><strong>Our office in the Glebe</strong><br>14 Chamberlain Ave, Suite 101, Ottawa, ON K1S 1V9<br><a href="https://www.google.com/maps/search/?api=1&amp;query=14+Chamberlain+Ave+Ottawa+ON" target="_blank" rel="noopener">Get directions</a> <span class="attrib">Map © OpenStreetMap contributors</span></figcaption>
     </figure>
   </section>
-  <form class="contact-form" id="contact-form" data-form="contact" novalidate>
-    <div class="field-row">
-      <div class="field">
-        <label for="c-name">Name</label>
-        <input id="c-name" name="name" autocomplete="name" required>
-      </div>
-      <div class="field">
-        <label for="c-contact">Phone or email</label>
-        <input id="c-contact" name="contact" autocomplete="email" inputmode="email" required>
-      </div>
-    </div>
-    <div class="field">
-      <label for="c-topic">How can we help?</label>
-      <select id="c-topic" name="topic">
-        <option>Selling a home</option>
-        <option>Buying a home</option>
-        <option>Buying and selling</option>
-        <option>Renting or leasing</option>
-        <option>Relocating to Ottawa</option>
-        <option>A military posting</option>
-        <option>Buying a cottage</option>
-        <option>Something else</option>
-      </select>
-    </div>
-    <div class="field">
-      <label for="c-message">Message <span class="opt">(optional)</span></label>
-      <textarea id="c-message" name="message" rows="4"></textarea>
-    </div>
-    <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <button class="btn" type="submit">Send request</button>
-    <p class="form-status" role="status" aria-live="polite"></p>
-    <p class="fine">Selling? <a class="link" href="home-value.html">Get your home’s value</a> with just your address.</p>
-  </form>
 </main>
 
 <footer class="foot">
