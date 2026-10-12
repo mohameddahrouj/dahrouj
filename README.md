@@ -1,10 +1,10 @@
 # dahrouj.com
 
-Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages from `master`. There is no header bar (the menu lists What’s my home worth?, Ottawa Market, Calculators, Our fees and Contact; Moving to Ottawa and Cottages are linked from the home page): each page opens with the Dahrouj house logo standing in for the “D” of “dahrouj.com” (`assets/img/dahrouj-logo.png`, drawn in the site colour) and a Menu button. The brokerage logo is in the footer.
+Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages from `master`. There is no header bar (the menu lists What’s my home worth?, Ottawa Market, Calculators, FairFee™ and Contact; Moving to Ottawa and Cottages are linked from the home page): each page opens with the Dahrouj house logo standing in for the “D” of “dahrouj.com” (`assets/img/dahrouj-logo.png`, drawn in the site colour) and a Menu button. The brokerage logo is in the footer.
 
 ## Files
 
-- `index.html` (home), `market.html` (Ottawa Market: monthly report and neighbourhoods), `home-value.html` (free home value request: just the address), `calculators.html` (land transfer tax, mortgage payment with CMHC insurance, affordability, shown one at a time in tabs), `moving-to-ottawa.html` (relocation, newcomers to Canada, military postings), `cottages.html` (buying a cottage near Ottawa), `contact.html` (consultation form; `contact.html#search` and `#cottage` open it as a custom search request and a simplified office map drawn from OpenStreetMap data, `assets/img/office-map.svg`), `fairfee.html` (FairFee™ waitlist and fee calculator)
+- `index.html` (home), `market.html` (Ottawa Market: monthly report and neighbourhoods), `home-value.html` (free home value request: just the address), `calculators.html` (land transfer tax, mortgage payment with CMHC insurance, affordability, shown one at a time in tabs), `moving-to-ottawa.html` (relocation, newcomers to Canada, military postings), `cottages.html` (buying a cottage near Ottawa), `contact.html` (consultation form; `contact.html#search` and `#cottage` open it as a custom search request and a simplified office map drawn from OpenStreetMap data, `assets/img/office-map.svg`), `fairfee.html` (our FairFee™ fee and calculator)
 - `assets/css/site.css`, `assets/js/site.js` — shared styles and script. No build step, no dependencies.
 - `data/fees.json` — FairFee terms: 1.5% listing brokerage, 2% buyer's brokerage, and buyer cash back prorated at $1,000 per $400,000 of purchase price (shown only in the calculator).
 - Calculator rules (Ontario land transfer tax brackets, CMHC premiums, the 5.25% stress-test floor, 39%/44% debt limits) live in `assets/js/site.js`; check them when governments change the rules.
@@ -22,9 +22,9 @@ The Cottages page draws Big Rideau Lake, Mississippi Lake, Calabogie Lake and Wh
 
 Every page has its own title, description and canonical link. The home page carries `RealEstateAgent` structured data (services, areas served, topics), and the Moving to Ottawa and Cottages pages carry `FAQPage` data. `sitemap.xml` and `robots.txt` are generated with the pages, and `llms.txt` gives AI assistants a plain summary of the business. Keep the name, address and phone identical here, on Google Business Profile and on the brokerage roster.
 
-## Contact form and Fairfee waitlist
+## Contact and home value forms
 
-Both forms send through [Web3Forms](https://web3forms.com), which works on static hosts like GitHub Pages. Get a free access key for mohamed@dahrouj.com and paste it into `WEB3FORMS_KEY` at the top of `assets/js/site.js`. Until then the forms tell visitors to call or email instead.
+The forms send through [Web3Forms](https://web3forms.com), which works on static hosts like GitHub Pages. Get a free access key for mohamed@dahrouj.com and paste it into `WEB3FORMS_KEY` at the top of `assets/js/site.js`. Until then the forms tell visitors to call or email instead.
 
 ## Address suggestions (home-value.html)
 
