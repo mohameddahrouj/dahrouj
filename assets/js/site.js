@@ -281,6 +281,14 @@ const TYPE_ICONS = {
   "Apartment": '<svg class="type-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V3h14v18"/><path d="M3 21h18"/><path d="M8.5 7h2M13.5 7h2M8.5 11h2M13.5 11h2M8.5 15h2M13.5 15h2"/></svg>',
 };
 
+const STAT_ICONS = {
+  "Homes sold": '<svg class="type-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15.5" r="4.5"/><path d="M11.2 12.3 20 3.5"/><path d="M17 6.5l3 3"/><path d="M14.6 8.9l2 2"/></svg>',
+  "Average price": '<svg class="type-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12V4h8l9.5 9.5-8 8z"/><circle cx="7.5" cy="8" r="1.4"/></svg>',
+  "Benchmark price (MLS® HPI)": '<svg class="type-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 20h18"/><path d="M4 16l5-5 4 3 7-8"/><path d="M15 6h5v5"/></svg>',
+  "Homes for sale": '<svg class="type-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V3"/><path d="M5 6h14v8H5"/><path d="M9 6v-2M15 6v-2"/></svg>',
+  "Months of inventory": '<svg class="type-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17"/><path d="M8 3v4M16 3v4"/><path d="M8 14h3M8 17h6"/></svg>',
+};
+
 function initStats(st) {
   const m = st.market;
   const short = (label) => label.replace(/^(\w{3})\w*/, "$1.");
@@ -302,6 +310,13 @@ function initStats(st) {
   const makeRow = ([label, now, then]) => {
     const tr = document.createElement("tr");
     [label, now, then].forEach((t) => tr.append(Object.assign(document.createElement("td"), { textContent: t })));
+    if (STAT_ICONS[label]) {
+      const name = document.createElement("span");
+      name.className = "stat-name";
+      name.innerHTML = STAT_ICONS[label] + "<span></span>";
+      name.lastChild.textContent = label;
+      tr.firstChild.replaceChildren(name);
+    }
     return tr;
   };
   const MAIN = ["Homes sold", "Average price", "Benchmark price (MLS® HPI)", "Homes for sale", "Months of inventory"];
