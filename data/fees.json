@@ -1,5 +1,5 @@
 {
-  "_readme": "FairFee terms used by the calculator on fairfee.html. Buyer cash back: rebatePer dollars for every full rebateStep of purchase price.",
+  "_readme": "FairFee terms used by the calculator on fairfee.html. Buyer cash back is prorated: rebatePer dollars per rebateStep of purchase price ($1,000 per $400,000, so $750 on $300,000).",
   "hstRate": 0.13,
   "selling": {
     "listingRate": 1.5,

@@ -57,7 +57,7 @@ function initFees(fees) {
     bump($("#sell-keep"), money(p - total));
 
     const comm = p * b.assumedBuyerAgentRate / 100;
-    const rebate = Math.floor(p / b.rebateStep) * b.rebatePer;
+    const rebate = (p / b.rebateStep) * b.rebatePer;
     $("#buy-comm").textContent = money(comm);
     bump($("#buy-rebate"), money(rebate));
   }

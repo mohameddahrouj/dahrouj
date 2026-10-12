@@ -6,7 +6,7 @@ Team website (Right at Home Realty, Brokerage), hosted on GitHub Pages from `mas
 
 - `index.html` (home), `neighbourhoods.html`, `market.html` (monthly report), `calculators.html` (land transfer tax, mortgage payment, affordability, CMHC), `contact.html` (consultation form and office map), `fairfee.html` (FairFee™ waitlist and fee calculator)
 - `assets/css/site.css`, `assets/js/site.js` — shared styles and script. No build step, no dependencies.
-- `data/fees.json` — FairFee terms: 1.5% listing brokerage, 2% buyer's brokerage, and buyer cash back of $1,000 for every full $400,000 of purchase price (shown only in the calculator).
+- `data/fees.json` — FairFee terms: 1.5% listing brokerage, 2% buyer's brokerage, and buyer cash back prorated at $1,000 per $400,000 of purchase price (shown only in the calculator).
 - Calculator rules (Ontario land transfer tax brackets, CMHC premiums, the 5.25% stress-test floor, 39%/44% debt limits) live in `assets/js/site.js`; check them when governments change the rules.
 - `data/stats.json` — Ottawa market numbers. Updated by the monthly workflow below.
 
