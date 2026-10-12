@@ -11,6 +11,7 @@
   --brand-soft: #E5DFF1;
   --field: #FFFFFF;
   --focus: #6B4FD8;
+  --logo: #322C4D;
   --font: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
   --step--1: 0.875rem;
   --step-0: 1rem;
@@ -25,13 +26,13 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #131019; --paper-2: #1A1622; --ink: #ECE8F4; --muted: #A79FBA; --line: #2E283B;
-    --brand: #B9A2F2; --brand-ink: #131019; --brand-soft: #29213D; --field: #1D1927; --focus: #C7B5FF;
+    --brand: #B9A2F2; --brand-ink: #131019; --brand-soft: #29213D; --field: #1D1927; --focus: #C7B5FF; --logo: #C9C2E6;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #131019; --paper-2: #1A1622; --ink: #ECE8F4; --muted: #A79FBA; --line: #2E283B;
-  --brand: #B9A2F2; --brand-ink: #131019; --brand-soft: #29213D; --field: #1D1927; --focus: #C7B5FF;
+  --brand: #B9A2F2; --brand-ink: #131019; --brand-soft: #29213D; --field: #1D1927; --focus: #C7B5FF; --logo: #C9C2E6;
   color-scheme: dark;
 }
 
@@ -71,13 +72,13 @@ a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px
 /* Top: no header bar, just the brokerage logo and a menu button that opens the page list */
 .top { position: relative; z-index: 5; }
 .top-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1rem 0; flex-wrap: wrap; }
-.brand { display: inline-flex; align-items: flex-end; text-decoration: none; color: var(--brand); line-height: 1; }
+.brand { display: inline-flex; align-items: flex-end; text-decoration: none; color: var(--logo); line-height: 1; }
 .brand-mark {
-  display: block; width: 30px; aspect-ratio: 226 / 240; background: currentColor; flex: none;
+  display: block; width: 23px; aspect-ratio: 226 / 240; background: currentColor; flex: none;
   -webkit-mask: url("../img/dahrouj-logo.png") center / contain no-repeat;
   mask: url("../img/dahrouj-logo.png") center / contain no-repeat;
 }
-.brand-text { font-weight: 700; font-size: 1.5rem; letter-spacing: -0.03em; margin-left: 0.04em; margin-bottom: -0.17em; }
+.brand-text { font-family: "Poppins", var(--font); font-weight: 600; font-size: 1.1rem; letter-spacing: -0.01em; margin-left: 0.06em; margin-bottom: 0.08em; }
 .menu-btn {
   display: inline-flex; align-items: center; gap: 0.55rem; min-height: 44px; padding: 0.5rem 1rem;
   border: 1px solid var(--line); border-radius: 999px; background: var(--field); color: var(--ink);
