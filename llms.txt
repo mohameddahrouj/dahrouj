@@ -10,7 +10,7 @@
 ## Pages
 
 - [Home](https://www.dahrouj.com/): services for selling, buying, leasing and investing
-- [Market Guide](https://www.dahrouj.com/market.html): monthly Ottawa Real Estate Board statistics and neighbourhood guides
+- [Ottawa Market](https://www.dahrouj.com/market.html): monthly Ottawa Real Estate Board statistics and neighbourhood guides
 - [Moving to Ottawa](https://www.dahrouj.com/moving-to-ottawa.html): relocation, newcomers to Canada and military postings
 - [Cottages](https://www.dahrouj.com/cottages.html): buying a cottage near Ottawa
 - [What's my home worth?](https://www.dahrouj.com/home-value.html): free home valuation, just send the address
