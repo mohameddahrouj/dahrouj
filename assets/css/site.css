@@ -12,6 +12,13 @@
   --field: #FFFFFF;
   --focus: #6B4FD8;
   --logo: #322C4D;
+  --map-land: #F1EFF4;
+  --map-park: #D5E6D1;
+  --map-water: #C9DCEB;
+  --map-road: #FFFFFF;
+  --map-case: #D3CEDC;
+  --map-label: #5E5870;
+  --map-water-label: #4E7090;
   --font: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
   --step--1: 0.875rem;
   --step-0: 1rem;
@@ -27,12 +34,14 @@
   :root:not([data-theme="light"]) {
     --paper: #131019; --paper-2: #1A1622; --ink: #ECE8F4; --muted: #A79FBA; --line: #2E283B;
     --brand: #B9A2F2; --brand-ink: #131019; --brand-soft: #29213D; --field: #1D1927; --focus: #C7B5FF; --logo: #C9C2E6;
+    --map-land: #1B1724; --map-park: #1E2A22; --map-water: #1C2B3B; --map-road: #3A3448; --map-case: #2A2436; --map-label: #A79FBA; --map-water-label: #8FB3D4;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #131019; --paper-2: #1A1622; --ink: #ECE8F4; --muted: #A79FBA; --line: #2E283B;
   --brand: #B9A2F2; --brand-ink: #131019; --brand-soft: #29213D; --field: #1D1927; --focus: #C7B5FF; --logo: #C9C2E6;
+    --map-land: #1B1724; --map-park: #1E2A22; --map-water: #1C2B3B; --map-road: #3A3448; --map-case: #2A2436; --map-label: #A79FBA; --map-water-label: #8FB3D4;
   color-scheme: dark;
 }
 
@@ -143,6 +152,8 @@ html.js .top.open .nav {
 .areas { display: grid; grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); gap: 2.5rem 3rem; padding-top: 2rem; }
 .area { display: grid; gap: 0.6rem; align-content: start; padding-top: 1.1rem; border-top: 2px solid var(--ink); }
 .area-region { font-size: var(--step--1); color: var(--brand); font-weight: 600; }
+.area-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 0.25rem 1rem; }
+.area-metric { font-size: 0.8rem; color: var(--muted); font-variant-numeric: tabular-nums; padding: 0.15rem 0.6rem; border-radius: 999px; background: var(--paper-2); }
 .area p:not(.area-region) { color: var(--muted); }
 .area .area-homes { color: var(--ink); font-size: var(--step--1); }
 
@@ -176,9 +187,26 @@ html.js .top.open .nav {
 .next:hover { border-color: var(--brand); }
 .next span:last-child { color: var(--muted); font-size: var(--step--1); }
 
-/* Office map */
+/* Office map: a simplified, theme-aware SVG drawn from OpenStreetMap data */
 .office-map { margin: 1rem 0 0; display: grid; gap: 0.75rem; }
-.office-map img { width: 100%; aspect-ratio: 5 / 3; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); }
+.office-map a { display: block; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--line); }
+.office-map-svg { display: block; width: 100%; height: auto; }
+.m-land { fill: var(--map-land); }
+.m-park { fill: var(--map-park); }
+.m-water { fill: var(--map-water); }
+.m-canal { fill: none; stroke: var(--map-water); stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; }
+.m-sec { fill: none; stroke: var(--map-road); stroke-width: 1.2; opacity: 0.9; }
+.m-pri { fill: none; stroke: var(--map-road); stroke-width: 2.6; stroke-linecap: round; }
+.m-hwy-case { fill: none; stroke: var(--map-case); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+.m-hwy { fill: none; stroke: var(--map-road); stroke-width: 4.5; stroke-linecap: round; stroke-linejoin: round; }
+.office-map-svg text { font-family: var(--font); paint-order: stroke; stroke: var(--map-land); stroke-width: 4px; stroke-linejoin: round; }
+.lbl-place { font-size: 21px; font-weight: 700; fill: var(--ink); letter-spacing: 0.01em; }
+.lbl-water { font-size: 16px; font-style: italic; fill: var(--map-water-label); }
+.lbl-poi, .lbl-road { font-size: 15px; font-weight: 600; fill: var(--map-label); }
+.m-pin path { fill: var(--brand); stroke: var(--paper); stroke-width: 1.5; }
+.m-pin-halo { fill: var(--brand); opacity: 0.15; }
+.m-pin-dot { fill: var(--paper); }
+.lbl-office { font-size: 18px; font-weight: 700; fill: var(--brand); }
 .office-map figcaption { font-size: var(--step--1); color: var(--muted); }
 .office-map figcaption strong { color: var(--ink); }
 .office-map figcaption a { color: var(--brand); font-weight: 600; }

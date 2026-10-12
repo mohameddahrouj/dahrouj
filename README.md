@@ -4,7 +4,7 @@ Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages fr
 
 ## Files
 
-- `index.html` (home), `market.html` (monthly report and neighbourhoods), `calculators.html` (land transfer tax, mortgage payment, affordability, CMHC), `contact.html` (consultation form and office map), `fairfee.html` (FairFee™ waitlist and fee calculator)
+- `index.html` (home), `market.html` (Market Guide: monthly report and neighbourhoods, each with its distance from downtown), `calculators.html` (land transfer tax, mortgage payment, affordability, CMHC), `contact.html` (consultation form and a simplified office map drawn from OpenStreetMap data, `assets/img/office-map.svg`), `fairfee.html` (FairFee™ waitlist and fee calculator)
 - `assets/css/site.css`, `assets/js/site.js` — shared styles and script. No build step, no dependencies.
 - `data/fees.json` — FairFee terms: 1.5% listing brokerage, 2% buyer's brokerage, and buyer cash back prorated at $1,000 per $400,000 of purchase price (shown only in the calculator).
 - Calculator rules (Ontario land transfer tax brackets, CMHC premiums, the 5.25% stress-test floor, 39%/44% debt limits) live in `assets/js/site.js`; check them when governments change the rules.
