@@ -365,7 +365,7 @@ function initStats(st) {
    Also supported: "google" (Places) and "canadapost" (AddressComplete).
    Restrict the key to dahrouj.com in the provider's console. With no key, the
    address box still works as a normal text field. */
-const ADDRESS_LOOKUP = { provider: "geoapify", key: "" };
+const ADDRESS_LOOKUP = { provider: "geoapify", key: "b5100d4562804551be67884ccc099e21" };
 
 const addressProviders = {
   geoapify: {
@@ -448,7 +448,7 @@ function initAddress(input) {
   const close = () => { list.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; };
   const highlight = (i) => {
     active = i;
-    [...list.children].forEach((li, j) => li.setAttribute("aria-selected", j === i));
+    [...list.querySelectorAll('[role="option"]')].forEach((li, j) => li.setAttribute("aria-selected", j === i));
     if (i >= 0) input.setAttribute("aria-activedescendant", `addr-opt-${i}`);
   };
   const show = (found) => {
@@ -460,6 +460,13 @@ function initAddress(input) {
       li.addEventListener("mousedown", (ev) => { ev.preventDefault(); choose(i); });
       return li;
     }));
+    if (items.length && ADDRESS_LOOKUP.provider === "geoapify") {
+      const note = document.createElement("li");
+      note.className = "addr-attrib"; note.setAttribute("role", "presentation");
+      note.innerHTML = 'Powered by <a href="https://www.geoapify.com/" target="_blank" rel="noopener">Geoapify</a> · © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors';
+      note.addEventListener("mousedown", (ev) => ev.preventDefault());
+      list.append(note);
+    }
     const open = items.length > 0 && document.activeElement === input;
     list.hidden = !open; input.setAttribute("aria-expanded", open);
     highlight(-1);

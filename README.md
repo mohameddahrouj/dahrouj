@@ -29,7 +29,7 @@ The forms send through [Web3Forms](https://web3forms.com), which works on static
 
 ## Address suggestions (home-value.html)
 
-The address box suggests real addresses as people type. Get a free Geoapify key (myprojects.geoapify.com, 3,000 lookups a day), restrict it to `dahrouj.com` under the key's allowed origins, and paste it into `ADDRESS_LOOKUP.key` in `assets/js/site.js`. Google Places (`provider: "google"`) and Canada Post AddressComplete (`provider: "canadapost"`) are also wired in if you'd rather use one of those. With no key, the box works as a normal text field.
+The address box suggests real addresses as people type, using Geoapify's free plan (3,000 lookups a day; the key is in `ADDRESS_LOOKUP.key` in `assets/js/site.js`). The free plan requires a "Powered by Geoapify" and OpenStreetMap credit, which shows at the bottom of the suggestion list. Restrict the key to `dahrouj.com` under the key's allowed origins in the Geoapify dashboard so others can't use your quota. Google Places (`provider: "google"`) and Canada Post AddressComplete (`provider: "canadapost"`) are also wired in if you'd rather use one of those. With no key, the box works as a normal text field.
 
 ## Monthly market stats
 

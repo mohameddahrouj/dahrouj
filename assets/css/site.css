@@ -298,6 +298,9 @@ details.area .area-homes { color: var(--ink); font-size: var(--step--1); padding
 .addr-list { position: absolute; top: 100%; left: 0; right: 0; z-index: 10; margin: 0.25rem 0 0; padding: 0.3rem; list-style: none; background: var(--field); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 14%, transparent); }
 .addr-list li { padding: 0.6rem 0.7rem; border-radius: 6px; cursor: pointer; font-size: var(--step--1); }
 .addr-list li:hover, .addr-list li[aria-selected="true"] { background: var(--brand-soft); }
+.addr-list li.addr-attrib { cursor: default; padding: 0.4rem 0.7rem 0.2rem; font-size: 0.7rem; color: var(--muted); }
+.addr-list li.addr-attrib:hover { background: none; }
+.addr-attrib a { color: inherit; }
 
 /* Office map: a simplified, theme-aware SVG drawn from OpenStreetMap data */
 .office-map { margin: 1rem 0 0; display: grid; gap: 0.75rem; }
