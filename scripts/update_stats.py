@@ -14,6 +14,7 @@ import calendar
 import datetime as dt
 import io
 import json
+import os
 import pathlib
 import re
 import sys
@@ -70,11 +71,25 @@ def num(s):
     return float(s.replace("$", "").replace(",", ""))
 
 
+def section(text, heading):
+    """Text from the first line that starts with `heading` onward."""
+    i = text.find("\n" + heading)
+    if i < 0:
+        raise LookupError(f"section not found: {heading!r}")
+    return text[i + 1:]
+
+
 def row(text, label, count):
-    """Return the first `count` numbers that follow `label` on its line."""
+    """Return the first `count` numbers that follow `label` on its line.
+
+    Table labels sometimes carry a footnote digit ("Months of Inventory2 4.8"
+    or "Ratio 5 44.8"); a lone single digit right after the label is skipped.
+    """
     for line in text.splitlines():
         if line.strip().lower().startswith(label.lower()):
-            vals = re.findall(NUM, line[len(label):].replace("%", ""))
+            rest = line.strip()[len(label):]
+            rest = re.sub(r"^\s*\d(?=\s)", "", rest)
+            vals = re.findall(NUM, rest.replace("%", ""))
             vals = [v for v in vals if re.search(r"\d", v)]
             if len(vals) >= count:
                 return [num(v) for v in vals[:count]]
@@ -82,40 +97,48 @@ def row(text, label, count):
 
 
 def parse(text):
-    """Parse the 'MLS® Residential Market Activity' table.
+    """Parse the citywide 'MLS® Residential Market Activity' and HPI tables.
 
-    The first block of rows is the month; each row reads
-    <label> <this year> <% change vs last year> <% change vs earlier years...>.
+    Activity rows read <label> <this year> <change vs last year> ...; for
+    ratio rows the second number is last year's value instead of a change.
+    HPI rows read <type> <benchmark> <1 mo> <3 mo> <6 mo> <12 mo> <3 yr> <5 yr>.
     """
+    month = section(text, "MLS® Residential Market Activity")
+    ytd = section(month, "Year-to-Date")
     m = {}
-    sales, sales_yoy = row(text, "Sales Activity", 2)
-    m["sales"] = {"value": int(sales), "yoy": sales_yoy}
-    _, _ = row(text, "Dollar Volume", 2)
-    nl, nl_yoy = row(text, "New Listings", 2)
-    m["newListings"] = {"value": int(nl), "yoy": nl_yoy}
-    al, al_yoy = row(text, "Active Listings", 2)
-    m["activeListings"] = {"value": int(al), "yoy": al_yoy}
-    moi = row(text, "Months of Inventory", 2)
-    m["monthsOfInventory"] = {"value": moi[0], "lastYear": moi[1]}
-    avg, avg_yoy = row(text, "Average Price", 2)
-    m["averagePrice"] = {"value": int(avg), "yoy": avg_yoy}
-    med, med_yoy = row(text, "Median Price", 2)
-    m["medianPrice"] = {"value": int(med), "yoy": med_yoy}
-    stl = row(text, "Sale to List Price Ratio", 2)
-    m["saleToListRatio"] = {"value": stl[0], "lastYear": stl[1]}
-    dom = row(text, "Median Days on Market", 2)
-    m["daysOnMarket"] = {"value": int(dom[0]), "lastYear": int(dom[1])}
+    v, c = row(month, "Sales Activity", 2)
+    m["sales"] = {"value": int(v), "yoy": c}
+    v, c = row(month, "Average Price", 2)
+    m["averagePrice"] = {"value": int(v), "yoy": c}
+    v, c = row(month, "Median Price", 2)
+    m["medianPrice"] = {"value": int(v), "yoy": c}
+    v, c = row(month, "New Listings", 2)
+    m["newListings"] = {"value": int(v), "yoy": c}
+    v, c = row(month, "Active Listings", 2)
+    m["activeListings"] = {"value": int(v), "yoy": c}
+    v, last = row(month, "Months of Inventory", 2)
+    m["monthsOfInventory"] = {"value": v, "lastYear": last}
+    v, last = row(month, "Median Days on Market", 2)
+    m["daysOnMarket"] = {"value": int(v), "lastYear": int(last)}
+    v, last = row(month, "Sale to List Price Ratio", 2)
+    m["saleToListRatio"] = {"value": v, "lastYear": last}
 
+    hpi = section(text, "MLS® Home Price Index Benchmark Price")
     types = []
     for label, name in (("Composite", None), ("Single Family", "Single family"),
                         ("Townhouse", "Townhouse"), ("Apartment", "Apartment")):
-        # HPI table row: <type> <benchmark> <1 mo> <3 mo> <6 mo> <12 mo> <3 yr> <5 yr>
-        vals = row(text, label, 7)
+        vals = row(hpi, label, 7)
         if name is None:
             m["benchmarkPrice"] = {"value": int(vals[0]), "yoy": vals[4]}
         else:
             types.append({"type": name, "value": int(vals[0]), "yoy": vals[4]})
-    return m, types
+
+    y = {}
+    v, c = row(ytd, "Sales Activity", 2)
+    y["sales"] = {"value": int(v), "yoy": c}
+    v, c = row(ytd, "Average Price", 2)
+    y["averagePrice"] = {"value": int(v), "yoy": c}
+    return m, types, y
 
 
 def sanity_check(m):
@@ -125,6 +148,8 @@ def sanity_check(m):
     assert 200 <= s <= 5000, f"sales out of range: {s}"
     assert 300_000 <= p <= 2_000_000, f"average price out of range: {p}"
     assert 300_000 <= b <= 2_000_000, f"benchmark out of range: {b}"
+    assert 0.5 <= m["monthsOfInventory"]["value"] <= 15, "months of inventory out of range"
+    assert 85 <= m["saleToListRatio"]["value"] <= 115, "sale-to-list ratio out of range"
     for k, v in m.items():
         if "yoy" in v:
             assert -60 <= v["yoy"] <= 60, f"{k} change out of range: {v['yoy']}"
@@ -161,7 +186,7 @@ def main():
     if args.dump_only:
         return 0
 
-    market, types = parse(text)
+    market, types, ytd = parse(text)
     sanity_check(market)
 
     current = json.loads(OUT.read_text()) if OUT.exists() else {}
@@ -176,11 +201,17 @@ def main():
         "sourceUrl": url,
         "market": market,
         "benchmarkByType": types,
+        "yearToDate": ytd,
     }
-    if current.get("month") == out["month"] and current.get("market") == market:
+    if current.get("month") == out["month"] and current.get("market") == market \
+            and current.get("yearToDate") == ytd:
         print("Stats already up to date.")
         return 0
     OUT.write_text(json.dumps(out, indent=2) + "\n")
+    gh_out = os.environ.get("GITHUB_OUTPUT")
+    if gh_out:
+        with open(gh_out, "a") as f:
+            f.write(f"label={out['label']}\n")
     print(json.dumps(out, indent=2))
     return 0
 

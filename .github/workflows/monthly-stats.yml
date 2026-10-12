@@ -1,0 +1,57 @@
+# Each month, pull the new OREB market update into data/stats.json and open a
+# pull request. Merge it (from the GitHub app is fine) to publish the numbers.
+#
+# One-time setting: Settings > Actions > General > Workflow permissions >
+# tick "Allow GitHub Actions to create and approve pull requests".
+name: Monthly market stats
+
+on:
+  schedule:
+    # OREB usually publishes in the first week. Try on the 6th, 9th and 13th
+    # at 10:17 Ottawa time; later runs do nothing once the month is in.
+    - cron: "17 14 6,9,13 * *"
+  workflow_dispatch:
+    inputs:
+      month:
+        description: "Report month as YYYY-MM (leave blank for last month)"
+        required: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency: monthly-stats
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pdfplumber==0.11.4
+
+      - name: Pull the OREB report
+        id: stats
+        run: |
+          set +e
+          python scripts/update_stats.py ${{ inputs.month && format('--month {0}', inputs.month) || '' }}
+          code=$?
+          if [ $code -eq 2 ]; then echo "Report not out yet."; exit 0; fi
+          exit $code
+
+      - name: Open a pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: stats/auto-update
+          delete-branch: true
+          commit-message: "Update Ottawa market stats for ${{ steps.stats.outputs.label }}"
+          title: "Ottawa market stats: ${{ steps.stats.outputs.label }}"
+          body: |
+            New numbers from the Ottawa Real Estate Board's monthly market update, pulled automatically.
+
+            Check `data/stats.json` against the PDF linked in `sourceUrl`, then merge to publish.
+          add-paths: data/stats.json

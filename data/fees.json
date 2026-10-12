@@ -1,0 +1,22 @@
+{
+  "_readme": "Mohamed's published fee terms. Set draft to false only once these are his real terms and his broker has approved the wording.",
+  "draft": true,
+  "hstRate": 0.13,
+  "selling": {
+    "listingRate": 1.5,
+    "buyerAgentRate": 2.5,
+    "includes": [
+      "Professional photos, video and floor plan",
+      "Staging and paint advice before you list",
+      "Pricing research on your street and building",
+      "Every showing, offer and negotiation handled"
+    ],
+    "note": "The buyer agent rate is the amount offered to the agent who brings the buyer. You choose it with me before listing."
+  },
+  "buying": {
+    "rebateShare": 50,
+    "assumedBuyerAgentRate": 2.5,
+    "minimumPrice": 300000,
+    "note": "Rebate is a share of the commission my brokerage receives on your purchase, paid by Right at Home Realty after closing. Your lender must be told about the rebate. Conditions are set out in the buyer representation agreement."
+  }
+}
