@@ -458,7 +458,8 @@ form button { justify-self: start; }
 .brokerage-name { display: grid; gap: 0.1rem; color: var(--ink); line-height: 1.35; }
 .brokerage-name > span { font-weight: 600; }
 .agent-name { color: var(--ink); }
-.rahr-logo { width: 62px; height: auto; flex: none; }
+.brokerage picture { flex: none; display: block; line-height: 0; }
+.rahr-logo { height: 72px; width: auto; }
 .foot-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0 0.35rem; }
 .legal-btn { border: 0; background: none; padding: 0; font: inherit; font-weight: 600; cursor: pointer; display: none; align-items: center; gap: 0.3rem; min-height: 32px; }
 html.js .legal-btn { display: inline-flex; }
@@ -474,9 +475,14 @@ html.js .legal-text:not(.open) { display: none; }
   .foot-row { gap: 0.35rem; }
   .foot-row { font-size: 0.76rem; }
   .brokerage { gap: 0.7rem; }
-  .rahr-logo { width: 52px; }
-  .foot-meta { flex-wrap: nowrap; white-space: nowrap; gap: 0 0.25rem; }
-  .foot-link { margin-left: 0.45rem; }
+  .rahr-logo { height: 70px; }
+  .brokerage { gap: 0.5rem; }
+  .foot-meta { flex-wrap: nowrap; white-space: nowrap; gap: 0 0.2rem; font-size: 0.72rem; }
+  .brokerage-name { font-size: 0.78rem; }
+  .foot-link { margin-left: 0.4rem; }
+}
+@media (max-width: 384px) {
+  .foot-meta { flex-wrap: wrap; white-space: normal; }
   .social { width: 28px; height: 28px; margin-left: -6px; }
 }
 .social { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 50%; color: var(--muted); margin-left: -8px; }
