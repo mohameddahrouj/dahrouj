@@ -11,6 +11,10 @@ Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages fr
 - `data/stats.json` — Ottawa market numbers. Updated by the monthly workflow below.
 - `data/neighbourhoods.json` — average sale price per neighbourhood, filled in by hand each month from OREB member statistics. A neighbourhood's badge stays hidden until its price is filled in.
 
+## Home page photo
+
+`assets/img/hero-canal*.webp`: the Rideau Canal from Laurier Avenue by Dylan Phair, from Unsplash (free under the Unsplash License; no credit required). `hero-canal.webp` and `hero-canal-1400.webp` are wide crops for computers, and `hero-canal-tall.webp` is a portrait crop for phones.
+
 ## Search engines and AI assistants
 
 Every page has its own title, description and canonical link. The home page carries `RealEstateAgent` structured data (services, areas served, topics), and the Moving to Ottawa and Cottages pages carry `FAQPage` data. `sitemap.xml` and `robots.txt` are generated with the pages, and `llms.txt` gives AI assistants a plain summary of the business. Keep the name, address and phone identical here, on Google Business Profile and on the brokerage roster.
