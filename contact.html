@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Book a Consultation | Capital Home Group</title>
-  <meta name="description" content="Book a consultation about selling, buying or leasing a home in Ottawa.">
+  <meta name="description" content="Book a consultation about selling, buying or leasing a home in Ottawa. Our office is in the Glebe.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Book a Consultation | Capital Home Group">
-  <meta property="og:description" content="Book a consultation about selling, buying or leasing a home in Ottawa.">
+  <meta property="og:description" content="Book a consultation about selling, buying or leasing a home in Ottawa. Our office is in the Glebe.">
   <meta property="og:image" content="https://www.dahrouj.com/assets/img/ottawa-hero.webp">
   <link rel="icon" href="assets/img/favicon-32x32.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -19,19 +19,23 @@
 <body>
 <!--SITE-BODY-START-->
 <a class="skip" href="#main">Skip to content</a>
-<header class="top">
+<header class="top" id="top">
   <div class="wrap top-row">
     <a class="brand" href="./">
       <span class="brand-name">Capital Home Group</span>
       <span class="brand-sub">Right at Home Realty, Brokerage</span>
     </a>
-    <nav class="nav" aria-label="Main">
-        <a href="./#services">Services</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="neighbourhoods.html">Neighbourhoods</a>
         <a href="market.html">Market</a>
-        <a href="fairfee.html">Fairfee</a>
+        <a href="calculators.html">Calculators</a>
+        <a href="fairfee.html">FairFee™</a>
         <a href="contact.html" aria-current="page">Contact</a>
     </nav>
-    <a class="btn btn-small wide-only" href="contact.html">Book a consultation</a>
   </div>
 </header>
 
@@ -43,8 +47,13 @@
       <div><dt>Mobile</dt><dd><a href="tel:+16138695923">613-869-5923</a></dd></div>
       <div><dt>Office</dt><dd><a href="tel:+16133695199">613-369-5199</a></dd></div>
       <div><dt>Email</dt><dd><a href="mailto:mohamed@dahrouj.com">mohamed@dahrouj.com</a></dd></div>
-      <div><dt>Office address</dt><dd>14 Chamberlain Ave, Suite 101<br>Ottawa, ON K1S 1V9</dd></div>
     </dl>
+    <figure class="office-map">
+      <a href="https://www.openstreetmap.org/?mlat=45.40787&amp;mlon=-75.69195#map=17/45.40787/-75.69195" target="_blank" rel="noopener">
+        <img src="assets/img/office-map.webp" width="600" height="360" alt="Map of our office on Chamberlain Avenue in the Glebe, Ottawa">
+      </a>
+      <figcaption><strong>Our office in the Glebe</strong><br>14 Chamberlain Ave, Suite 101, Ottawa, ON K1S 1V9<br><a href="https://www.google.com/maps/search/?api=1&amp;query=14+Chamberlain+Ave+Ottawa+ON" target="_blank" rel="noopener">Get directions</a> <span class="attrib">Map © OpenStreetMap contributors</span></figcaption>
+    </figure>
   </section>
   <form class="contact-form" id="contact-form" data-form="contact" novalidate>
     <div class="field-row">
@@ -61,15 +70,22 @@
       <label for="c-email">Email</label>
       <input id="c-email" name="email" type="email" autocomplete="email" required>
     </div>
-    <div class="field">
-      <label for="c-topic">I’m looking to</label>
-      <select id="c-topic" name="topic">
-        <option>Sell a home</option>
-        <option>Buy a home</option>
-        <option>Buy and sell</option>
-        <option>Rent or lease</option>
-        <option>Something else</option>
-      </select>
+    <div class="field-row">
+      <div class="field">
+        <label for="c-topic">I’m looking to</label>
+        <select id="c-topic" name="topic">
+          <option>Sell a home</option>
+          <option>Buy a home</option>
+          <option>Buy and sell</option>
+          <option>Rent or lease</option>
+          <option>Something else</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="c-area">Neighbourhood <span class="opt">(optional)</span></label>
+        <input id="c-area" name="neighbourhood" list="area-list" autocomplete="off">
+        <datalist id="area-list"><option value="Kanata"></option><option value="Stittsville"></option><option value="Barrhaven"></option><option value="Findlay Creek"></option><option value="Riverside South"></option><option value="Orléans"></option><option value="Manotick"></option><option value="Westboro"></option><option value="The Glebe"></option></datalist>
+      </div>
     </div>
     <div class="field">
       <label for="c-message">Message</label>
@@ -92,7 +108,7 @@
     </div>
     <div class="legal">
       <p>Capital Home Group is a team of Right at Home Realty, Brokerage, independently owned and operated. Mohamed Dahrouj, Sales Representative. Not intended to solicit buyers or sellers currently under contract with a brokerage.</p>
-      <p>MLS®, Multiple Listing Service® and REALTOR® are trademarks controlled by the Canadian Real Estate Association.</p>
+      <p>MLS®, Multiple Listing Service® and REALTOR® are trademarks controlled by the Canadian Real Estate Association. FairFee™ is a trademark of its owner.</p>
       <p><a href="https://www.instagram.com/dahroujrealestate" target="_blank" rel="noopener">Instagram</a> &nbsp; © <span class="year">2026</span> Capital Home Group</p>
     </div>
   </div>

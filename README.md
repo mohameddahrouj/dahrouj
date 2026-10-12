@@ -1,12 +1,13 @@
 # dahrouj.com
 
-Team website (Right at Home Realty, Brokerage), hosted on GitHub Pages from `master`. The team name "Capital Home Group" is a placeholder: search-and-replace it across the four HTML pages once a name is chosen.
+Team website (Right at Home Realty, Brokerage), hosted on GitHub Pages from `master`. The team name "Capital Home Group" is a placeholder: search-and-replace it across the HTML pages once a name is chosen.
 
 ## Files
 
-- `index.html` (home), `market.html` (market report), `contact.html` (consultation form), `fairfee.html` (Fairfee soft launch and fee calculator)
+- `index.html` (home), `neighbourhoods.html`, `market.html` (monthly report), `calculators.html` (land transfer tax, mortgage payment, affordability, CMHC), `contact.html` (consultation form and office map), `fairfee.html` (FairFee™ waitlist and fee calculator)
 - `assets/css/site.css`, `assets/js/site.js` — shared styles and script. No build step, no dependencies.
-- `data/fees.json` — the listing fee, buyer rebate and wording shown in the fee calculator. Set `"draft": false` once the terms are final.
+- `data/fees.json` — FairFee terms: 1.5% listing brokerage, 2% buyer's brokerage. Set `buying.draft` to `false` once the buyer rebate share is final.
+- Calculator rules (Ontario land transfer tax brackets, CMHC premiums, the 5.25% stress-test floor, 39%/44% debt limits) live in `assets/js/site.js`; check them when governments change the rules.
 - `data/stats.json` — Ottawa market numbers. Updated by the monthly workflow below.
 
 ## Contact form and Fairfee waitlist

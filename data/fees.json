@@ -1,16 +1,16 @@
 {
-  "_readme": "Mohamed's published fee terms. Set draft to false only once these are his real terms and his broker has approved the wording.",
-  "draft": true,
+  "_readme": "FairFee terms shown on fairfee.html. listingRate and buyerAgentRate are confirmed; set buying.draft to false once the rebate share is final.",
   "hstRate": 0.13,
   "selling": {
     "listingRate": 1.5,
-    "buyerAgentRate": 2.5,
+    "buyerAgentRate": 2.0,
     "note": "The buyer’s brokerage rate is what’s offered to the agent who brings the buyer. You choose it with us before listing."
   },
   "buying": {
     "rebateShare": 50,
-    "assumedBuyerAgentRate": 2.5,
+    "assumedBuyerAgentRate": 2.0,
     "minimumPrice": 300000,
-    "note": "Rebate is a share of the commission our brokerage receives on your purchase, paid by Right at Home Realty after closing. Your lender must be told about the rebate. Conditions are set out in the buyer representation agreement."
+    "note": "Rebate is a share of the commission our brokerage receives on your purchase, paid by Right at Home Realty after closing. Your lender must be told about the rebate. Conditions are set out in the buyer representation agreement.",
+    "draft": true
   }
 }

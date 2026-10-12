@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Home Buying Calculators | Capital Home Group</title>
+  <meta name="description" content="Ontario land transfer tax, mortgage payment, affordability and CMHC insurance calculators for Ottawa home buyers.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Home Buying Calculators | Capital Home Group">
+  <meta property="og:description" content="Ontario land transfer tax, mortgage payment, affordability and CMHC insurance calculators for Ottawa home buyers.">
+  <meta property="og:image" content="https://www.dahrouj.com/assets/img/ottawa-hero.webp">
+  <link rel="icon" href="assets/img/favicon-32x32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<!--SITE-BODY-START-->
+<a class="skip" href="#main">Skip to content</a>
+<header class="top" id="top">
+  <div class="wrap top-row">
+    <a class="brand" href="./">
+      <span class="brand-name">Capital Home Group</span>
+      <span class="brand-sub">Right at Home Realty, Brokerage</span>
+    </a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+        <a href="./">Home</a>
+        <a href="neighbourhoods.html">Neighbourhoods</a>
+        <a href="market.html">Market</a>
+        <a href="calculators.html" aria-current="page">Calculators</a>
+        <a href="fairfee.html">FairFee™</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="page-head">
+    <h1>Calculators</h1>
+    <p class="lede">Quick estimates for buying in Ottawa. Your lender and lawyer will confirm the exact numbers.</p>
+    <nav class="jump" aria-label="Calculators on this page">
+      <a href="#ltt">Land transfer tax</a><a href="#payment">Mortgage payment</a><a href="#afford">Affordability</a><a href="#cmhc">CMHC insurance</a>
+    </nav>
+  </section>
+
+  <section class="calc-block" id="ltt" aria-labelledby="ltt-h">
+    <div class="calc-intro">
+      <h2 id="ltt-h">Land transfer tax</h2>
+      <p>Ontario’s tax on buying a home, paid on closing. Ottawa has no separate city land transfer tax.</p>
+    </div>
+    <form class="calc-form" data-calc="ltt" novalidate>
+      <div class="field"><label for="ltt-price">Purchase price</label><div class="affixed"><span class="affix">$</span><input id="ltt-price" type="number" inputmode="decimal" min="0" step="1000" value="650000"></div></div>
+      <label class="check"><input id="ltt-ftb" type="checkbox"> First-time home buyer</label>
+      <dl class="results">
+        <div><dt>Ontario land transfer tax</dt><dd id="ltt-tax"></dd></div>
+        <div><dt>First-time buyer refund</dt><dd id="ltt-refund"></dd></div>
+        <div class="total"><dt>You pay on closing</dt><dd id="ltt-total"></dd></div>
+      </dl>
+      <p class="fine">Rates for a home with one or two single-family residences: 0.5% up to $55,000, 1% to $250,000, 1.5% to $400,000, 2% to $2 million and 2.5% above. First-time buyers can get up to $4,000 back.</p>
+    </form>
+  </section>
+
+  <section class="calc-block" id="payment" aria-labelledby="pay-h">
+    <div class="calc-intro">
+      <h2 id="pay-h">Mortgage payment</h2>
+      <p>Your regular payment, including CMHC insurance when you put down less than 20%.</p>
+    </div>
+    <form class="calc-form" data-calc="payment" novalidate>
+      <div class="field-row">
+        <div class="field"><label for="pay-price">Purchase price</label><div class="affixed"><span class="affix">$</span><input id="pay-price" type="number" inputmode="decimal" min="0" step="1000" value="650000"></div></div>
+        <div class="field"><label for="pay-down">Down payment</label><div class="affixed"><span class="affix">$</span><input id="pay-down" type="number" inputmode="decimal" min="0" step="1000" value="65000"></div></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="pay-rate">Interest rate</label><div class="affixed"><input id="pay-rate" type="number" inputmode="decimal" min="0" step="0.01" value="4.29"><span class="affix">%</span></div></div>
+        <div class="field"><label for="pay-amort">Amortization</label><select id="pay-amort"><option value="25" selected>25 years</option><option value="30">30 years</option><option value="20">20 years</option><option value="15">15 years</option></select></div>
+        <div class="field"><label for="pay-freq">Payments</label><select id="pay-freq"><option value="monthly" selected>Monthly</option><option value="biweekly">Every two weeks</option><option value="accel">Accelerated every two weeks</option><option value="weekly">Weekly</option></select></div>
+      </div>
+      <dl class="results">
+        <div><dt>Mortgage amount</dt><dd id="pay-loan"></dd></div>
+        <div><dt>CMHC insurance added</dt><dd id="pay-prem"></dd></div>
+        <div class="total"><dt id="pay-label">Monthly payment</dt><dd id="pay-amount"></dd></div>
+      </dl>
+      <p class="fine" id="pay-msg">Uses semi-annual compounding, as Canadian fixed-rate mortgages do.</p>
+    </form>
+  </section>
+
+  <section class="calc-block" id="afford" aria-labelledby="aff-h">
+    <div class="calc-intro">
+      <h2 id="aff-h">Affordability</h2>
+      <p>The highest price you’re likely to qualify for, using the federal stress test and standard debt limits.</p>
+    </div>
+    <form class="calc-form" data-calc="afford" novalidate>
+      <div class="field-row">
+        <div class="field"><label for="aff-income">Household income (yearly, before tax)</label><div class="affixed"><span class="affix">$</span><input id="aff-income" type="number" inputmode="decimal" min="0" step="1000" value="140000"></div></div>
+        <div class="field"><label for="aff-down">Down payment saved</label><div class="affixed"><span class="affix">$</span><input id="aff-down" type="number" inputmode="decimal" min="0" step="1000" value="80000"></div></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="aff-debts">Other debt payments (monthly)</label><div class="affixed"><span class="affix">$</span><input id="aff-debts" type="number" inputmode="decimal" min="0" step="50" value="400"></div></div>
+        <div class="field"><label for="aff-rate">Interest rate</label><div class="affixed"><input id="aff-rate" type="number" inputmode="decimal" min="0" step="0.01" value="4.29"><span class="affix">%</span></div></div>
+      </div>
+      <div class="field-row">
+        <div class="field"><label for="aff-tax">Property tax (monthly)</label><div class="affixed"><span class="affix">$</span><input id="aff-tax" type="number" inputmode="decimal" min="0" step="25" value="450"></div></div>
+        <div class="field"><label for="aff-heat">Heating (monthly)</label><div class="affixed"><span class="affix">$</span><input id="aff-heat" type="number" inputmode="decimal" min="0" step="10" value="120"></div></div>
+        <div class="field"><label for="aff-condo">Condo fees (monthly)</label><div class="affixed"><span class="affix">$</span><input id="aff-condo" type="number" inputmode="decimal" min="0" step="25" value="0"></div></div>
+      </div>
+      <dl class="results">
+        <div><dt>Qualifying rate</dt><dd id="aff-qrate"></dd></div>
+        <div><dt>Largest mortgage</dt><dd id="aff-loan"></dd></div>
+        <div class="total"><dt>Price you could afford</dt><dd id="aff-price"></dd></div>
+      </dl>
+      <p class="fine" id="aff-msg">Lenders qualify you at the higher of your rate plus 2% or 5.25%, with housing costs under 39% of income and all debts under 44%. Assumes a 25-year amortization.</p>
+    </form>
+  </section>
+
+  <section class="calc-block" id="cmhc" aria-labelledby="cmhc-h">
+    <div class="calc-intro">
+      <h2 id="cmhc-h">CMHC insurance</h2>
+      <p>Mortgage default insurance is required when you put down less than 20%. The premium is added to your mortgage.</p>
+    </div>
+    <form class="calc-form" data-calc="cmhc" novalidate>
+      <div class="field-row">
+        <div class="field"><label for="cmhc-price">Purchase price</label><div class="affixed"><span class="affix">$</span><input id="cmhc-price" type="number" inputmode="decimal" min="0" step="1000" value="650000"></div></div>
+        <div class="field"><label for="cmhc-down">Down payment</label><div class="affixed"><span class="affix">$</span><input id="cmhc-down" type="number" inputmode="decimal" min="0" step="1000" value="65000"></div></div>
+      </div>
+      <label class="check"><input id="cmhc-30" type="checkbox"> 30-year amortization (first-time buyers and new builds)</label>
+      <dl class="results">
+        <div><dt>Down payment</dt><dd id="cmhc-pct"></dd></div>
+        <div><dt>Premium rate</dt><dd id="cmhc-rate"></dd></div>
+        <div><dt>Ontario sales tax, due on closing (8%)</dt><dd id="cmhc-pst"></dd></div>
+        <div class="total"><dt>Premium added to mortgage</dt><dd id="cmhc-prem"></dd></div>
+      </dl>
+      <p class="fine" id="cmhc-msg">Premiums: 2.80% with 15–19.99% down, 3.10% with 10–14.99% down, 4.00% with 5–9.99% down, plus 0.20% for a 30-year amortization. Homes priced at $1.5 million or more can’t be insured.</p>
+    </form>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-grid">
+    <div class="brokerage">
+      <picture>
+        <source srcset="assets/img/rahr-logo-white.svg" media="(prefers-color-scheme: dark)">
+        <img class="rahr-logo" src="assets/img/rahr-logo.svg" alt="Right at Home Realty, Brokerage" width="85" height="77">
+      </picture>
+      <p><strong>Right at Home Realty, Brokerage</strong><br>14 Chamberlain Ave, Suite 101<br>Ottawa, ON K1S 1V9<br>Office 613-369-5199</p>
+    </div>
+    <div class="legal">
+      <p>Capital Home Group is a team of Right at Home Realty, Brokerage, independently owned and operated. Mohamed Dahrouj, Sales Representative. Not intended to solicit buyers or sellers currently under contract with a brokerage.</p>
+      <p>MLS®, Multiple Listing Service® and REALTOR® are trademarks controlled by the Canadian Real Estate Association. FairFee™ is a trademark of its owner.</p>
+      <p><a href="https://www.instagram.com/dahroujrealestate" target="_blank" rel="noopener">Instagram</a> &nbsp; © <span class="year">2026</span> Capital Home Group</p>
+    </div>
+  </div>
+</footer>
+<!--SITE-BODY-END-->
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

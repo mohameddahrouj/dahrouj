@@ -1,4 +1,4 @@
-// dahrouj.com: fee calculator, market stats and forms. No dependencies.
+// dahrouj.com: menu, calculators, market stats and forms. No dependencies.
 
 // Web3Forms access key: get one free at https://web3forms.com (enter mohamed@dahrouj.com).
 // It's safe to publish; it only lets this site send mail to that inbox.
@@ -29,7 +29,7 @@ function initFees(fees) {
   const b = fees.buying;
   const hst = fees.hstRate;
 
-  $("#fees-draft").hidden = !fees.draft;
+  $("#buy-draft").hidden = !fees.buying.draft;
   $("#sell-rate").textContent = rate(s.listingRate);
   $("#coop-rate").textContent = rate(s.buyerAgentRate);
   $("#buy-rate").textContent = rate(b.assumedBuyerAgentRate);
@@ -84,6 +84,158 @@ function initFees(fees) {
   if (location.hash === "#buying") select(tabs[1]);
   price.addEventListener("input", render);
   render();
+}
+
+
+/* ---------- Menu ---------- */
+function initMenu() {
+  const btn = $(".menu-btn");
+  const header = $(".top");
+  if (!btn) return;
+  document.documentElement.classList.add("js");
+  btn.addEventListener("click", () => {
+    const open = btn.getAttribute("aria-expanded") !== "true";
+    btn.setAttribute("aria-expanded", open);
+    header.classList.toggle("open", open);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && header.classList.contains("open")) { btn.click(); btn.focus(); }
+  });
+}
+
+/* ---------- Buying calculators (Ontario rules) ---------- */
+const val = (id) => { const n = parseFloat($(id).value); return Number.isFinite(n) && n > 0 ? n : 0; };
+const money2 = (n) => n.toLocaleString("en-CA", { style: "currency", currency: "CAD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+function ontarioLTT(price) {
+  const brackets = [[55000, 0.005], [250000, 0.01], [400000, 0.015], [2000000, 0.02], [Infinity, 0.025]];
+  let tax = 0, lower = 0;
+  for (const [upper, r] of brackets) {
+    if (price > lower) tax += (Math.min(price, upper) - lower) * r;
+    lower = upper;
+  }
+  return tax;
+}
+
+function minDown(price) {
+  if (price >= 1500000) return price * 0.2;
+  if (price <= 500000) return price * 0.05;
+  return 25000 + (price - 500000) * 0.1;
+}
+
+function cmhcRate(price, down, thirty) {
+  if (price >= 1500000) return null;
+  const ltv = (price - down) / price;
+  let r;
+  if (ltv <= 0.8) return 0;
+  else if (ltv <= 0.85) r = 0.028;
+  else if (ltv <= 0.9) r = 0.031;
+  else if (ltv <= 0.95) r = 0.04;
+  else return null;
+  return r + (thirty ? 0.002 : 0);
+}
+
+// Canadian fixed-rate mortgages compound semi-annually.
+function periodicRate(annualPct, perYear) {
+  return Math.pow(1 + annualPct / 100 / 2, 2 / perYear) - 1;
+}
+function payment(principal, annualPct, years, perYear) {
+  const i = periodicRate(annualPct, perYear), n = years * perYear;
+  return i === 0 ? principal / n : (principal * i) / (1 - Math.pow(1 + i, -n));
+}
+function principalFor(pmt, annualPct, years, perYear) {
+  const i = periodicRate(annualPct, perYear), n = years * perYear;
+  return i === 0 ? pmt * n : (pmt * (1 - Math.pow(1 + i, -n))) / i;
+}
+
+const calcs = {
+  ltt() {
+    const price = val("#ltt-price");
+    const tax = ontarioLTT(price);
+    const refund = $("#ltt-ftb").checked ? Math.min(tax, 4000) : 0;
+    $("#ltt-tax").textContent = money2(tax);
+    $("#ltt-refund").textContent = refund ? `−${money2(refund)}` : "None";
+    $("#ltt-total").textContent = money2(tax - refund);
+  },
+  payment() {
+    const price = val("#pay-price"), down = val("#pay-down"), rate = val("#pay-rate");
+    const years = Number($("#pay-amort").value), freq = $("#pay-freq").value;
+    const msg = $("#pay-msg");
+    const base = Math.max(price - down, 0);
+    let prem = 0, note = "Uses semi-annual compounding, as Canadian fixed-rate mortgages do.";
+    if (down < minDown(price)) {
+      note = `The minimum down payment on this price is ${money(minDown(price))}.`;
+    } else if (down < price * 0.2) {
+      const r = cmhcRate(price, down, years === 30);
+      prem = r ? base * r : 0;
+      if (years > 25 && r) note = "30-year insured mortgages are for first-time buyers and new builds.";
+    }
+    const loan = base + prem;
+    const monthly = payment(loan, rate, years, 12);
+    let label = "Monthly payment", amt = monthly;
+    if (freq === "biweekly") { label = "Payment every two weeks"; amt = payment(loan, rate, years, 26); }
+    if (freq === "weekly") { label = "Weekly payment"; amt = payment(loan, rate, years, 52); }
+    if (freq === "accel") { label = "Accelerated payment every two weeks"; amt = monthly / 2; }
+    $("#pay-loan").textContent = money(loan);
+    $("#pay-prem").textContent = prem ? money(prem) : "None";
+    $("#pay-label").textContent = label;
+    $("#pay-amount").textContent = money2(amt);
+    msg.textContent = note;
+  },
+  afford() {
+    const income = val("#aff-income") / 12, down = val("#aff-down"), debts = val("#aff-debts");
+    const rate = val("#aff-rate"), tax = val("#aff-tax"), heat = val("#aff-heat"), condo = val("#aff-condo");
+    const q = Math.max(rate + 2, 5.25);
+    const housing = tax + heat + condo / 2;
+    const maxPmt = Math.max(0, Math.min(income * 0.39 - housing, income * 0.44 - housing - debts));
+    const maxLoan = principalFor(maxPmt, q, 25, 12);
+    // Largest price where the down payment meets the minimum and the loan (with any insurance) fits.
+    let lo = 0, hi = 5000000;
+    for (let k = 0; k < 60; k++) {
+      const p = (lo + hi) / 2;
+      let ok = down >= minDown(p);
+      if (ok) {
+        const r = down < p * 0.2 ? cmhcRate(p, down, false) : 0;
+        ok = r !== null && (p - down) * (1 + (r || 0)) <= maxLoan;
+      }
+      if (ok) lo = p; else hi = p;
+    }
+    const price = Math.floor(lo / 1000) * 1000;
+    $("#aff-qrate").textContent = `${q.toFixed(2)}%`;
+    $("#aff-loan").textContent = money(Math.floor(maxLoan / 1000) * 1000);
+    $("#aff-price").textContent = price > 0 ? money(price) : "Add your income and savings";
+  },
+  cmhc() {
+    const price = val("#cmhc-price"), down = val("#cmhc-down"), thirty = $("#cmhc-30").checked;
+    const msg = $("#cmhc-msg");
+    const share = price ? (down / price) * 100 : 0;
+    $("#cmhc-pct").textContent = `${share.toFixed(2)}%`;
+    const reset = (text) => {
+      $("#cmhc-rate").textContent = "None"; $("#cmhc-prem").textContent = "None"; $("#cmhc-pst").textContent = "None";
+      msg.textContent = text;
+    };
+    const base = "Premiums: 2.80% with 15–19.99% down, 3.10% with 10–14.99% down, 4.00% with 5–9.99% down, plus 0.20% for a 30-year amortization. Homes priced at $1.5 million or more can’t be insured.";
+    if (!price) return reset(base);
+    if (down >= price * 0.2) return reset("With 20% or more down, you don’t need mortgage insurance.");
+    if (price >= 1500000) return reset("Homes priced at $1.5 million or more can’t be insured, so you’ll need 20% down.");
+    if (down < minDown(price)) return reset(`The minimum down payment on this price is ${money(minDown(price))}.`);
+    const r = cmhcRate(price, down, thirty);
+    const prem = (price - down) * r;
+    $("#cmhc-rate").textContent = `${(r * 100).toFixed(2)}%`;
+    $("#cmhc-prem").textContent = money2(prem);
+    $("#cmhc-pst").textContent = money2(prem * 0.08);
+    msg.textContent = base;
+  },
+};
+
+function initCalculators() {
+  document.querySelectorAll("form[data-calc]").forEach((form) => {
+    const run = calcs[form.dataset.calc];
+    form.addEventListener("input", run);
+    form.addEventListener("change", run);
+    form.addEventListener("submit", (e) => e.preventDefault());
+    run();
+  });
 }
 
 /* ---------- Market stats ---------- */
@@ -224,6 +376,8 @@ function initForm(form) {
 }
 
 /* ---------- Boot ---------- */
+initMenu();
+initCalculators();
 document.querySelectorAll(".year").forEach((el) => { el.textContent = new Date().getFullYear(); });
 if ($("#calc")) loadJSON("fees").then(initFees).catch((e) => console.error(e));
 if ($("#mk-rows") || $("[data-stat]")) {
