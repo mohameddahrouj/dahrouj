@@ -515,7 +515,7 @@ function initForm(form) {
       access_key: WEB3FORMS_KEY,
       subject: {
         waitlist: `FairFee waitlist: ${data.role}, ${data.area}`,
-        valuation: `Home value request: ${data.unit ? data.unit + "-" : ""}${data.address}`,
+        valuation: `Home value request: ${data.address}`,
       }[kind] || `dahrouj.com: ${data.topic} (${data.name})`,
       from_name: kind === "waitlist" ? "FairFee waitlist" : "dahrouj.com",
       replyto: data.email,

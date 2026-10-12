@@ -189,6 +189,7 @@ html.js .top.open .nav {
 .next span:last-child { color: var(--muted); font-size: var(--step--1); }
 
 /* Address suggestions */
+.hint { font-size: var(--step--1); color: var(--muted); }
 .addr { position: relative; }
 .addr-list { position: absolute; top: 100%; left: 0; right: 0; z-index: 10; margin: 0.25rem 0 0; padding: 0.3rem; list-style: none; background: var(--field); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 8px 24px color-mix(in srgb, var(--ink) 14%, transparent); }
 .addr-list li { padding: 0.6rem 0.7rem; border-radius: 6px; cursor: pointer; font-size: var(--step--1); }
