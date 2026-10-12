@@ -11,7 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: pip install playwright && python -m playwright install --with-deps chromium
-      - run: python prod_test.py || echo "SCRIPT FAILED" > failed.txt
+      - run: python form_test.py || echo "SCRIPT FAILED" > failed.txt
+      - run: |
+          curl -s -i -X OPTIONS https://api.web3forms.com/submit -H "Origin: https://www.dahrouj.com" -H "Access-Control-Request-Method: POST" -H "Access-Control-Request-Headers: content-type" | head -25 > curl_options.txt
+          curl -s -i -X POST https://api.web3forms.com/submit -H "Origin: https://www.dahrouj.com" -H "Content-Type: application/json" -H "Accept: application/json" -d '{"access_key":"64bab466-4d07-4e12-bad6-cacfa73f4a39","subject":"TEST - dahrouj.com form check (please ignore)","name":"TEST - website check","message":"Automated check of the Web3Forms key after the redesign. Please ignore."}' | head -40 > curl_post.txt
       - run: |
           git config user.email noreply@anthropic.com; git config user.name ci
           git add -A; git commit -m "result"; git push
