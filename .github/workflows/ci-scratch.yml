@@ -1,0 +1,17 @@
+name: ci-scratch
+on:
+  push:
+    branches: [ci-scratch]
+permissions:
+  contents: write
+jobs:
+  t:
+    if: "!contains(github.event.head_commit.message, 'result')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install playwright && python -m playwright install --with-deps chromium
+      - run: python prod_test.py || echo "SCRIPT FAILED" > failed.txt
+      - run: |
+          git config user.email noreply@anthropic.com; git config user.name ci
+          git add -A; git commit -m "result"; git push
