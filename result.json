@@ -1,0 +1,358 @@
+{
+ "pages": {
+  "desk /": {
+   "title": "Ottawa Real Estate, Handled Personally",
+   "h1": "Your next move in Ottawa, handled personally.",
+   "sw": 1280,
+   "fonts": 6,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "desk /market.html": {
+   "title": "Ottawa Real Estate Market: Monthly Stats & Neighbourhoods",
+   "h1": "Ottawa market, September 2026",
+   "sw": 1280,
+   "fonts": 5,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "desk /calculators.html": {
+   "title": "Home Buying Calculators | Ottawa Real Estate",
+   "h1": "Calculators",
+   "sw": 1280,
+   "fonts": 5,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "desk /moving-to-ottawa.html": {
+   "title": "Moving to Ottawa: Relocation, Newcomers & Military Postings",
+   "h1": "Moving to Ottawa",
+   "sw": 1280,
+   "fonts": 5,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "desk /cottages.html": {
+   "title": "Buying a Cottage Near Ottawa | Rideau Lakes, Calabogie, Lanark",
+   "h1": "Buying a cottage near Ottawa",
+   "sw": 1280,
+   "fonts": 5,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "desk /home-value.html": {
+   "title": "What’s My Home Worth? Free Ottawa Home Valuation",
+   "h1": "What’s my home worth?",
+   "sw": 1280,
+   "fonts": 5,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "desk /contact.html": {
+   "title": "Book a Consultation | Ottawa Real Estate",
+   "h1": "Book a consultation",
+   "sw": 1280,
+   "fonts": 6,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "desk /fairfee.html": {
+   "title": "Our Fees | Proud FairFee™ Agent",
+   "h1": "Your home.\nYou call the shots.",
+   "sw": 1280,
+   "fonts": 6,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "desk /privacy.html": {
+   "title": "Privacy | dahrouj.com",
+   "h1": "Privacy",
+   "sw": 1280,
+   "fonts": 6,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "phone /": {
+   "title": "Ottawa Real Estate, Handled Personally",
+   "h1": "Your next move in Ottawa, handled personally.",
+   "sw": 390,
+   "fonts": 6,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "phone /market.html": {
+   "title": "Ottawa Real Estate Market: Monthly Stats & Neighbourhoods",
+   "h1": "Ottawa market, September 2026",
+   "sw": 390,
+   "fonts": 5,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "phone /calculators.html": {
+   "title": "Home Buying Calculators | Ottawa Real Estate",
+   "h1": "Calculators",
+   "sw": 390,
+   "fonts": 6,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "phone /moving-to-ottawa.html": {
+   "title": "Moving to Ottawa: Relocation, Newcomers & Military Postings",
+   "h1": "Moving to Ottawa",
+   "sw": 390,
+   "fonts": 5,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "phone /cottages.html": {
+   "title": "Buying a Cottage Near Ottawa | Rideau Lakes, Calabogie, Lanark",
+   "h1": "Buying a cottage near Ottawa",
+   "sw": 390,
+   "fonts": 5,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "phone /home-value.html": {
+   "title": "What’s My Home Worth? Free Ottawa Home Valuation",
+   "h1": "What’s my home worth?",
+   "sw": 390,
+   "fonts": 6,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "phone /contact.html": {
+   "title": "Book a Consultation | Ottawa Real Estate",
+   "h1": "Book a consultation",
+   "sw": 390,
+   "fonts": 5,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "phone /fairfee.html": {
+   "title": "Our Fees | Proud FairFee™ Agent",
+   "h1": "Your home.\nYou call the shots.",
+   "sw": 390,
+   "fonts": 6,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  },
+  "phone /privacy.html": {
+   "title": "Privacy | dahrouj.com",
+   "h1": "Privacy",
+   "sw": 390,
+   "fonts": 5,
+   "imgsBroken": [],
+   "footer": "Mohamed Dahrouj, Sales Representative\nRight at Home Realty, Brokerage\nPrivacy\nLegal\n\n© 2026 Mohamed Dahrouj. All rights reserved.",
+   "pageErrors": [],
+   "consoleErrors": [],
+   "failedRequests": [],
+   "overflow": false
+  }
+ },
+ "checks": {
+  "url http://dahrouj.com/": [
+   200,
+   "https://www.dahrouj.com/"
+  ],
+  "url https://dahrouj.com/": [
+   200,
+   "https://www.dahrouj.com/"
+  ],
+  "url http://www.dahrouj.com/": [
+   200,
+   "https://www.dahrouj.com/"
+  ],
+  "url https://www.dahrouj.com/sitemap.xml": [
+   200,
+   "https://www.dahrouj.com/sitemap.xml"
+  ],
+  "url https://www.dahrouj.com/robots.txt": [
+   200,
+   "https://www.dahrouj.com/robots.txt"
+  ],
+  "url https://www.dahrouj.com/llms.txt": [
+   200,
+   "https://www.dahrouj.com/llms.txt"
+  ],
+  "url https://www.dahrouj.com/data/stats.json": [
+   200,
+   "https://www.dahrouj.com/data/stats.json"
+  ],
+  "url https://www.dahrouj.com/data/fees.json": [
+   200,
+   "https://www.dahrouj.com/data/fees.json"
+  ],
+  "home snapshot": [
+   "label: September 2026",
+   "averagePrice: $685,640",
+   "averagePriceChange: −1.0% from a year ago",
+   "sales: 1,010",
+   "salesChange: −6.6% from a year ago",
+   "moi: 4.8",
+   "moiChange: 4.1 a year ago"
+  ],
+  "market rows": [
+   "Homes sold 1,010 −6.6%",
+   "Average price $685,640 −1.0%",
+   "Benchmark price (MLS® HPI) $623,500 −0.3%",
+   "Homes for sale 4,813 +7.9%",
+   "Months of inventory 4.8 4.1 last year"
+  ],
+  "market more rows": 4,
+  "market types": "Benchmark price by home type\nSingle family\n$705,100\n−0.1% vs a year ago\nTownhouse\n$546,500\n−2.2% vs a year ago\nApartment\n$380,800\n−6.1% vs a year ago\n\nThe benchmark (MLS® Home Price Index) tracks a typical home, so it moves less than the average price when the mix of sales changes.",
+  "market summary": "More homes are for sale than a year ago and they’re taking longer to sell. Sales were down 6.6% from a year ago. Benchmark prices are close to where they were last year, and homes sold for 97.5% of their asking price on average. With 4.8 months of inventory, up from 4.1, buyers have more choice and more room to negotiate.",
+  "LTT 700k (normal / first-time)": [
+   "$10,475.00",
+   "$6,475.00",
+   "−$4,000.00"
+  ],
+  "Mortgage 600k, 60k down, 4.5%, 25y": {
+   "#pay-loan": "$556,740",
+   "#pay-prem": "$16,740",
+   "#pay-amount": "$3,081.41"
+  },
+  "Affordability 150k income, 100k down": {
+   "#aff-qrate": "6.50%",
+   "#aff-loan": "$642,000",
+   "#aff-price": "$723,000"
+  },
+  "FairFee sell @650k": {
+   "#sell-fee": "$9,750",
+   "#coop-fee": "$13,000",
+   "#sell-hst": "$2,958",
+   "#sell-total": "$25,708",
+   "#sell-keep": "$624,293"
+  },
+  "FairFee buy @650k": {
+   "#buy-comm": "$13,000",
+   "#buy-rebate": "$1,625"
+  },
+  "contact #search preset topic": "Starting a custom home search",
+  "menu opens": "grid",
+  "legal toggle opens": "grid",
+  "address suggestions": {
+   "geoapify responses": [
+    "200 https://api.geoapify.com/v1/geocode/autocomplete"
+   ],
+   "options": [
+    "Your Credit Union, 14 Chamberlain Avenue, Ottawa, ON K1S 1V9"
+   ],
+   "attribution": "Powered by Geoapify · © OpenStreetMap contributors"
+  },
+  "address chosen": [
+   "Your Credit Union, 14 Chamberlain Avenue, Ottawa, ON K1S 1V9",
+   "K1S 1V9"
+  ],
+  "home value form": {
+   "status": "That didn’t go through. Check your connection and try again, or email mohamed@dahrouj.com.",
+   "web3forms": []
+  },
+  "contact form": {
+   "status": "That didn’t go through. Check your connection and try again, or email mohamed@dahrouj.com.",
+   "web3forms": []
+  },
+  "js errors during interaction": []
+ },
+ "links": {
+  "https://www.dahrouj.com/": "ok",
+  "https://www.dahrouj.com/#main": "ok",
+  "https://www.dahrouj.com/calculators.html": "ok",
+  "https://www.dahrouj.com/calculators.html#main": "ok",
+  "https://www.dahrouj.com/contact.html": "ok",
+  "https://www.dahrouj.com/contact.html#cottage": "BROKEN (200, 'https://www.dahrouj.com/contact.html')",
+  "https://www.dahrouj.com/contact.html#main": "ok",
+  "https://www.dahrouj.com/contact.html#search": "BROKEN (200, 'https://www.dahrouj.com/contact.html')",
+  "https://www.dahrouj.com/cottages.html": "ok",
+  "https://www.dahrouj.com/cottages.html#main": "ok",
+  "https://www.dahrouj.com/fairfee.html": "ok",
+  "https://www.dahrouj.com/fairfee.html#main": "ok",
+  "https://www.dahrouj.com/home-value.html": "ok",
+  "https://www.dahrouj.com/home-value.html#main": "ok",
+  "https://www.dahrouj.com/market.html": "ok",
+  "https://www.dahrouj.com/market.html#barrhaven": "ok",
+  "https://www.dahrouj.com/market.html#findlay-creek": "ok",
+  "https://www.dahrouj.com/market.html#glebe": "ok",
+  "https://www.dahrouj.com/market.html#kanata": "ok",
+  "https://www.dahrouj.com/market.html#main": "ok",
+  "https://www.dahrouj.com/market.html#manotick": "ok",
+  "https://www.dahrouj.com/market.html#orleans": "ok",
+  "https://www.dahrouj.com/market.html#riverside-south": "ok",
+  "https://www.dahrouj.com/market.html#stittsville": "ok",
+  "https://www.dahrouj.com/market.html#westboro": "ok",
+  "https://www.dahrouj.com/moving-to-ottawa.html#faq": "ok",
+  "https://www.dahrouj.com/moving-to-ottawa.html#main": "ok",
+  "https://www.dahrouj.com/moving-to-ottawa.html#military": "ok",
+  "https://www.dahrouj.com/moving-to-ottawa.html#newcomers": "ok",
+  "https://www.dahrouj.com/moving-to-ottawa.html#relocating": "ok",
+  "https://www.dahrouj.com/privacy.html": "ok",
+  "https://www.dahrouj.com/privacy.html#main": "ok"
+ }
+}
