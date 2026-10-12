@@ -1,0 +1,60 @@
+# Temporary: fetches map data and neighbourhood locations. Delete before merging.
+name: ci-scratch
+on:
+  push:
+    branches: [redesign]
+    paths: [".github/workflows/ci-scratch.yml"]
+permissions:
+  contents: write
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Fetch OSM data
+        shell: python
+        run: |
+          import json, time, urllib.request, urllib.parse, os
+          os.makedirs("/tmp/out", exist_ok=True)
+          UA = {"User-Agent": "dahrouj.com site build (mohamed@dahrouj.com)"}
+          def get(url, data=None):
+              req = urllib.request.Request(url, data=data, headers=UA)
+              with urllib.request.urlopen(req, timeout=120) as r:
+                  return r.read()
+          bbox = "45.393,-75.720,45.424,-75.664"
+          q = f"""[out:json][timeout:90];
+          (
+            way["highway"~"^(motorway|trunk|primary|secondary|motorway_link)$"]({bbox});
+            way["waterway"~"^(canal|river)$"]({bbox});
+            way["natural"="water"]({bbox});
+            relation["natural"="water"]({bbox});
+            way["leisure"="park"]({bbox});
+            way["leisure"="stadium"]({bbox});
+          );
+          out geom;"""
+          for ep in ["https://overpass-api.de/api/interpreter", "https://overpass.kumi.systems/api/interpreter"]:
+              try:
+                  b = get(ep, urllib.parse.urlencode({"data": q}).encode())
+                  open("/tmp/out/overpass.json", "wb").write(b); print("ok", ep, len(b)); break
+              except Exception as e:
+                  print("fail", ep, e)
+          places = {}
+          for name in ["Kanata, Ottawa", "Stittsville, Ottawa", "Barrhaven, Ottawa", "Findlay Creek, Ottawa",
+                       "Riverside South, Ottawa", "Orléans, Ottawa", "Manotick, Ottawa", "Westboro, Ottawa",
+                       "The Glebe, Ottawa", "Parliament Hill, Ottawa"]:
+              try:
+                  r = json.loads(get("https://nominatim.openstreetmap.org/search?" + urllib.parse.urlencode({"q": name, "format": "json", "limit": 3})))
+                  places[name] = [{"lat": x["lat"], "lon": x["lon"], "type": x.get("type"), "class": x.get("class"), "name": x["display_name"][:120]} for x in r]
+              except Exception as e:
+                  places[name] = str(e)
+              time.sleep(1.2)
+          open("/tmp/out/places.json", "w").write(json.dumps(places, indent=2))
+      - name: Save to ci-scratch branch
+        run: |
+          cd /tmp/out
+          git init -q -b ci-scratch
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add -A && git commit -qm "scratch ${{ github.sha }}"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}" ci-scratch
