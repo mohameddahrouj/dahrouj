@@ -439,16 +439,21 @@ form button { justify-self: start; }
 
 /* Footer */
 .foot { border-top: 1px solid var(--line); background: var(--paper-2); }
-.foot-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: 1.25rem 2.5rem; align-items: center; padding-block: 1.75rem calc(1.75rem + env(safe-area-inset-bottom, 0px)); }
-.brokerage { display: flex; gap: 1rem; align-items: center; font-size: 0.85rem; line-height: 1.45; }
-.rahr-logo { width: 54px; height: auto; flex: none; }
-.legal { display: grid; gap: 0.4rem; font-size: 0.78rem; line-height: 1.5; color: var(--muted); }
-.foot-line { display: flex; align-items: center; gap: 0.35rem; }
+.foot-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; padding-block: 1.25rem calc(1.25rem + env(safe-area-inset-bottom, 0px)); font-size: 0.82rem; color: var(--muted); }
+.brokerage { display: flex; gap: 0.75rem; align-items: center; margin-right: auto; }
+.brokerage-name { font-weight: 600; color: var(--ink); }
+.rahr-logo { width: 40px; height: auto; flex: none; }
+.foot-meta { display: flex; align-items: center; gap: 0.35rem; }
+.legal summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 0.3rem; min-height: 32px; font-weight: 600; }
+.legal summary::-webkit-details-marker { display: none; }
+.legal summary::after { content: ""; width: 0.4rem; height: 0.4rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform 0.2s; }
+.legal[open] summary::after { transform: rotate(-135deg) translateY(-1px); }
+.legal summary:hover { color: var(--brand); }
+.legal[open] { flex-basis: 100%; order: 3; display: grid; gap: 0.5rem; line-height: 1.5; font-size: 0.78rem; }
 .social { display: inline-flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 50%; color: var(--muted); margin-left: -8px; }
 .social:hover { color: var(--brand); background: var(--brand-soft); }
 .social svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; }
 .social svg .dot { fill: currentColor; stroke: none; }
-@media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr; } }
 
 /* Icons added Oct 2026 */
 .topic-head { display: flex; align-items: center; gap: 0.9rem; }
