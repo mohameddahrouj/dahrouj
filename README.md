@@ -4,7 +4,7 @@ Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages fr
 
 ## Files
 
-- `index.html` (home), `market.html` (Market Guide: monthly report and neighbourhoods), `calculators.html` (land transfer tax, mortgage payment, affordability, CMHC), `contact.html` (consultation form and a simplified office map drawn from OpenStreetMap data, `assets/img/office-map.svg`), `fairfee.html` (FairFee™ waitlist and fee calculator)
+- `index.html` (home), `market.html` (Market Guide: monthly report and neighbourhoods), `calculators.html` (home value request form, land transfer tax, mortgage payment, affordability, CMHC), `contact.html` (consultation form and a simplified office map drawn from OpenStreetMap data, `assets/img/office-map.svg`), `fairfee.html` (FairFee™ waitlist and fee calculator)
 - `assets/css/site.css`, `assets/js/site.js` — shared styles and script. No build step, no dependencies.
 - `data/fees.json` — FairFee terms: 1.5% listing brokerage, 2% buyer's brokerage, and buyer cash back prorated at $1,000 per $400,000 of purchase price (shown only in the calculator).
 - Calculator rules (Ontario land transfer tax brackets, CMHC premiums, the 5.25% stress-test floor, 39%/44% debt limits) live in `assets/js/site.js`; check them when governments change the rules.
@@ -14,6 +14,10 @@ Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages fr
 ## Contact form and Fairfee waitlist
 
 Both forms send through [Web3Forms](https://web3forms.com), which works on static hosts like GitHub Pages. Get a free access key for mohamed@dahrouj.com and paste it into `WEB3FORMS_KEY` at the top of `assets/js/site.js`. Until then the forms tell visitors to call or email instead.
+
+## Address suggestions (home value form)
+
+The address box suggests real addresses as people type. Get a free Geoapify key (myprojects.geoapify.com, 3,000 lookups a day), restrict it to `dahrouj.com` under the key's allowed origins, and paste it into `ADDRESS_LOOKUP.key` in `assets/js/site.js`. Google Places (`provider: "google"`) and Canada Post AddressComplete (`provider: "canadapost"`) are also wired in if you'd rather use one of those. With no key, the box works as a normal text field.
 
 ## Monthly market stats
 

@@ -345,58 +345,129 @@ function initStats(st) {
 }
 
 
-/* ---------- Address suggestions (Photon, OpenStreetMap data; no key needed) ---------- */
+/* ---------- Address suggestions ----------
+   Default: Geoapify (free key at myprojects.geoapify.com, 3,000 requests a day).
+   Also supported: "google" (Places) and "canadapost" (AddressComplete).
+   Restrict the key to dahrouj.com in the provider's console. With no key, the
+   address box still works as a normal text field. */
+const ADDRESS_LOOKUP = { provider: "geoapify", key: "" };
+
+const addressProviders = {
+  geoapify: {
+    async find(q, key) {
+      const url = "https://api.geoapify.com/v1/geocode/autocomplete?" + new URLSearchParams({
+        text: q, filter: "countrycode:ca", bias: "proximity:-75.75,45.35", limit: "6", lang: "en", format: "json", apiKey: key,
+      });
+      const data = await (await fetch(url)).json();
+      return (data.results || [])
+        .filter((r) => r.housenumber || r.result_type === "building" || r.result_type === "street")
+        .map((r) => ({
+          text: r.formatted.replace(/, Canada$/, ""),
+          async pick() { return { label: r.formatted.replace(/, Canada$/, ""), postal: r.postcode || "", coords: `${r.lat},${r.lon}` }; },
+        }));
+    },
+  },
+  google: {
+    _lib: null, _token: null,
+    async load(key) {
+      if (this._lib) return this._lib;
+      if (!window.google?.maps?.importLibrary) {
+        await new Promise((ok, fail) => {
+          const sc = document.createElement("script");
+          sc.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(key)}&loading=async&libraries=places&v=weekly`;
+          sc.async = true; sc.onload = ok; sc.onerror = fail;
+          document.head.append(sc);
+        });
+        while (!window.google?.maps?.importLibrary) await new Promise((r) => setTimeout(r, 50));
+      }
+      this._lib = await google.maps.importLibrary("places");
+      return this._lib;
+    },
+    async find(q, key) {
+      const { AutocompleteSuggestion, AutocompleteSessionToken } = await this.load(key);
+      this._token = this._token || new AutocompleteSessionToken();
+      const { suggestions } = await AutocompleteSuggestion.fetchAutocompleteSuggestions({
+        input: q, includedRegionCodes: ["ca"], sessionToken: this._token,
+        locationBias: { center: { lat: 45.35, lng: -75.75 }, radius: 50000 },
+      });
+      return suggestions.filter((sg) => sg.placePrediction).map((sg) => ({
+        text: sg.placePrediction.text.toString(),
+        async pick() {
+          const place = sg.placePrediction.toPlace();
+          await place.fetchFields({ fields: ["formattedAddress", "addressComponents", "location"] });
+          addressProviders.google._token = null; // the session ends with a details lookup
+          const pc = (place.addressComponents || []).find((c) => c.types.includes("postal_code"));
+          return { label: place.formattedAddress, postal: pc ? pc.longText : "", coords: place.location ? `${place.location.lat()},${place.location.lng()}` : "" };
+        },
+      }));
+    },
+  },
+  canadapost: {
+    base: "https://ws1.postescanada-canadapost.ca/AddressComplete/Interactive",
+    async find(q, key, lastId = "") {
+      const url = `${this.base}/Find/v2.10/json3.ws?` + new URLSearchParams({
+        Key: key, SearchTerm: q, LastId: lastId, Country: "CAN", LanguagePreference: "en", MaxSuggestions: "7",
+      });
+      const data = await (await fetch(url)).json();
+      return (data.Items || []).filter((it) => !it.Error).map((it) => ({
+        text: [it.Text, it.Description].filter(Boolean).join(", "),
+        more: it.Next === "Find",
+        id: it.Id,
+        async pick() {
+          if (it.Next === "Find") return { expand: await addressProviders.canadapost.find(q, key, it.Id) };
+          const r = await (await fetch(`${addressProviders.canadapost.base}/Retrieve/v2.11/json3.ws?` + new URLSearchParams({ Key: key, Id: it.Id }))).json();
+          const a = (r.Items || []).find((x) => x.Language === "ENG") || (r.Items || [])[0] || {};
+          return { label: [a.Line1, a.City, a.ProvinceCode, a.PostalCode].filter(Boolean).join(", "), postal: a.PostalCode || "", coords: "" };
+        },
+      }));
+    },
+  },
+};
+
 function initAddress(input) {
+  const provider = addressProviders[ADDRESS_LOOKUP.provider];
+  if (!provider || !ADDRESS_LOOKUP.key) return; // plain text field until a key is added
   const list = document.getElementById(input.getAttribute("aria-controls"));
   const postal = $("#v-postal"), coords = $("#v-coords");
-  let items = [], active = -1, timer = null, ctrl = null;
-  const label = (p) => {
-    const street = [p.housenumber, p.street || p.name].filter(Boolean).join(" ");
-    return [street, p.city || p.district || p.county, p.postcode].filter(Boolean).join(", ");
-  };
+  let items = [], active = -1, timer = null, seq = 0;
   const close = () => { list.hidden = true; input.setAttribute("aria-expanded", "false"); input.removeAttribute("aria-activedescendant"); active = -1; };
-  const choose = (i) => {
-    const f = items[i]; if (!f) return;
-    input.value = label(f.properties);
-    postal.value = f.properties.postcode || "";
-    coords.value = f.geometry ? f.geometry.coordinates.slice().reverse().join(",") : "";
-    close();
-  };
   const highlight = (i) => {
     active = i;
     [...list.children].forEach((li, j) => li.setAttribute("aria-selected", j === i));
     if (i >= 0) input.setAttribute("aria-activedescendant", `addr-opt-${i}`);
   };
-  async function search(q) {
-    if (ctrl) ctrl.abort();
-    ctrl = new AbortController();
-    const url = "https://photon.komoot.io/api/?" + new URLSearchParams({
-      q, limit: "6", lang: "en", lat: "45.35", lon: "-75.75", bbox: "-76.36,44.96,-75.24,45.54", layer: "house",
-    });
-    try {
-      const r = await fetch(url, { signal: ctrl.signal });
-      const data = await r.json();
-      items = (data.features || []).filter((f) => f.properties.countrycode === "CA" && (f.properties.housenumber || f.properties.street));
-    } catch (e) {
-      if (e.name !== "AbortError") items = [];
-      if (e.name === "AbortError") return;
-    }
-    list.replaceChildren(...items.map((f, i) => {
+  const show = (found) => {
+    items = found;
+    list.replaceChildren(...items.map((it, i) => {
       const li = document.createElement("li");
-      li.id = `addr-opt-${i}`; li.role = "option"; li.textContent = label(f.properties);
+      li.id = `addr-opt-${i}`; li.setAttribute("role", "option");
+      li.textContent = it.text + (it.more ? " (choose a unit)" : "");
       li.addEventListener("mousedown", (ev) => { ev.preventDefault(); choose(i); });
       return li;
     }));
     const open = items.length > 0 && document.activeElement === input;
     list.hidden = !open; input.setAttribute("aria-expanded", open);
     highlight(-1);
+  };
+  async function choose(i) {
+    const it = items[i]; if (!it) return;
+    try {
+      const res = await it.pick();
+      if (res.expand) return show(res.expand);
+      input.value = res.label || it.text; postal.value = res.postal; coords.value = res.coords;
+    } catch (e) { input.value = it.text; }
+    close();
   }
   input.addEventListener("input", () => {
     postal.value = ""; coords.value = "";
     clearTimeout(timer);
     const q = input.value.trim();
-    if (q.length < 4) return close();
-    timer = setTimeout(() => search(q), 250);
+    if (q.length < 3) return close();
+    timer = setTimeout(async () => {
+      const mine = ++seq;
+      try { const found = await provider.find(q, ADDRESS_LOOKUP.key); if (mine === seq) show(found); }
+      catch (e) { console.warn("Address lookup unavailable", e); close(); }
+    }, 220);
   });
   input.addEventListener("keydown", (e) => {
     if (list.hidden) return;
@@ -405,7 +476,7 @@ function initAddress(input) {
     else if (e.key === "Enter" && active >= 0) { e.preventDefault(); choose(active); }
     else if (e.key === "Escape") close();
   });
-  input.addEventListener("blur", () => setTimeout(close, 100));
+  input.addEventListener("blur", () => setTimeout(close, 150));
 }
 
 /* ---------- Forms ---------- */
