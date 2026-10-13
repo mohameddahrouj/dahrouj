@@ -49,8 +49,9 @@ html,body {{ margin:0; width:1200px; height:630px; overflow:hidden; font-family:
 .shade {{ position:absolute; inset:0; background: linear-gradient(90deg, rgba(24,10,56,.92) 0%, rgba(24,10,56,.78) 42%, rgba(24,10,56,.15) 78%, rgba(24,10,56,0) 100%), linear-gradient(0deg, rgba(24,10,56,.55), rgba(24,10,56,0) 35%); }}
 .solid {{ position:absolute; inset:0; background: radial-gradient(circle at 85% 30%, #3B1F7A 0%, #260E58 55%, #1B0A40 100%); }}
 .content {{ position:absolute; left:72px; top:64px; bottom:56px; width:{'640' if right else '700'}px; display:flex; flex-direction:column; }}
-.logo {{ display:flex; align-items:flex-end; gap:3px; font-family:Pop; font-weight:700; font-size:30px; letter-spacing:-.01em; }}
-.mark {{ width:30px; height:32px; object-fit:contain; margin-bottom:3px; }}
+.logo {{ display:flex; align-items:flex-end; line-height:1; font-family:Pop; font-weight:700; font-size:30px; }}
+.logo .t {{ letter-spacing:-.005em; margin-left:.06em; margin-bottom:.08em; }}
+.mark {{ display:block; width:38.7px; height:41.1px; object-fit:contain; flex:none; }}
 h1 {{ margin:auto 0 18px; font-size:{'64' if right else '66'}px; line-height:1.03; letter-spacing:-.035em; font-weight:800; }}
 .sub {{ font-size:27px; line-height:1.3; color:rgba(255,255,255,.88); margin:0 0 34px; }}
 .sig {{ font-size:17px; color:rgba(255,255,255,.75); border-top:1px solid rgba(255,255,255,.25); padding-top:16px; }}
@@ -70,7 +71,7 @@ h1 {{ margin:auto 0 18px; font-size:{'64' if right else '66'}px; line-height:1.0
 .ffmark {{ font-size:96px; letter-spacing:-.03em; font-weight:500; color:#fff; }}
 .ffmark b {{ font-weight:800; }} .ffmark sup {{ font-size:34px; font-weight:600; vertical-align:top; position:relative; top:12px; }}
 </style></head><body><div class="card">{bg}
-<div class="content"><div class="logo"><img class="mark" src="file://{TMP / 'logo-white.png'}">ahrouj.com</div>
+<div class="content"><div class="logo"><img class="mark" src="file://{TMP / 'logo-white.png'}"><span class="t">ahrouj.com</span></div>
 <h1>{c['title']}</h1><p class="sub">{c['sub']}</p>
 <div class="sig">Mohamed Dahrouj, Sales Representative · Right at Home Realty, Brokerage</div></div>
 {f'<div class="art">{right}</div>' if right else ''}
