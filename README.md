@@ -19,6 +19,10 @@ Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages fr
 
 The Cottages page draws Big Rideau Lake, Mississippi Lake, Calabogie Lake and White Lake from OpenStreetMap shorelines (`assets/img/lakes.json`, simplified SVG paths; © OpenStreetMap contributors).
 
+## Link previews
+
+When a page is shared (text message, Facebook, LinkedIn, WhatsApp), the preview shows a 1200×630 image from `assets/img/share/`, one per page, set in the page script's `SHARE` list. To change the wording or add a page, edit `scripts/make_share_images.py` and run it. The Parliament photos (`ottawa.jpeg`, `ottawa2.jpg`) come from the previous version of the site.
+
 ## Search engines and AI assistants
 
 Every page has its own title, description and canonical link. The home page carries `RealEstateAgent` structured data (services, areas served, topics), and the Moving to Ottawa and Cottages pages carry `FAQPage` data. `sitemap.xml` and `robots.txt` are generated with the pages, and `llms.txt` gives AI assistants a plain summary of the business. Keep the name, address and phone identical here, on Google Business Profile and on the brokerage roster.
