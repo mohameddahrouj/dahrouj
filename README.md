@@ -5,7 +5,8 @@ Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages fr
 ## Files
 
 - `index.html` (home), `market.html` (Ottawa Market: monthly report and neighbourhoods), `home-value.html` (free home value request: just the address), `calculators.html` (land transfer tax, mortgage payment with CMHC insurance, affordability, shown one at a time in tabs), `moving-to-ottawa.html` (relocation, newcomers to Canada, military postings), `cottages.html` (buying a cottage near Ottawa), `contact.html` (consultation form; `contact.html#search` and `#cottage` open it as a custom search request and a simplified office map drawn from OpenStreetMap data, `assets/img/office-map.svg`), `fairfee.html` (our FairFee™ fee and calculator), `privacy.html` (privacy policy, linked from the footer and under each form)
-- `assets/css/site.css`, `assets/js/site.js` — shared styles and script. No build step, no dependencies.
+- `assets/css/site.css`, `assets/js/site.js` — shared styles and script.
+- `scripts/build_pages.py` — writes every page (shared header, footer, text and the market numbers from `data/stats.json`). Edit the text there and run `python3 scripts/build_pages.py`; the monthly stats workflow runs it too.
 - `assets/fonts/` — Schibsted Grotesk and Poppins, self-hosted (SIL Open Font License, licence files included) so no visitor data goes to Google Fonts.
 - `data/fees.json` — FairFee terms: 1.5% listing brokerage, 2% buyer's brokerage, and buyer cash back prorated at $1,000 per $400,000 of purchase price (shown only in the calculator).
 - Calculator rules (Ontario land transfer tax brackets, CMHC premiums, the 5.25% stress-test floor, 39%/44% debt limits) live in `assets/js/site.js`; check them when governments change the rules.

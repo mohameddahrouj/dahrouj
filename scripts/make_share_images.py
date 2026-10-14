@@ -17,7 +17,7 @@ CARDS = {
  "home":       dict(photo="hero-canal.webp", pos="60% 55%", title="Your next move in Ottawa, handled personally.", sub="Selling, buying and leasing across Ottawa"),
  "home-value": dict(photo="ottawa2.jpg", pos="70% 60%", title="What’s your Ottawa home worth?", sub="A free value based on recent sales nearby"),
  "moving":     dict(photo="ottawa.jpeg", pos="55% 60%", title="Moving to Ottawa", sub="Relocating for work, new to Canada, or posted to Ottawa"),
- "contact":    dict(photo="hero-canal.webp", pos="85% 70%", title="Book a consultation", sub="Our office is in the Glebe. There’s no cost to meet."),
+ "contact":    dict(photo="hero-canal.webp", pos="85% 70%", title="Let’s talk about your move", sub="Our office is in the Glebe. There’s no cost to meet."),
  "market":     dict(art="bars", title="Ottawa real estate market", sub="Monthly numbers from the Ottawa Real Estate Board"),
  "calculators":dict(art="icons", title="Home buying calculators", sub="Land transfer tax, mortgage payments and affordability"),
  "cottages":   dict(art="lakes", title="Buying a cottage near Ottawa", sub="Rideau Lakes, Lanark County, Calabogie and the Ottawa Valley"),
