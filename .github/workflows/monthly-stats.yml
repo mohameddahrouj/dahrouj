@@ -43,6 +43,10 @@ jobs:
           if [ $code -eq 2 ]; then echo "Report not out yet."; exit 0; fi
           exit $code
 
+      - name: Rebuild the pages with the new numbers
+        if: steps.stats.outputs.label != ''
+        run: python scripts/build_pages.py
+
       - name: Open a pull request
         uses: peter-evans/create-pull-request@v7
         with:
@@ -53,5 +57,8 @@ jobs:
           body: |
             New numbers from the Ottawa Real Estate Board's monthly market update, pulled automatically.
 
-            Check `data/stats.json` against the PDF linked in `sourceUrl`, then merge to publish.
-          add-paths: data/stats.json
+            Check `data/stats.json` against the PDF linked in `sourceUrl`, then merge to publish. The pages were rebuilt so the new numbers are written into the Ottawa Market and home pages.
+          add-paths: |
+            data/stats.json
+            *.html
+            sitemap.xml

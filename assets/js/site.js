@@ -533,6 +533,7 @@ function initForm(form) {
   const done = {
     waitlist: "You’re on the list. We’ll email you when FairFee™ opens in your area.",
     valuation: "Thanks! We’ll get back to you soon with your home’s value.",
+    alerts: "You’re signed up. Your first neighbourhood update is on its way soon.",
   }[kind] || "Request sent. We’ll be in touch to find a time.";
 
   const valid = (el) => {
@@ -561,8 +562,10 @@ function initForm(form) {
       if (!ok && !bad) bad = el;
     });
     if (bad) {
-      const name = form.querySelector(`label[for="${bad.id}"]`).firstChild.textContent.trim().toLowerCase();
-      status.textContent = bad.name === "contact" && bad.value
+      const lab = form.querySelector(`label[for="${bad.id}"]`);
+      const name = lab ? lab.firstChild.textContent.trim().toLowerCase() : "details";
+      status.textContent = bad.type === "checkbox" ? "Tick the box so we’re allowed to email you."
+        : bad.name === "contact" && bad.value
         ? "Enter a phone number with area code, or a full email address."
         : bad.type === "email" && bad.value ? "Enter a full email address, like name@example.com." : `Add your ${name} to send this.`;
       bad.focus();
@@ -580,6 +583,7 @@ function initForm(form) {
       subject: {
         waitlist: `FairFee waitlist: ${data.role}, ${data.area}`,
         valuation: `Home value request: ${data.address}`,
+        alerts: `Neighbourhood sales updates: ${data.neighbourhood} (${data.email})`,
       }[kind] || `dahrouj.com: ${data.topic} (${data.name})`,
       from_name: kind === "waitlist" ? "FairFee waitlist" : "dahrouj.com",
       replyto: data.email || (data.contact && data.contact.includes("@") ? data.contact : undefined),
