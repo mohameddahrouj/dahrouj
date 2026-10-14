@@ -138,7 +138,7 @@ html.js .top.open .nav {
 .home .menu-btn { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.45); color: #FFFFFF; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .home .top.open .menu-btn { background: var(--field); color: var(--ink); border-color: var(--line); }
 .hero-wrap { padding: 0; max-width: none; }
-.hero { position: relative; overflow: hidden; min-height: 100vh; min-height: 100svh; display: flex; align-items: flex-end; color: #FFFFFF; background: #2B2440;
+.hero { position: relative; overflow: hidden; min-height: 100vh; min-height: 100lvh; display: flex; align-items: flex-end; color: #FFFFFF; background: #2B2440;
   padding: 7rem max(16px, calc((100% - 72rem) / 2 + 4vw)) clamp(2.5rem, 7vw, 5rem); }
 .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; }
 .hero::before { content: ""; position: absolute; inset: 0 0 auto; height: 10rem; z-index: 1; background: linear-gradient(180deg, rgba(20, 14, 38, 0.6), rgba(20, 14, 38, 0)); }
@@ -161,7 +161,10 @@ html.js .top.open .nav {
 }
 @media (max-width: 600px) {
   .actions .btn { flex: 1 1 100%; }
-  .hero { min-height: 100vh; min-height: 100svh; padding: 6rem 16px calc(2rem + env(safe-area-inset-bottom, 0px)); }
+  /* Photo runs to the very bottom of the screen, even behind a browser's floating toolbar (lvh);
+     the text is lifted by the toolbar's height (lvh - svh) so the buttons stay visible on load */
+  .hero { min-height: 100vh; min-height: 100lvh; padding: 6rem 16px calc(2rem + env(safe-area-inset-bottom, 0px));
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px) + (100lvh - 100svh)); }
 }
 
 .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 3rem; margin-top: 3rem; }
