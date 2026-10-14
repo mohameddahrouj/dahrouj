@@ -26,7 +26,7 @@ def head(title, desc, extra=""):
 """
 
 NAV = [("home-value.html", "What’s my home worth?", "home-value"), ("market.html", "Ottawa Market", "market"),
-       ("calculators.html", "Calculators", "calculators"), ("fairfee.html", '<span class="ff-word">Fair<b>Fee</b></span><sup>™</sup>', "fairfee"), ("contact.html", "Contact", "contact")]
+       ("moving-to-ottawa.html", "Moving to Ottawa", "moving"), ("fairfee.html", '<span class="ff-word">Fair<b>Fee</b></span><sup>™</sup>', "fairfee"), ("contact.html", "Contact", "contact")]
 
 def header(active):
     links = "\n".join(
@@ -60,6 +60,7 @@ FOOTER = f"""
       <span class="brokerage-name"><span class="agent-name">Mohamed Dahrouj, Sales Representative</span><span>Right at Home Realty, Brokerage</span></span>
     </div>
     <nav class="foot-meta" aria-label="Footer">
+      <a class="foot-link" href="calculators.html">Calculators</a>
       <a class="foot-link" href="privacy.html">Privacy</a>
       <button class="foot-link legal-btn" type="button" aria-expanded="false" aria-controls="legal-text">Legal</button>
       <a class="social" href="https://www.instagram.com/dahroujrealestate" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" class="dot"/></svg></a>
@@ -168,7 +169,7 @@ HOME = f"""
     <h2>Everything handled for you</h2>
     <div class="tiles">
       <div class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V3"/><path d="M5 5h12l-2.5 3.5L17 12H5"/></svg><h3>Selling</h3><p>A plan, a price and a full launch</p></div>
-      <div class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15.5" r="4.5"/><path d="M11.2 12.3 20 3.5"/><path d="M17 6.5l3 3"/><path d="M14.6 8.9l2 2"/></svg><h3>Buying</h3><p>Find it, price it, win it</p></div>
+      <a class="tile tile-link" href="calculators.html#afford"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15.5" r="4.5"/><path d="M11.2 12.3 20 3.5"/><path d="M17 6.5l3 3"/><path d="M14.6 8.9l2 2"/></svg><h3>Buying</h3><p>Find it, price it, win it</p><span class="tile-more">See what you can afford →</span></a>
       <div class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="10" height="18" rx="1"/><path d="M14 9h6v12h-6"/><path d="M7.5 7h3M7.5 11h3M7.5 15h3"/></svg><h3>Leasing &amp; investing</h3><p>Rentals, tenants and the numbers</p></div>
       <div class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18"/><path d="M6 21v-7"/><path d="M11 21V5"/><path d="M16 21v-10"/><path d="M21 21v-4"/></svg><h3>Pricing research</h3><p>Recent sales on your street</p></div>
       <div class="tile"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="14" height="6" rx="1.5"/><path d="M17 6h3v5.5h-8V15"/><rect x="10.5" y="15" width="3" height="6" rx="1"/></svg><h3>Staging &amp; paint</h3><p>Ready for buyers on day one</p></div>
@@ -543,6 +544,7 @@ MOVING = """
     <div class="topic-intro">
       <div class="topic-head"><svg class="topic-ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5.5A1.5 1.5 0 0 1 10.5 4h3A1.5 1.5 0 0 1 15 5.5V7"/><path d="M3 12.5h18"/><path d="M12 11.5v2"/></svg><h2 id="rel-h">Relocating to Ottawa for work</h2></div>
       <p>Ottawa’s big employers are spread out: federal departments downtown and in Gatineau, the Kanata North tech park in the west end, hospitals and universities in the core. Where you work shapes where you’ll want to live.</p>
+      <p class="topic-link"><a class="link" href="calculators.html#afford">See what you can afford →</a></p>
     </div>
     <ul class="checks">
       <li>A neighbourhood shortlist that fits your commute, schools and budget</li>
@@ -557,6 +559,7 @@ MOVING = """
       <div class="topic-intro">
         <div class="topic-head"><svg class="topic-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-4.5"/><path d="M12 16.5 7.6 17.3l.6-1.9-5.2-4.1 1.6-.9-1-3.2 2.8.6.8-1.7 2.9 2.6-.8-4.8 2.1 1.1L12 2.5l1.6 2.5 2.1-1.1-.8 4.8 2.9-2.6.8 1.7 2.8-.6-1 3.2 1.6.9-5.2 4.1.6 1.9z"/></svg><h2 id="new-h">Newcomers to Canada</h2></div>
         <p>Buying or renting your first home in a new country comes with new rules and new words. We explain each step in plain language and take the time to answer every question.</p>
+        <p class="topic-link"><a class="link" href="calculators.html#payment">Estimate your mortgage payment →</a></p>
       </div>
       <ul class="checks">
         <li>How buying works in Ontario, step by step, from offer to closing</li>
@@ -806,6 +809,7 @@ def market_page(st):
 {bars}
       </ul>
       <p class="fine">The MLS® Home Price Index “benchmark” tracks a typical home, so it moves less than the average price when the mix of sales changes.</p>
+      <p class="mk-link"><a class="link" href="calculators.html#payment">What would this cost you? Try the mortgage calculator →</a></p>
     </div>
     <div class="mk-card mk-wide">
       <h2 class="h3">How fast homes are selling</h2>
