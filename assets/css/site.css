@@ -163,7 +163,7 @@ html.js .top.open .nav {
   .actions .btn { flex: 1 1 100%; }
   /* Photo runs to the very bottom of the screen, even behind a browser's floating toolbar (lvh);
      the text is lifted by the toolbar's height (lvh - svh) so the buttons stay visible on load */
-  .hero { min-height: 100vh; min-height: 100lvh; padding: 6rem 16px calc(2rem + env(safe-area-inset-bottom, 0px));
+  .hero { min-height: 100vh; min-height: 100lvh; min-height: calc(100lvh + env(safe-area-inset-bottom, 0px)); padding: 6rem 16px calc(2rem + env(safe-area-inset-bottom, 0px));
     padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px) + (100lvh - 100svh)); }
 }
 
