@@ -213,9 +213,9 @@ const calcs = {
   },
   afford() {
     const income = val("#aff-income") / 12, down = val("#aff-down"), debts = val("#aff-debts");
-    const rate = val("#aff-rate"), tax = val("#aff-tax"), heat = val("#aff-heat"), condo = val("#aff-condo");
+    const rate = val("#aff-rate"), tax = val("#aff-tax"), utilities = val("#aff-utilities"), condo = val("#aff-condo");
     const q = Math.max(rate + 2, 5.25);
-    const housing = tax + heat + condo / 2;
+    const housing = tax + utilities + condo / 2;
     const maxPmt = Math.max(0, Math.min(income * 0.39 - housing, income * 0.44 - housing - debts));
     const maxLoan = principalFor(maxPmt, q, 25, 12);
     // Largest price where the down payment meets the minimum and the loan (with any insurance) fits.
