@@ -583,7 +583,7 @@ function initForm(form) {
       subject: {
         waitlist: `FairFee waitlist: ${data.role}, ${data.area}`,
         valuation: `Home value request: ${data.address}`,
-        alerts: `Neighbourhood sales updates: ${data.neighbourhood} (${data.email})`,
+        alerts: `Neighbourhood sales updates: ${data.name}, ${data.neighbourhood}`,
       }[kind] || `dahrouj.com: ${data.topic} (${data.name})`,
       from_name: kind === "waitlist" ? "FairFee waitlist" : "dahrouj.com",
       replyto: data.email || (data.contact && data.contact.includes("@") ? data.contact : undefined),

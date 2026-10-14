@@ -843,14 +843,18 @@ def market_page(st):
     <form class="alerts-form" id="alerts-form" data-form="alerts" novalidate>
       <div class="field-row">
         <div class="field">
+          <label for="al-name">Name</label>
+          <input id="al-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
           <label for="al-email">Email</label>
           <input id="al-email" name="email" type="email" autocomplete="email" required>
         </div>
-        <div class="field">
+      </div>
+      <div class="field">
           <label for="al-area">Neighbourhood</label>
           <input id="al-area" name="neighbourhood" list="al-areas" autocomplete="off" required placeholder="e.g. Kanata">
           <datalist id="al-areas">{''.join(f'<option value="{n}"></option>' for _, n, *_ in AREAS)}</datalist>
-        </div>
       </div>
       <label class="check consent"><input id="al-consent" name="consent" type="checkbox" value="yes" required> <span>Yes, email me neighbourhood sales updates from Mohamed Dahrouj, Right at Home Realty, Brokerage. I can unsubscribe any time.</span></label>
       <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
