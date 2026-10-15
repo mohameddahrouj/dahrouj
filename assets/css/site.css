@@ -161,15 +161,9 @@ html.js .top.open .nav {
 }
 @media (max-width: 600px) {
   .actions .btn { flex: 1 1 100%; }
-  /* Phones: the photo is made a little taller than any screen (an extra 7rem "overscan"), so it always
-     reaches the bottom edge, whatever the browser's toolbars do. The text gets the same extra padding,
-     so it stays just above the toolbar and the extra photo only appears once you start scrolling. */
-  .hero { --overscan: 4.5rem; min-height: calc(100vh + var(--overscan)); min-height: calc(100lvh + env(safe-area-inset-bottom, 0px) + var(--overscan));
-    padding: 6rem 16px calc(2rem + var(--overscan) + env(safe-area-inset-bottom, 0px));
-    padding-bottom: calc(2rem + var(--overscan) + env(safe-area-inset-bottom, 0px) + (100lvh - 100svh)); }
-  /* Dark behind the text only; below the buttons the canal photo shows through again instead of a solid purple block */
-  .hero::after { background: linear-gradient(180deg, rgba(20, 14, 38, 0.1) 0%, rgba(20, 14, 38, 0.3) 28%, rgba(20, 14, 38, 0.78) 50%,
-    rgba(20, 14, 38, 0.82) calc(100% - var(--overscan) - 6rem), rgba(20, 14, 38, 0.35) 100%); }
+  /* Phones: the photo fills most of the visible screen and the next section peeks in at the bottom,
+     which hints that there's more to scroll (the usual approach; svh = screen with browser toolbars showing) */
+  .hero { min-height: 90vh; min-height: 90svh; padding: 6rem 16px 2rem; }
 }
 
 .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 3rem; margin-top: 3rem; }
