@@ -429,7 +429,9 @@ form button { justify-self: start; }
 .ff-logo sup { font-size: 0.45em; font-weight: 600; align-self: flex-start; margin-left: 0.08em; }
 .ff-hero { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 3rem; padding-block: clamp(3rem, 7vw, 6rem); align-items: start; }
 .ff-intro { display: grid; gap: 1.25rem; justify-items: start; }
-.ff-intro h1 { font-size: var(--step-3); max-width: 20ch; }
+.ff-intro h1, .ff-intro .h1 { font-size: var(--step-3); max-width: 20ch; }
+.ff-intro .h1 { margin: 0; font-weight: 700; letter-spacing: -0.035em; line-height: 1.03; text-wrap: balance; }
+.ff-copy:not([hidden]) { display: grid; gap: 1.25rem; }
 .ff-badge { display: inline-flex; align-items: center; gap: 0.3em; padding: 0.4rem 0.9rem 0.4rem 1rem; border-radius: 999px; background: var(--brand-soft); color: var(--ink); font-weight: 600; font-size: var(--step--1); }
 .ff-badge .ff-logo { font-size: 1.15rem; }
 @media (max-width: 860px) { .ff-hero { grid-template-columns: 1fr; } }

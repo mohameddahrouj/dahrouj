@@ -31,7 +31,6 @@ function initFees(fees) {
 
   $("#sell-rate").textContent = rate(s.listingRate);
   $("#coop-rate").textContent = rate(s.buyerAgentRate);
-  $("#buy-rate").textContent = rate(b.assumedBuyerAgentRate);
   $("#sell-note").textContent = s.note;
   $("#buy-note").textContent = b.note;
 
@@ -56,9 +55,7 @@ function initFees(fees) {
     $("#sell-total").textContent = money(total);
     bump($("#sell-keep"), money(p - total));
 
-    const comm = p * b.assumedBuyerAgentRate / 100;
     const rebate = (p / b.rebateStep) * b.rebatePer;
-    $("#buy-comm").textContent = money(comm);
     bump($("#buy-rebate"), money(rebate));
   }
 
@@ -69,6 +66,9 @@ function initFees(fees) {
       t.tabIndex = on ? 0 : -1;
       panels[t.id].hidden = !on;
     });
+    // The text beside the calculator follows the tab: selling or buying
+    const buying = tab.id === "tab-buy";
+    if ($("#ff-copy-sell")) { $("#ff-copy-sell").hidden = buying; $("#ff-copy-buy").hidden = !buying; }
   }
   tabs.forEach((t, i) => {
     t.addEventListener("click", () => select(t));
