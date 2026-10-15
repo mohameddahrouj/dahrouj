@@ -586,6 +586,8 @@ MOVING = """
     </ul>
   </section>
 
+  <p class="wrap cottage-nudge"><a class="link" href="cottages.html">Looking for a cottage too? See cottages near Ottawa →</a></p>
+
   <section class="band">
     <div class="wrap section faq" id="faq" aria-labelledby="faq-h">
       <h2 id="faq-h">Common questions</h2>
