@@ -69,6 +69,7 @@ function initFees(fees) {
     // The text beside the calculator follows the tab: selling or buying
     const buying = tab.id === "tab-buy";
     if ($("#ff-copy-sell")) { $("#ff-copy-sell").hidden = buying; $("#ff-copy-buy").hidden = !buying; }
+    if ($("#ff-talk")) $("#ff-talk").href = buying ? "contact.html#buying" : "contact.html#selling";
   }
   tabs.forEach((t, i) => {
     t.addEventListener("click", () => select(t));
@@ -640,6 +641,8 @@ function initTabs(list) {
 function initContactPreset() {
   const presets = {
     search: { topic: "Starting a custom home search", title: "Start your custom search", lede: "Tell us your budget, timing and must-haves. We’ll build a custom search and send you homes as they list." },
+    selling: { topic: "Selling a home", title: "Let’s talk about selling", lede: "Tell us a little about your home and your timing, and we’ll be in touch to find a time." },
+    buying: { topic: "Buying a home", title: "Let’s talk about buying", lede: "Tell us what you’re looking for and your timing, and we’ll be in touch to find a time." },
     cottage: { topic: "Buying a cottage", title: "Start your cottage search", lede: "Tell us your budget, drive time and the kind of water you want. We’ll send you cottages as they list." },
   };
   const p = presets[location.hash.slice(1)];
