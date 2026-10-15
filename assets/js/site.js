@@ -122,14 +122,18 @@ function initMenu() {
   const header = $(".top");
   if (!btn) return;
   document.documentElement.classList.add("js");
-  btn.addEventListener("click", () => {
-    const open = btn.getAttribute("aria-expanded") !== "true";
+  const setOpen = (open) => {
     btn.setAttribute("aria-expanded", open);
     header.classList.toggle("open", open);
-  });
+  };
+  btn.addEventListener("click", () => setOpen(btn.getAttribute("aria-expanded") !== "true"));
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && header.classList.contains("open")) { btn.click(); btn.focus(); }
+    if (e.key === "Escape" && header.classList.contains("open")) { setOpen(false); btn.focus(); }
   });
+  // Close the menu when a link in it is followed, and when the browser's Back button
+  // brings this page back from its cache (it would otherwise reappear with the menu still open)
+  header.querySelectorAll(".nav a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  addEventListener("pageshow", () => setOpen(false));
 }
 
 /* ---------- Buying calculators (Ontario rules) ---------- */
