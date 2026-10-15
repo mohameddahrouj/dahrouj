@@ -489,8 +489,14 @@ FAIRFEE = f"""
   <section class="wrap ff-hero">
     <div class="ff-intro">
       <p class="ff-badge">Proud agent on {FF_MARK}</p>
-      <h1>Your home.<br>You call the shots.</h1>
-      <p class="lede">Set the terms, see every dollar and stay in control of your sale. A lower listing fee, in writing before you hire us, with full service included. Move the price to see your numbers.</p>
+      <div class="ff-copy" id="ff-copy-sell">
+        <h1>Your home.<br>You call the shots.</h1>
+        <p class="lede">Set the terms, see every dollar and stay in control of your sale. A lower listing fee, in writing before you hire us, with full service included. Move the price to see your numbers.</p>
+      </div>
+      <div class="ff-copy" id="ff-copy-buy" hidden>
+        <p class="h1">Your next home.<br>You call the shots.</p>
+        <p class="lede">Full service from the first showing to the keys: the search, pricing advice, your offer and the negotiation. In most Ottawa sales the seller pays the buyer’s brokerage fee. Move the price to see your numbers.</p>
+      </div>
       <a class="btn btn-quiet" href="contact.html">Let’s talk</a>
     </div>
     <div class="calc" id="calc">
@@ -516,9 +522,6 @@ FAIRFEE = f"""
         <p class="fine" id="sell-note"></p>
       </div>
       <div role="tabpanel" id="panel-buy" aria-labelledby="tab-buy" class="panel" hidden>
-        <dl class="ledger">
-          <div><dt>Commission our brokerage receives <span id="buy-rate"></span></dt><dd id="buy-comm"></dd></div>
-        </dl>
         <p class="keep"><span class="keep-label">Cash back to you</span> <strong id="buy-rebate"></strong> <span class="keep-small">after closing</span></p>
         <p class="fine" id="buy-note"></p>
       </div>
