@@ -354,10 +354,10 @@ CALCULATORS = f"""
         {num_field("aff-rate", "Interest rate", 4.29, step="0.01", prefix="", suffix="%")}
       </div>
       <details class="more-opts">
-        <summary>More options <span class="opt">(property tax, utilities, condo fees)</span></summary>
+        <summary>More options <span class="opt">(property tax, heating, condo fees)</span></summary>
         <div class="field-row">
           {num_field("aff-tax", "Property tax (monthly)", 450, step="25")}
-          {num_field("aff-utilities", "Utilities (monthly)", 250, step="10")}
+          {num_field("aff-heat", "Heating (monthly)", 150, step="10")}
           {num_field("aff-condo", "Condo fees (monthly)", 0, step="25")}
         </div>
       </details>
@@ -366,7 +366,7 @@ CALCULATORS = f"""
         <div><dt>Largest mortgage</dt><dd id="aff-loan"></dd></div>
         <div class="total"><dt>Price you could afford</dt><dd id="aff-price"></dd></div>
       </dl>
-      <p class="fine" id="aff-msg">Lenders qualify you at the higher of your rate plus 2% or 5.25%, with housing costs under 39% of income and all debts under 44%. Assumes a 25-year amortization, $450 a month in property tax and $250 in utilities unless you change them.</p>
+      <p class="fine" id="aff-msg">Lenders qualify you at the higher of your rate plus 2% or 5.25%, with housing costs under 39% of income and all debts under 44%. Assumes a 25-year amortization, $450 a month in property tax and $150 in heating unless you change them. Lenders count heating only, so budget extra for hydro and water.</p>
     </form>
   </section>
 
