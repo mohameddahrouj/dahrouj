@@ -564,7 +564,7 @@ html.js .legal-text:not(.open) { display: none; }
 .mk-table { margin-top: 1.25rem; }
 .mk-table .table-wrap { margin-top: 0.5rem; }
 .source a { color: inherit; }
-@media (max-width: 900px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mk-grid, .paces { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mk-grid, .paces { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 420px) { .kpi { padding: 0.9rem; } .kpi dt { font-size: 0.78rem; } }
 
 /* Neighbourhood sales updates */
@@ -576,9 +576,22 @@ html.js .legal-text:not(.open) { display: none; }
 .consent { align-items: flex-start; font-size: var(--step--1); color: var(--muted); line-height: 1.45; }
 .consent input { margin-top: 0.2rem; flex: none; }
 .snap-links { display: inline-flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; }
-@media (max-width: 860px) { .alerts { grid-template-columns: 1fr; } }
+@media (max-width: 860px) { .alerts { grid-template-columns: minmax(0, 1fr); } }
 .tile span.tile-more { margin-top: 0.35rem; color: var(--brand); font-weight: 600; font-size: var(--step--1); }
 .topic-intro .topic-link, .mk-link { margin: 0; }
 .topic-intro .topic-link a, .mk-link a { color: var(--brand); }
 .cottage-nudge { margin: 0; padding-bottom: var(--space); }
 .cottage-nudge a { color: var(--brand); font-size: var(--step-1); }
+
+/* Very narrow windows (e.g. Safari Split View on a folding phone): let long words and the footer shrink */
+.brokerage-name, .brokerage-name > span { min-width: 0; overflow-wrap: anywhere; }
+h1, h2 { overflow-wrap: break-word; }
+@media (max-width: 320px) {
+  h1, .page-head h1, .hero h1 { font-size: 1.85rem; }
+  h2 { font-size: 1.5rem; }
+  .foot-meta { flex-wrap: wrap; white-space: normal; justify-content: center; }
+  .rahr-logo { height: 52px; }
+  .kpis { grid-template-columns: 1fr; }
+  .pace-row { grid-template-columns: 3.8rem 1fr auto; gap: 0.5rem; }
+  .meter-zones { font-size: 0.68rem; }
+}
