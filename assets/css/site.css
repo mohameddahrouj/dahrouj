@@ -161,15 +161,9 @@ html.js .top.open .nav {
 }
 @media (max-width: 600px) {
   .actions .btn { flex: 1 1 100%; }
-  /* Phones: the photo fills the whole screen on first load, including behind Safari's floating toolbar.
-     It is made slightly taller than the screen (--overscan) so it always reaches the bottom edge; the text is
-     lifted by the same amount so it stays above the toolbar. The dark tint sits only behind the text, so the
-     extra strip below the buttons shows the canal photo rather than a solid colour. */
-  .hero { --overscan: 5rem; min-height: calc(100vh + var(--overscan)); min-height: calc(100lvh + env(safe-area-inset-bottom, 0px) + var(--overscan));
-    padding: 6rem 16px calc(2rem + var(--overscan) + env(safe-area-inset-bottom, 0px));
-    padding-bottom: calc(2rem + var(--overscan) + env(safe-area-inset-bottom, 0px) + (100lvh - 100svh)); }
-  .hero::after { background: linear-gradient(180deg, rgba(20, 14, 38, 0.1) 0%, rgba(20, 14, 38, 0.3) 28%, rgba(20, 14, 38, 0.78) 50%,
-    rgba(20, 14, 38, 0.82) calc(100% - var(--overscan) - 6rem), rgba(20, 14, 38, 0.35) 100%); }
+  /* Phones: the photo takes about 85% of the visible screen (svh = screen with browser toolbars showing),
+     so the next section's heading clearly peeks in above Safari's toolbar as a cue to scroll */
+  .hero { min-height: 85vh; min-height: 85svh; padding: 6rem 16px 2rem; }
 }
 
 .services { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 3rem; margin-top: 3rem; }
