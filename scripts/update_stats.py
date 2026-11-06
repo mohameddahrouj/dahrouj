@@ -119,7 +119,8 @@ def parse(text):
     v, last = row(month, "Months of Inventory", 2)
     m["monthsOfInventory"] = {"value": v, "lastYear": last}
     v, last = row(month, "Median Days on Market", 2)
-    m["daysOnMarket"] = {"value": int(v), "lastYear": int(last)}
+    whole = lambda x: int(x) if float(x).is_integer() else float(x)  # keep half days such as 25.5
+    m["daysOnMarket"] = {"value": whole(v), "lastYear": whole(last)}
     v, last = row(month, "Sale to List Price Ratio", 2)
     m["saleToListRatio"] = {"value": v, "lastYear": last}
 
