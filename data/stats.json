@@ -1,28 +1,73 @@
 {
-  "month": "2026-09",
-  "label": "September 2026",
-  "compareLabel": "September 2025",
-  "released": "2026-10-05",
+  "month": "2026-10",
+  "label": "October 2026",
+  "compareLabel": "October 2025",
+  "released": "2026-11-05",
   "source": "Ottawa Real Estate Board (OREB)",
-  "sourceUrl": "https://www.oreb.ca/wp-content/uploads/2026/10/OREB_MarketUpdate_HLP_September26.pdf",
+  "sourceUrl": "https://www.oreb.ca/wp-content/uploads/2026/11/OREB_MarketUpdate_HLP_October26.pdf",
   "market": {
-    "sales": { "value": 1010, "yoy": -6.6 },
-    "averagePrice": { "value": 685640, "yoy": -1.0 },
-    "medianPrice": { "value": 625000, "yoy": -0.8 },
-    "benchmarkPrice": { "value": 623500, "yoy": -0.3 },
-    "newListings": { "value": 2927, "yoy": 3.0 },
-    "activeListings": { "value": 4813, "yoy": 7.9 },
-    "monthsOfInventory": { "value": 4.8, "lastYear": 4.1 },
-    "daysOnMarket": { "value": 27, "lastYear": 22 },
-    "saleToListRatio": { "value": 97.5, "lastYear": 98.1 }
+    "sales": {
+      "value": 1048,
+      "yoy": -10.7
+    },
+    "averagePrice": {
+      "value": 678512,
+      "yoy": -4.5
+    },
+    "medianPrice": {
+      "value": 622000,
+      "yoy": -3.9
+    },
+    "newListings": {
+      "value": 2382,
+      "yoy": -1.2
+    },
+    "activeListings": {
+      "value": 4582,
+      "yoy": 6.4
+    },
+    "monthsOfInventory": {
+      "value": 4.4,
+      "lastYear": 3.7
+    },
+    "daysOnMarket": {
+      "value": 25.5,
+      "lastYear": 25
+    },
+    "saleToListRatio": {
+      "value": 97.5,
+      "lastYear": 97.9
+    },
+    "benchmarkPrice": {
+      "value": 616900,
+      "yoy": -1.3
+    }
   },
   "benchmarkByType": [
-    { "type": "Single family", "value": 705100, "yoy": -0.1 },
-    { "type": "Townhouse", "value": 546500, "yoy": -2.2 },
-    { "type": "Apartment", "value": 380800, "yoy": -6.1 }
+    {
+      "type": "Single family",
+      "value": 699200,
+      "yoy": -0.8
+    },
+    {
+      "type": "Townhouse",
+      "value": 539800,
+      "yoy": -4.3
+    },
+    {
+      "type": "Apartment",
+      "value": 377500,
+      "yoy": -5.3
+    }
   ],
   "yearToDate": {
-    "sales": { "value": 10288, "yoy": -6.9 },
-    "averagePrice": { "value": 697384, "yoy": -0.4 }
+    "sales": {
+      "value": 11335,
+      "yoy": -7.3
+    },
+    "averagePrice": {
+      "value": 695598,
+      "yoy": -0.8
+    }
   }
 }
