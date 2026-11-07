@@ -10,6 +10,7 @@
     "assumedBuyerAgentRate": 2.0,
     "rebatePer": 1000,
     "rebateStep": 400000,
-    "note": "Cash back is paid by Right at Home Realty after closing. Your lender must be told about it. Conditions are set out in the buyer representation agreement."
+    "note": "Cash back is paid by our brokerage after closing. Your lender must be told about it. Conditions are set out in the buyer representation agreement. Closing costs are an estimate (legal fees, title insurance and adjustments); your lawyer will confirm the final amount. Ottawa has no municipal land transfer tax.",
+    "closingCostsEstimate": 2500
   }
 }

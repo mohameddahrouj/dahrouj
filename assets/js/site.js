@@ -56,7 +56,12 @@ function initFees(fees) {
     bump($("#sell-keep"), money(p - total));
 
     const rebate = (p / b.rebateStep) * b.rebatePer;
-    bump($("#buy-rebate"), money(rebate));
+    const ltt = ontarioLTT(p) - ($("#buy-ftb").checked ? Math.min(ontarioLTT(p), 4000) : 0);
+    const other = b.closingCostsEstimate || 0;
+    $("#buy-ltt").textContent = money(ltt);
+    $("#buy-other").textContent = money(other);
+    $("#buy-rebate").textContent = "−" + money(rebate);
+    bump($("#buy-total"), money(Math.max(ltt + other - rebate, 0)));
   }
 
   function select(tab) {
@@ -82,6 +87,7 @@ function initFees(fees) {
   });
   if (location.hash === "#buying") select(tabs[1]);
   price.addEventListener("input", render);
+  $("#buy-ftb").addEventListener("change", render);
   render();
 }
 
