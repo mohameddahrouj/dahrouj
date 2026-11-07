@@ -595,3 +595,4 @@ h1, h2 { overflow-wrap: break-word; }
   .pace-row { grid-template-columns: 3.8rem 1fr auto; gap: 0.5rem; }
   .meter-zones { font-size: 0.68rem; }
 }
+.ff-ftb { font-size: var(--step--1); min-height: 36px; color: var(--muted); }

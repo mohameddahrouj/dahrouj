@@ -8,7 +8,7 @@ Real estate website (Right at Home Realty, Brokerage), hosted on GitHub Pages fr
 - `assets/css/site.css`, `assets/js/site.js` — shared styles and script.
 - `scripts/build_pages.py` — writes every page (shared header, footer, text and the market numbers from `data/stats.json`). Edit the text there and run `python3 scripts/build_pages.py`; the monthly stats workflow runs it too.
 - `assets/fonts/` — Schibsted Grotesk and Poppins, self-hosted (SIL Open Font License, licence files included) so no visitor data goes to Google Fonts.
-- `data/fees.json` — FairFee terms: 1.5% listing brokerage, 2% buyer's brokerage, and buyer cash back prorated at $1,000 per $400,000 of purchase price (shown only in the calculator).
+- `data/fees.json` — FairFee terms: 1.5% listing brokerage, 2% buyer's brokerage, and buyer cash back prorated at $1,000 per $400,000 of purchase price (shown only in the calculator), and the $2,500 closing-cost estimate used in the buying estimate (`closingCostsEstimate`).
 - Calculator rules (Ontario land transfer tax brackets, CMHC premiums, the 5.25% stress-test floor, 39%/44% debt limits) live in `assets/js/site.js`; check them when governments change the rules.
 - `data/stats.json` — Ottawa market numbers. Updated by the monthly workflow below.
 

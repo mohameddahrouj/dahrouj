@@ -522,7 +522,13 @@ FAIRFEE = f"""
         <p class="fine" id="sell-note"></p>
       </div>
       <div role="tabpanel" id="panel-buy" aria-labelledby="tab-buy" class="panel" hidden>
-        <p class="keep"><span class="keep-label">Cash back to you</span> <strong id="buy-rebate"></strong> <span class="keep-small">after closing</span></p>
+        <dl class="ledger">
+          <div><dt>Land transfer tax (Ontario)</dt><dd id="buy-ltt"></dd></div>
+          <div><dt>Lawyer, title insurance and other costs <span>(estimate)</span></dt><dd id="buy-other"></dd></div>
+          <div><dt>Cash back to you</dt><dd id="buy-rebate"></dd></div>
+        </dl>
+        <label class="check ff-ftb"><input type="checkbox" id="buy-ftb"> First-time buyer (land transfer tax refund up to $4,000)</label>
+        <p class="keep"><span class="keep-label">Estimated closing costs</span> <strong id="buy-total"></strong> <span class="keep-small">after cash back</span></p>
         <p class="fine" id="buy-note"></p>
       </div>
     </div>
