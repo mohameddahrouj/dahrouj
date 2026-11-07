@@ -18,7 +18,9 @@ def head(title, desc, extra=""):
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{desc}">
   <meta property="og:image" content="https://www.dahrouj.com/assets/img/hero-canal-1400.webp">
-  <link rel="icon" href="assets/img/favicon-32x32.png">
+  <link rel="icon" href="assets/img/favicon-192x192.png" sizes="192x192" type="image/png">
+  <link rel="icon" href="assets/img/favicon-48x48.png" sizes="48x48" type="image/png">
+  <link rel="icon" href="assets/img/favicon-32x32.png" sizes="32x32" type="image/png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/schibsted-grotesk-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/site.css">{extra}
